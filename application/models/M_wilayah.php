@@ -9,4 +9,10 @@ class M_wilayah extends CI_Model
         return $query->row();
     }
 
+    public function get_all_kab()
+    {
+        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '92'");
+        return $query->result();
+    }
+
 }

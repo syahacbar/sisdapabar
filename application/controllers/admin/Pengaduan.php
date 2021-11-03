@@ -13,7 +13,7 @@ class Pengaduan extends CI_Controller
 
     public function index()
     {
-        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '92' AND (RIGHT(kode,2) = '02' OR RIGHT(kode,2) = '71')");
+        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '92'");
 
         $data['kabupaten'] = $query->result();
         $data['pengaduan'] = $this->M_pengaduan->get_all();

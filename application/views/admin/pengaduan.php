@@ -161,7 +161,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script>
+ <!--    <script>
     // Custom search bar
     cari_lp = $('#tabelLaporan').DataTable();
     $('#kolomcari').keyup(function(){
@@ -170,7 +170,6 @@
     </script>
 
 <script>
-<script type="text/javascript">
     var save_method; //for save method string
     var tabelLaporan;
 
@@ -273,7 +272,8 @@ $(document).on('change', '#pilihinfrastruktur', function(){
 
         function reload_table(){
             $('#tabelLaporan').DataTable().ajax.reload(null, false);
-        } 
+        }; 
+});
 </script>
 
 <!--     <script>
@@ -299,3 +299,4 @@ $(document).ready(function (){
  
 
     </script> -->
+ -->
