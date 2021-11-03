@@ -38,7 +38,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="<?php echo site_url('admin/dashboard');?>" class="logo d-flex align-items-center">
-                <img src="<?php echo base_url('assets/backend/assets/img/logo.png'); ?>" alt="">
+                <img src="<?php echo base_url('assets/backend/assets/img/logopapuabarat.png'); ?>" alt="">
                 <span class="d-none d-lg-block">SISDA-PABAR</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
