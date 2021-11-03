@@ -50,9 +50,11 @@ div#tablePengguna_filter {
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Nama Lengkap</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Phone</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -66,7 +68,10 @@ div#tablePengguna_filter {
                                 <tr>
                                     <td><?php echo $no++; ?></td>
                                     <td>
-                                        <?php echo $u->first_name . " " . $u->last_name; ?>
+                                        <?php echo $u->first_name; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $u->last_name; ?>
                                     </td>
                                     <td>
                                         <?php echo $u->username; ?>
@@ -76,23 +81,30 @@ div#tablePengguna_filter {
 
                                     </td>
                                     <td>
+                                        <?php echo $u->phone; ?>
+
+                                    </td>
+                                    <td>
                                         <?php echo ($u->active == '1') ? "Aktif" : "Tidak Aktif"; ?>
 
                                     </td>
                                     <td>
-                                        <?php echo ($u->active == '1') ? '<a class="btn btn-warning btn-sm" href=""><i class="bi bi-power"></i> Nonaktifkan</a>' : '<a class="btn btn-success btn-sm" href=""><i class="bi bi-power"></i> Aktifkan</a>' ?>
-                                        <a class="btn btn-primary btn-sm" href=""><i class="bi bi-pencil-square"></i> Edit</a>
-                                        <a class="btn btn-danger btn-sm" href=""><i class="bi bi-trash"></i> Hapus</a>
+                                        <?php
+                                            if($u->active == '1')
+                                            {
+                                                echo '<button data-iduser="'.$u->id.'" data-namauser="'.$u->username.'" class="btn btn-warning btn-sm btnNonaktif"><i class="bi bi-power"></i> Nonaktifkan</button>';
+                                            } else {
+                                                echo '<button data-iduser="'.$u->id.'" data-namauser="'.$u->username.'" class="btn btn-success btn-sm btnAktif" href=""><i class="bi bi-power"></i> Aktifkan</button>';
+                                            }
+                                        ?>
+                                        
+                                        <button class="btn btn-primary btn-sm btnEdit" data-userid="<?php echo $u->id;?>"><i class="bi bi-pencil-square"></i> Edit</button>
+                                        <button class="btn btn-danger btn-sm btnDelete" data-userid="<?php echo $u->id;?>"><i class="bi bi-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-
-
-                    <!-- <p><?php //echo anchor('auth/create_user', 'Create User',array('class'=>'btn btn-xs btn-primary'))
-                            ?> </p>
-                        <a href=""> -->
                 </div>
             </div>
         </div>
@@ -104,7 +116,7 @@ div#tablePengguna_filter {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="modalRegisterLabel">Buat Akun User Baru</h5>
+        <h5 class="modal-title" id="modalRegisterLabel">Buat Akun Pengguna Baru</h5>
         </div>
         <?php echo form_open("auth/create_user"); ?>
             <div class="modal-body">
@@ -130,15 +142,15 @@ div#tablePengguna_filter {
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label for="company">Nama Kantor/Perusahan</label>
-                    <input type="text" class="form-control" id="company" name="company" required>
+                    <label for="company">Nama Instansi</label>
+                    <input type="text" class="form-control" id="company" name="company" value="SISDA-PABAR" readonly>
                   </div>
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label for="user_name">Username</label>
-                    <input type="text" class="form-control" id="user_name" name="user_name" required>
+                    <label for="identity">Username</label>
+                    <input type="text" class="form-control" id="identity" name="identity" required>
                   </div>
                 </div>
 
@@ -182,6 +194,27 @@ div#tablePengguna_filter {
   </div>
 </div>
 
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalEditLabel">Edit Akun Pengguna</h5>
+        </div>
+        <?php echo form_open("auth/edit_user"); ?>
+            <div class="modal-body">
+                <div id="tampil_modal">
+                    <!-- Data akan di tampilkan disini-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+            </div>
+        <?php echo form_close();?>
+
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
@@ -191,14 +224,58 @@ div#tablePengguna_filter {
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#tablePengguna').DataTable();
+        var tablePengguna = $('#tablePengguna').DataTable();
+
+        // Custom search bar
+        $('#kolomcari').keyup(function(){
+              tablePengguna.search($(this).val()).draw() ;
+        })
+
+        $("#tablePengguna").on("click", ".btnNonaktif", function(){
+            var iduser = $(this).attr("data-iduser");
+            var namauser = $(this).attr("data-namauser");
+            $.ajax({
+                url: '<?php echo site_url(); ?>admin/akunpengguna/nonaktifkanuser',
+                method: 'post',
+                data: {iduser:iduser},
+                success:function(data){
+                    var objData = jQuery.parseJSON(data);
+                    console.log(objData.status);
+                    location.reload();
+                }
+            }); 
+        });
+
+        $("#tablePengguna").on("click", ".btnAktif", function(){
+            var iduser = $(this).attr("data-iduser");
+            var namauser = $(this).attr("data-namauser");
+            $.ajax({
+                url: '<?php echo site_url(); ?>admin/akunpengguna/aktifkanuser',
+                method: 'post',
+                data: {iduser:iduser},
+                success:function(data){
+                    var objData = jQuery.parseJSON(data);
+                    console.log(objData.status);
+                    location.reload();
+                }
+            }); 
+        });
+
+        $("#tablePengguna").on("click", ".btnEdit", function(){
+            var iduser = $(this).attr("data-iduser");
+            $.ajax({
+                url: '<?php echo site_url(); ?>admin/akunpengguna/edit',
+                method: 'post',
+                data: {iduser:iduser},
+                success:function(data){
+                    $('#modalEdit').modal("show");
+                    $('#tampil_modal').html(data);
+                }
+            });
+        });
     });
 
-    // Custom search bar
-    komomCari = $('#tablePengguna').DataTable();
-    $('#kolomcari').keyup(function(){
-          komomCari.search($(this).val()).draw() ;
-    })
+    
 </script>
 
 </body>

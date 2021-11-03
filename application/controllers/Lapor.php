@@ -28,7 +28,8 @@ class Lapor extends CI_Controller
         $data['kodelaporan'] = $kodelaporan;
     	$data['wil_kab'] = $query->result();
         $data['recaptcha'] = $this->recaptcha->create_box();
-    	$this->load->view('public/index',$data);
+        $data['_view'] = "public/lapor";
+    	$this->load->view('public/layout',$data);
     }
 
     function savelaporan()
