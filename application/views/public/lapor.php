@@ -119,7 +119,7 @@
         <div class="col-md-12 wow animated fadeInRight" data-wow-delay=".2s">
           <!-- Name -->
           <div class="form-group label-floating">
-            <label class="control-label" for="nik">NIK</label>
+            <label class="hitam" for="nik">NIK</label>
             <input class="form-control" id="nik" type="text" name="nik" required data-error="Silakan ketik NIK Anda">
             <div class="help-block with-errors"></div>
           </div>
@@ -127,7 +127,7 @@
 
         <div class="col-md-12 wow animated fadeInRight">
           <div class="form-group label-floating">
-            <label class="control-label" for="nama_pelapor">Nama Lengkap</label>
+            <label class="hitam" for="nama_pelapor">Nama Lengkap</label>
             <input class="form-control" id="nama_pelapor" type="text" name="nama_pelapor" required data-error="Silakan isi nama Anda">
             <div class="help-block with-errors"></div>
           </div>
@@ -135,7 +135,7 @@
 
         <div class="col-md-12 wow animated fadeInRight">
           <div class="form-group label-floating">
-            <label class="control-label" for="no_hp">Nomor WhatsApp</label>
+            <label class="hitam" for="no_hp">Nomor WhatsApp</label>
             <input class="form-control" id="no_hp" type="text" name="no_hp" required data-error="Silakan isi nomor WA Anda">
             <div class="help-block with-errors"></div>
           </div>
@@ -143,7 +143,7 @@
 
         <div class="col-md-12 wow animated fadeInRight">
           <div class="form-group label-floating">
-            <label class="control-label" for="email">Email</label>
+            <label class="hitam" for="email">Email</label>
             <input class="form-control" id="email" type="email" name="email" required data-error="Silakan isi Email Anda">
             <div class="help-block with-errors"></div>
           </div>
@@ -158,7 +158,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label" for="alamat_pelapor">Alamat Tinggal</label>
+                <label class="hitam" for="alamat_pelapor">Alamat Tinggal</label>
                 <textarea class="form-control" rows="6" id="alamat_pelapor" type="text" name="alamat_pelapor" required data-error="Format nama jalan: Nama jalan, No. Rumah, RT/RW, dan nama kompleks."></textarea>
                 <div class="help-block with-errors"></div>
               </div>
@@ -223,16 +223,16 @@
               </div>
             </div>
             <div class="col-md-6 wow animated fadeInRight">
-              <div class="form-group label-floating">
-                <label for="latitude" class="control-label">Latitude</label>
+              <div class="form-group">
+                <label for="latitude" class="hitam">Latitude</label>
                 <input class="form-control" id="latitude" type="text" name="latitude" required data-error="Silakan isi Latitude lokasi Anda">
                 <div class="help-block with-errors"></div>
               </div>
             </div>
 
             <div class="col-md-6 wow animated fadeInRight">
-              <div class="form-group label-floating">
-                <label for="longitude" class="control-label">Longitude</label>
+              <div class="form-group">
+                <label for="longitude" class="hitam">Longitude</label>
                 <input class="form-control" id="longitude" name="longitude" required data-error="Silakan isi longitude lokasi Anda"></input>
                 <div class="help-block with-errors"></div>
               </div>

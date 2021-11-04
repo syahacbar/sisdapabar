@@ -164,42 +164,44 @@ class Lapor extends CI_Controller
             }
 
     }
-    public function insertdummy($x)
-    {
-        $month = '08';
-        for($i=1;$i<=$x;$i++)
-        {
-            $kodelaporan = $this->generatekodelaporan().rand(1,100);
-            $params = array(
-                'kodelaporan' => $kodelaporan,
-                'tgl_laporan' => date("Y-".$month."-d H:i:s")
-                    ,
-                'nama_pelapor' => 'pelapor-'.rand(1,100),
-                'nik' => rand(100000000,900000000),
-                'alamat_pelapor' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
-                'kab_pelapor' => '92.0'.rand(1,9),
-                'kec_pelapor' => '92.0'.rand(1,9).'0'.rand(1,4),
-                'des_pelapor' => '92.0'.rand(1,9).'.0'.rand(1,4).'.'.rand(1000,1010),
-                'no_hp' => rand(10000000000,999999999999),
-                'email' => 'email'.rand(1,100).'@mail.com',
-                'isi_laporan' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
-                'infrastruktur' => 'Irigasi',
-                'nama_ruasjalan' => 'Jalan '.rand(1,100),
-                'lokasi_kabkota' => '92.0'.rand(1,9),
-                'lokasi_distrik' => '92.0'.rand(1,9).'.0'.rand(1,4),
-                'latitude' => rand(100,1000),
-                'longitude' => rand(100,1000),
-                'status' => 'Diterima',
-            );
-            $params2 = array(
-                'nama_file' => 'noimageavail.jpg',
-                'kategori' => 'dokumentasi1',
-                'kodelaporan' => $kodelaporan,
-            );
+    
+    // INI JUGA CUMA ALAT BANTU
+    // public function insertdummy($x)
+    // {
+    //     $month = '08';
+    //     for($i=1;$i<=$x;$i++)
+    //     {
+    //         $kodelaporan = $this->generatekodelaporan().rand(1,100);
+    //         $params = array(
+    //             'kodelaporan' => $kodelaporan,
+    //             'tgl_laporan' => date("Y-".$month."-d H:i:s")
+    //                 ,
+    //             'nama_pelapor' => 'pelapor-'.rand(1,100),
+    //             'nik' => rand(100000000,900000000),
+    //             'alamat_pelapor' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
+    //             'kab_pelapor' => '92.0'.rand(1,9),
+    //             'kec_pelapor' => '92.0'.rand(1,9).'0'.rand(1,4),
+    //             'des_pelapor' => '92.0'.rand(1,9).'.0'.rand(1,4).'.'.rand(1000,1010),
+    //             'no_hp' => rand(10000000000,999999999999),
+    //             'email' => 'email'.rand(1,100).'@mail.com',
+    //             'isi_laporan' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
+    //             'infrastruktur' => 'Irigasi',
+    //             'nama_ruasjalan' => 'Jalan '.rand(1,100),
+    //             'lokasi_kabkota' => '92.0'.rand(1,9),
+    //             'lokasi_distrik' => '92.0'.rand(1,9).'.0'.rand(1,4),
+    //             'latitude' => rand(100,1000),
+    //             'longitude' => rand(100,1000),
+    //             'status' => 'Diterima',
+    //         );
+    //         $params2 = array(
+    //             'nama_file' => 'noimageavail.jpg',
+    //             'kategori' => 'dokumentasi1',
+    //             'kodelaporan' => $kodelaporan,
+    //         );
 
-            $laporan_id = $this->M_pengaduan->add($params);
-            $this->M_pengaduan->insert_dokumentasi($params2);
-        }
+    //         $laporan_id = $this->M_pengaduan->add($params);
+    //         $this->M_pengaduan->insert_dokumentasi($params2);
+    //     }
         
-    }
+    // }
 }

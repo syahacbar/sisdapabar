@@ -98,7 +98,7 @@ div#tablePengguna_filter {
                                             }
                                         ?>
                                         
-                                        <button class="btn btn-primary btn-sm btnEdit" data-userid="<?php echo $u->id;?>"><i class="bi bi-pencil-square"></i> Edit</button>
+                                        <!-- <button class="btn btn-primary btn-sm btnEdit" data-userid="<?php //echo $u->id;?>"><i class="bi bi-pencil-square"></i> Edit</button> -->
                                         <button class="btn btn-danger btn-sm btnDelete" data-userid="<?php echo $u->id;?>"><i class="bi bi-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
@@ -261,18 +261,18 @@ div#tablePengguna_filter {
             }); 
         });
 
-        $("#tablePengguna").on("click", ".btnEdit", function(){
-            var iduser = $(this).attr("data-iduser");
-            $.ajax({
-                url: '<?php echo site_url(); ?>admin/akunpengguna/edit',
-                method: 'post',
-                data: {iduser:iduser},
-                success:function(data){
-                    $('#modalEdit').modal("show");
-                    $('#tampil_modal').html(data);
-                }
-            });
-        });
+        // $("#tablePengguna").on("click", ".btnEdit", function(){
+        //     var iduser = $(this).attr("data-iduser");
+        //     $.ajax({
+        //         url: '<?php echo site_url(); ?>admin/akunpengguna/edit',
+        //         method: 'post',
+        //         data: {iduser:iduser},
+        //         success:function(data){
+        //             $('#modalEdit').modal("show");
+        //             $('#tampil_modal').html(data);
+        //         }
+        //     });
+        // });
     });
 
     

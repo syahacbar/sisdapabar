@@ -2,15 +2,16 @@
 
 class Profil extends CI_Controller
 {
-    function __construct()
+
+    public function __construct()
     {
         parent::__construct();
+        $this->load->library(['ion_auth', 'form_validation']);
     }
 
     public function index()
     {
-        $data['title'] = "PROFIL";
-        $data['_view'] = "public/profil";
-        $this->load->view('public/layout',$data);
+        $data['_view'] = "admin/profil";
+        $this->load->view('admin/layout',$data);
     }
 }

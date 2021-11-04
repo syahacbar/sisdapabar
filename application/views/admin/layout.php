@@ -249,15 +249,15 @@
             <li class="nav-heading">Manajemen Website</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo site_url('admin/profil') ?>">
                     <i class="bi bi-info-circle"></i>
                     <span>Profil</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo site_url('admin/berita') ?>">
                     <i class="bi bi-images"></i>
-                    <span>Galeri</span>
+                    <span>Berita</span>
                 </a>
             </li>
 
