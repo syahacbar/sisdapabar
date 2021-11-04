@@ -11,7 +11,7 @@ class Beranda extends CI_Controller
 
     public function index()
     {
-        $data['pengaduan'] = $this->M_pengaduan->get_filter(NULL,NULL,'Diterima',NULL,NULL);
+        $data['pengaduan'] = $this->M_pengaduan->get_filter(NULL,NULL,'Diterima',NULL,NULL,3);
         $data['berita'] = $this->M_berita->get_all();
         $data['title'] = "BERANDA";
         $data['_view'] = "public/beranda";

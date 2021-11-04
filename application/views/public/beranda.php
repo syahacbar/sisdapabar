@@ -95,7 +95,7 @@
                   <div class="row">
                     <article class="single-blog-post">
                       <div class="row">
-                          <div class="col-sm-8">
+                          <div class="col-md-8">
                             <div class="post-meta">
                                 <!-- Title -->
                                 <h2 class="subtitle mt-0"><?php echo $p->nama_ruasjalan;?></h2>
