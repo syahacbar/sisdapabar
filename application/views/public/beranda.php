@@ -6,30 +6,38 @@
           <div class="row justify-content-between">
               <div class="col-md-12 col-lg-12 col-xs-12">
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <?php foreach($slider AS $s) : ?>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $s->id;?>"></li>
+                      <?php endforeach;?>
                     </ol>
+
                     <div class="carousel-inner">
                       <div class="carousel-item active">
                         <img class="d-block w-100" src="https://preview.uideck.com/items/material/assets/images/slider/slider-bg3.jpg" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                          <button class="animated4 btn btn-common">Buat Laporan Sekarang</button>
+                          <a href="<?php echo site_url('lapor');?>" class="animated4 btn btn-common">Buat Laporan Sekarang</a>
                           <!-- <p>...</p> -->
                         </div>
                       </div>
+                      <?php foreach($slider AS $s) : ?>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="https://preview.uideck.com/items/material/assets/images/slider/slider-bg2.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="<?php echo base_url('upload/berita/').$s->nama_file;?>" alt="Third slide">
+                            <?php
+                              $CI =& get_instance();
+                              $CI->load->model('M_berita');
+                              $sid= $CI->M_berita->get_by_id($s->idberita);
+                            ?>
                         <div class="carousel-caption d-none d-md-block">
-                          <button class="animated4 btn btn-common">Buat Laporan Sekarang</button>
+                          <a href="<?php echo site_url('berita/detail/').$sid->slug;?>" class="animated4 btn btn-common">Baca Selengkapnya</a>
                           <!-- <p>...</p> -->
                         </div>
                       </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="https://preview.uideck.com/items/material/assets/images/slider/slider-bg1.jpg" alt="Third slide">
-                      </div>
+                    <?php endforeach;?>
                     </div>
+
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="sr-only">Previous</span>
@@ -56,6 +64,7 @@
               <div class="row listberita">
                 <div class="col-md-12">
                   <?php foreach($berita AS $b) : ?>
+                    
                   <div class="row">
                     <article class="single-blog-post">
                       <div class="row">
@@ -65,13 +74,13 @@
                               $CI->load->model('M_berita');
                               $gb= $CI->M_berita->get_image($b->id);
                             ?>
-                              <img src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" width="80%" height="80%">
+                              <a href="<?php echo site_url('berita/detail/').url_title($b->judul,'dash',true);?>"><img src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" width="80%" height="80%"></a>
 
                           </div>
                           <div class="col-sm-8">
                             <div class="post-meta">
                                 <!-- Title -->
-                                <h2 class="subtitle m-0"><?php echo $b->judul;?></h2>
+                                <a href="<?php echo site_url('berita/detail/').url_title($b->judul,'dash',true);?>"><h2 class="subtitle m-0"><?php echo $b->judul;?></h2></a>
                                  <p><?php echo word_limiter($b->isi, 30);?></p>
                                  <p class="small-text d-flex justify-content-end"><i><?php echo $b->tanggal;?></i></p>
                             </div>    
@@ -81,6 +90,7 @@
 
                     </article>
                   </div>
+
                   <?php endforeach;?>
                 </div>
               </div>

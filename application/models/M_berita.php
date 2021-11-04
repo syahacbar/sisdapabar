@@ -28,6 +28,12 @@ class M_berita extends CI_Model
         return $query->row();
     }
 
+    public function get_by_id($id)
+    {
+        $query = $this->db->query("SELECT * FROM berita WHERE id='$id'");
+        return $query->row();
+    }
+
     public function get_image($idberita)
     {
         $query = $this->db->query("SELECT * FROM galeriberita WHERE idberita='$idberita'");
@@ -37,6 +43,12 @@ class M_berita extends CI_Model
     public function get_kategori()
     {
         $query = $this->db->query("SELECT kategori, COUNT(kategori) AS jumlah FROM berita GROUP BY kategori");
+        return $query->result();
+    }
+
+    public function get_slider()
+    {
+        $query = $this->db->query("SELECT * FROM galeriberita WHERE slider='1'");
         return $query->result();
     }
 
