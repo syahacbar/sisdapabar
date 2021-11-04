@@ -104,11 +104,45 @@ class M_pengaduan extends CI_Model
         return $this->db->insert_id();
     }
 
-    function count_infra($infra)
+    function get_infra()
+    {
+        $query = $this->db->query("SELECT infrastruktur FROM pengaduan GROUP BY infrastruktur");
+        return $query->result();
+    }
+
+    function get_month($int)
+    {
+        $query = $this->db->query("SELECT MONTH(tgl_laporan) AS bulan, YEAR(CURDATE()) AS tahun FROM pengaduan WHERE MONTH(tgl_laporan)>MONTH(CURDATE())-'$int' GROUP BY MONTH(tgl_laporan) ORDER BY MONTH(tgl_laporan) ASC");
+        return $query->result();
+    }
+
+    function count_by_infra($infra=NULL)
     {
         $query = $this->db->query("SELECT * FROM pengaduan WHERE infrastruktur='$infra'");
-        return $query->num_rows();
+        return $query;
     }
+
+    function count_by_kab()
+    {
+        $query = $this->db->query("SELECT p.lokasi_kabkota, w.nama, COUNT(p.lokasi_kabkota) as jumlah FROM pengaduan p JOIN wilayah_2020 w ON w.kode=p.lokasi_kabkota GROUP BY p.lokasi_kabkota");
+        return $query->result();
+    }
+
+    function count_by_month($infra=NULL,$int=NULL)
+    {
+        if($infra != NULL)
+        {
+            $query = $this->db->query("SELECT tgl_laporan, MONTH(tgl_laporan) AS bulan, COUNT(tgl_laporan) AS jumlah FROM pengaduan WHERE infrastruktur='$infra' AND MONTH(tgl_laporan)>MONTH(CURDATE())-$int GROUP BY MONTH(tgl_laporan)");            
+        }
+        else
+        {
+            $query = $this->db->query("SELECT tgl_laporan, MONTH(tgl_laporan) AS bulan, COUNT(tgl_laporan) AS jumlah FROM pengaduan GROUP BY MONTH(tgl_laporan) ORDER BY bulan DESC");            
+        }
+
+        return $query->result();        
+    }
+
+
 
 
 }
