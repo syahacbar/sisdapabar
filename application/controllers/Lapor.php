@@ -40,7 +40,7 @@ class Lapor extends CI_Controller
         $data['map'] = $map;
 
         $data['title'] = "LAPOR";
-        $data['kodelaporan'] = $this->generatekodelaporan;
+        $data['kodelaporan'] = $this->generatekodelaporan();
     	$data['wil_kab'] = $this->M_wilayah->get_all_kab();
         $data['recaptcha'] = $this->recaptcha->create_box();
         $data['_view'] = "public/lapor";
