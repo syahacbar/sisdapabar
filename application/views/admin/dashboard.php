@@ -226,12 +226,13 @@
                                         trigger: 'item'
                                     },
                                     legend: {
-                                        top: '5%',
+                                        top: '2%',
                                         left: 'center',
-                                        show: false
+                                        show: true
                                     },
                                     series: [{
-                                        name: 'Access From',
+                                        top: '20%',
+                                        name: 'Wilayah',
                                         type: 'pie',
                                         radius: ['40%', '70%'],
                                         avoidLabelOverlap: false,
@@ -242,12 +243,12 @@
                                         emphasis: {
                                             label: {
                                                 show: true,
-                                                fontSize: '18',
+                                                fontSize: '14',
                                                 fontWeight: 'bold'
                                             }
                                         },
                                         labelLine: {
-                                            show: false
+                                            show: true
                                         },
 
                                         data: [
