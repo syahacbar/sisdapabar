@@ -16,7 +16,7 @@
             <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
-
+ 
                     <!-- Sales Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
@@ -28,7 +28,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/a6fc3-picture18.png" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6><?php echo $count_irigasi;?> Laporan</h6>
 
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/423b1-picture13.jpg" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <h6><?php echo $count_sungai;?> Laporan</h6>
 
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/9cafc-picture20.jpg" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6><?php echo $count_pantai;?> Laporan</h6>
 
                                     </div>
                                 </div>
