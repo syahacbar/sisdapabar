@@ -52,8 +52,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/assets/frontend/assets/css/colors/indigo.css" media="screen" />
 
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
 <style>
@@ -90,14 +93,20 @@ section#beritalatest .col-md-4 img {
 }
 
 #laporanmasuk img {
-    width: 80%;
+    width: 60%;
     margin: 0 10%;
     object-fit: cover;
-    height: 100px !important;
+    height: 150px !important;
 }
 
 .section-padding {
     padding: 0;
+}
+
+.carousel-item img {
+    height: 550px !important;
+    object-fit: cover;
+    object-position: center top -20px;
 }
 
 </style>
@@ -169,27 +178,27 @@ section#beritalatest .col-md-4 img {
         <ul class="wpb-mobile-menu">
 
           <li>
-            <a class="active" href="index.html">
+            <a class="active" href="<?php echo site_url();?>">
             Beranda
             </a>
           </li>
            <li>
-            <a href="index.html">
+            <a href="<?php echo site_url('profil');?>">
             Profil
             </a>
           </li>
            <li>
-            <a href="index.html">
+            <a href="<?php echo site_url('berita');?>">
             Berita
             </a>
           </li>
            <li>
-            <a href="index.html">
+            <a href="<?php echo site_url('galeri');?>">
             Galeri
             </a>
           </li>
            <li>
-            <a href="index.html">
+            <a href="<?php echo site_url('lapor');?>">
             Lapor
             </a>
           </li>

@@ -101,6 +101,9 @@ p {
     margin-bottom: 1rem;
 }
 
+section.Material-blog-section.section-padding.mt-5 .container {
+    margin-top: 7rem;
+}
 
     </style>
 

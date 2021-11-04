@@ -51,6 +51,7 @@
   #buktiLaporan button i {
     font-size: 28px;
     padding-bottom: 0 !important;
+    color: #5166d8;
   }
 
   #buktiLaporan button {
@@ -69,6 +70,35 @@
   label.hitam{
     color: black;
   }
+
+
+  div#unggahfotoktp .dz-message:before,
+  div#dokumentasi .dz-message:before,
+  div#ktp .dz-message:before {
+      content: " ";
+      background-image: url(<?php echo base_url(); ?>/assets/frontend/assets/images/upload-icon.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 45px !important;
+      display: block;
+  }
+
+  #modalBantuan img,
+  #modalBantuan1 img,
+  #modalBantuan2 img,
+  #modalKTP img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+textarea#isi_laporan,
+textarea#alamat_pelapor {
+    border: 1px solid #D2D2D2;
+    background: none !important;
+}
+
 </style>
 <?php echo $map['js']; ?>
 
@@ -97,15 +127,12 @@
           <div class="col-md-12">
             <div class="form-group mt-0">
               <label class="hitam">Kartu Identitas Pelapor</label>
-              <div class="alert alert-warning alert-dismissible fade show peringatan" role="alert">
-                <strong>Petunjuk!</strong> Silahkan unggah foto identitas seperti KTP/SIM/Paspor anda, file dapat berupa file .jpg, .jpeg, .doc, .docx, .pdf
-              </div><br>
             </div>
           </div>
-          <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group mt-0">
               <!-- <label>Foto 2</label> -->
-              <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalBantuan1">
+              <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalKTP">
                 <i class="bi bi-info-square-fill"></i>
               </button>
               <div id="dokumentasi" class="dropzone dokumentasi ktp" requireda>
@@ -132,8 +159,11 @@
             <div class="help-block with-errors"></div>
           </div>
         </div>
+      </div>     
+    </div>
 
-        <div class="col-md-12 wow animated fadeInRight">
+    <div class="row">
+        <div class="col-md-6 wow animated fadeInRight">
           <div class="form-group label-floating">
             <label class="hitam" for="no_hp">Nomor WhatsApp</label>
             <input class="form-control" id="no_hp" type="text" name="no_hp" required data-error="Silakan isi nomor WA Anda">
@@ -141,24 +171,25 @@
           </div>
         </div>
 
-        <div class="col-md-12 wow animated fadeInRight">
+        <div class="col-md-6 wow animated fadeInRight">
           <div class="form-group label-floating">
             <label class="hitam" for="email">Email</label>
             <input class="form-control" id="email" type="email" name="email" required data-error="Silakan isi Email Anda">
             <div class="help-block with-errors"></div>
           </div>
         </div>
-
-
-      </div>     
     </div>
 
     <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group label-floating">
+            <div class="col-md-12">
+              <div class="form-group">
                 <label class="hitam" for="alamat_pelapor">Alamat Tinggal</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group label-floating mt-0">
                 <textarea class="form-control" rows="6" id="alamat_pelapor" type="text" name="alamat_pelapor" required data-error="Format nama jalan: Nama jalan, No. Rumah, RT/RW, dan nama kompleks."></textarea>
                 <div class="help-block with-errors"></div>
               </div>
@@ -167,7 +198,7 @@
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group label-floating">
+                  <div class="form-group label-floating mt-0">
                     <!-- <label class="control-label" for="name">Kabupaten/Kota</label> -->
                     <select class="custom-select" name="kab_pelapor" id="kab_pelapor" requireda>
                       <div class="help-block with-errors"></div>
@@ -182,7 +213,7 @@
                 </div>
 
                 <div class="col-md-12">
-                  <div class="form-group label-floating">
+                  <div class="form-group label-floating mt-2">
                     <!-- <label class="control-label" for="name">Kecamatan/Distrik</label> -->
                     <select class="custom-select" name="kec_pelapor" id="kec_pelapor" requireda>
                       <option value="">Pilih Kecamatan/Distrik</option>
@@ -192,7 +223,7 @@
                 </div>
 
                 <div class="col-md-12">
-                  <div class="form-group label-floating">
+                  <div class="form-group label-floating mt-2">
                     <!-- <label class="control-label" for="email">Desa/Kelurahan</label> -->
                     <select class="custom-select" name="des_pelapor" id="des_pelapor" requireda>
                       <option value="">Pilih Kelurahan/Desa</option>
@@ -212,7 +243,7 @@
             <div class="col-md-12">
               <div class="form-group mt-0">
                 <!-- <label>Lokasi</label> -->
-                <div class="alert alert-warning alert-dismissible fade show peringatan" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show peringatan mb-0" role="alert">
                   <strong>Petunjuk!</strong> Geser pin maps di bawah ini untuk mengambil koordinat lokasi secara otomatis.
                 </div>
               </div>
@@ -267,52 +298,52 @@
 
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group label-floating">
-                <label for="nama_ruasjalan" class="hitam">Nama Ruas Jalan</label>
-                <textarea class="form-control" rows="5" id="nama_ruasjalan" name="nama_ruasjalan" required data-error="Silakan isi nama_ruasjalan lokasi Anda"></textarea>
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
+                <div class="form-group">
+                  <select class="custom-select" name="lokasi_kabkota" id="lokasi_kabkota" requireda>
+                    <option value=""><i class="fas fa-chevron-down"></i>- Pilih Kabupaten/Kota -</option>
+                    <?php
+                    foreach ($wil_kab as $kab) {
+                      echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
+                    }
+                    ?>
+                  </select>
+                </div>
+            </div> 
 
             <div class="col-md-6">
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <select class="custom-select" name="lokasi_kabkota" id="lokasi_kabkota" requireda>
-                      <option value=""><i class="fas fa-chevron-down"></i>- Pilih Kabupaten/Kota -</option>
-                      <?php
-                      foreach ($wil_kab as $kab) {
-                        echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>    
-
-                <div class="col-12">
-                  <div class="form-group">
-                    <select class="custom-select" name="lokasi_distrik" id="lokasi_distrik" requireda>
-                      <option value="">- Pilih Kecamatan/Distrik -</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="form-group">
+                <select class="custom-select" name="lokasi_distrik" id="lokasi_distrik" requireda>
+                  <option value="">- Pilih Kecamatan/Distrik -</option>
+                </select>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-12 wow animated fadeInRight">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating">
+                <label for="nama_ruasjalan" class="hitam">Nama Ruas Jalan</label>
+                <input class="form-control" rows="5" id="nama_ruasjalan" name="nama_ruasjalan" required data-error="Silakan isi nama_ruasjalan lokasi Anda"></input>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div> 
+          </div>
+
+          <div>
+            <div class="col-md-12t">
               <div class="form-group label-floating">
                 <label for="isi_laporan" class="hitam">Isi Laporan</label>
                 <textarea class="form-control" rows="3" id="isi_laporan" name="isi_laporan" required data-error="Silakan ketik di sini laporan Anda"></textarea>
                 <div class="help-block with-errors"></div>
               </div>
             </div>
-          </div><br>
+          </div>
 
           <div id="buktiLaporan" class="row">
             <div class="col-md-12">
               <div class="form-group mt-0">
                 <label class="hitam">Bukti Laporan</label>
-                <div class="alert alert-warning alert-dismissible fade show peringatan" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show peringatan mb-0" role="alert">
                   <strong>Petunjuk!</strong> Silakan unggah bukti laporan Anda. Klik ikon tanda tanya untuk melihat bantuan.
                 </div><br>
               </div>
@@ -358,12 +389,12 @@
             <div class="col-md-12">
               <div class="form-group mt-0">
                 <label class="hitam">Lampirkan Dokumen (Jika ada)</label>
-                <div class="alert alert-warning alert-dismissible fade show peringatan" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show peringatan mb-0" role="alert">
                   <strong>Petunjuk!</strong> Silakan lampirkan dokumen pendukung, file dapat berupa file .doc, .docx, .pdf
                 </div><br>
               </div>
             </div>
-            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mt-0">
                 <!-- <label>Foto 2</label> -->
                 <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalBantuan1">
@@ -404,6 +435,136 @@
   </div>
 </section>
 <!-- Contact Us Section End -->
+
+    <!-- Modal Bantuan 1 -->
+    <div class="modal fade" id="modalBantuan" tabindex="-1" role="dialog" aria-labelledby="modalBantuanLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBantuanLabel">Info!</h5>
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Untuk gambar pertama, fokus foto ke bagian jalan, drainase, atau jembatan yang rusak. Lihat gambar di bawah ini sebagai contoh.
+                    <div id="gambar1" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/drainase-rusak.jpg') ?>" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="Second slide">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jembatan-rusak.jpg') ?>" alt="Second slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#gambar1" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#gambar1" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Bantuan -->
+
+    <!-- Modal Bantuan 2 -->
+    <div class="modal fade" id="modalBantuan1" tabindex="-1" role="dialog" aria-labelledby="modalBantuan1Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBantuan1Label">Info!</h5>
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Untuk gambar kedua, foto seluruh badan jalan atau drainase seperti gambar di bawah ini.
+                    <div id="gambar2" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jembatan-rusak.jpg') ?>" alt="tampak samping jalan">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/drainase-rusak.jpg') ?>" alt="tampak samping darainase">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="tampak samping darainase">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#gambar2" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#gambar2" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Bantuan -->
+
+    <!-- Modal Bantuan 3 -->
+    <div class="modal fade" id="modalBantuan2" tabindex="-1" role="dialog" aria-labelledby="modalBantuan2Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBantuan2Label">Info!</h5>
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Silakan buat pose selfi dengan membelakangi jalan rusak.
+                    <img src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Bantuan -->
+
+
+    <!-- Modal Panduan Unggah KTP -->
+    <div class="modal fade" id="modalKTP" tabindex="-1" role="dialog" aria-labelledby="modalKTPLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalKTPLabel">Info!</h5>
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning alert-dismissible fade show peringatan mb-3" role="alert">
+                    <strong>Petunjuk!</strong> Silahkan unggah foto identitas seperti KTP/SIM/Paspor Anda. File dapat berupa file .jpg, .jpeg, .doc, .docx, dan/atau .pdf.
+                    </div>
+                    <img src="<?php echo base_url('assets/frontend/assets/images/ktp.jpg') ?>" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Bantuan -->
+
 
 <script>
   function setMapToForm(latitude, longitude) {
@@ -527,4 +688,9 @@
           });
 
       });
+    </script>
+
+    <!-- Load Modal -->
+    <script>
+      $('#myModal').modal(options)
     </script>
