@@ -10,6 +10,7 @@ class Berita extends CI_Controller
 
     public function index()
     {
+        $data['title'] = "BERITA";
         $data['_view'] = "public/berita";
         $this->load->view('public/layout',$data);
     }

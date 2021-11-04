@@ -10,6 +10,7 @@ class Profil extends CI_Controller
 
     public function index()
     {
+        $data['title'] = "PROFIL";
         $data['_view'] = "public/profil";
         $this->load->view('public/layout',$data);
     }

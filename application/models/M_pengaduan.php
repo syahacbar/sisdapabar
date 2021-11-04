@@ -21,7 +21,7 @@ class M_pengaduan extends CI_Model
         return $query->result();
     }
 
-    function get_filter($inf=NULL,$kab=NULL,$status=NULL,$startdate=NULL,$todate=NULL)
+    function get_filter($inf=NULL,$kab=NULL,$status=NULL,$startdate=NULL,$todate=NULL,$limit=NULL)
     {
         $this->db->select("p.*");
         $this->db->select("(SELECT nama FROM wilayah_2020 WHERE kode=p.kab_pelapor) AS nama_kabpelapor");
@@ -29,7 +29,7 @@ class M_pengaduan extends CI_Model
         $this->db->select("(SELECT nama FROM wilayah_2020 WHERE kode=p.des_pelapor) AS nama_despelapor");
         $this->db->select("(SELECT nama FROM wilayah_2020 WHERE kode=p.lokasi_kabkota) AS nama_kabkota");
         $this->db->select("(SELECT nama FROM wilayah_2020 WHERE kode=p.lokasi_distrik) AS nama_distrik");
-        $this->db->select("(SELECT u1.nama_file FROM upload u1 WHERE u1.kategori ='dokumentasi1' AND u1.kodelaporan = p.kodelaporan) AS dokumentasi1");
+        $this->db->select("(SELECT u1.nama_file FROM upload u1 WHERE u1.kategori ='dokumentasi1' AND u1.kodelaporan = p.kodelaporan LIMIT 1) AS dokumentasi1");
         $this->db->select("(SELECT u2.nama_file FROM upload u2 WHERE u2.kategori = 'dokumentasi2' AND u2.kodelaporan = p.kodelaporan) AS dokumentasi2");
         $this->db->select("(SELECT u3.nama_file FROM upload u3 WHERE u3.kategori = 'dokumentasi3' AND u3.kodelaporan = p.kodelaporan) AS dokumentasi3");
         $this->db->from("pengaduan p");
@@ -68,9 +68,20 @@ class M_pengaduan extends CI_Model
         {
 
         }        
+        $this->db->order_by('p.tgl_laporan', 'DESC');
+        if($limit != NULL)
+        {
+            $this->db->limit($limit);
+        }
 
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function get_image($kodelaporan)
+    {
+        $query = $this->db->query("SELECT * FROM upload WHERE kodelaporan='$kodelaporan' AND kategori='dokumentasi1'");
+        return $query->row();
     }
 
     function add($params)
@@ -85,6 +96,12 @@ class M_pengaduan extends CI_Model
             ->limit(1)
             ->get('pengaduan');
         return $last_idlap;
+    }
+
+    function insert_dokumentasi($params2)
+    {
+        $this->db->insert('upload', $params2);
+        return $this->db->insert_id();
     }
 
 

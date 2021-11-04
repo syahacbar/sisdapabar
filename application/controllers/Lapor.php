@@ -5,28 +5,43 @@ class Lapor extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('M_pengaduan');
-        // $this->load->model('M_setting');
-        // $this->load->model('Ion_auth_model');
+        $this->load->model(['M_pengaduan','M_wilayah','M_setting']);
         $this->load->library('recaptcha'); 
 
     }
-
-    function index()
+    function generatekodelaporan()
     {
-    	$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '92' AND (RIGHT(kode,2) = '02' OR RIGHT(kode,2) = '71')");
-    	
-    	//generate kode laporan
-    	$last_idlap = $this->M_pengaduan->get_lastrow();
+        //generate kode laporan
+        $last_idlap = $this->M_pengaduan->get_lastrow();
         if ($last_idlap->num_rows > 0) {
             $idlap = (int)$last_idlap->row()->id + 1;
         } else {
             $idlap = 1;
         }
-        $kodelaporan = date("YmdHis") . $idlap;
+        return $kodelaporan = date("YmdHis").$idlap;
+    }
 
-        $data['kodelaporan'] = $kodelaporan;
-    	$data['wil_kab'] = $query->result();
+    function index()
+    {
+        //map
+        $setting=$this->M_setting->list_setting();
+        $this->load->library('googlemaps');
+        $config['center'] = "$setting->latitude, $setting->longitude";
+        $config['zoom'] = "$setting->zoom";
+        $config['apiKey'] = "$setting->apikey";
+        $this->googlemaps->initialize($config);
+
+        $marker['position'] = "$setting->latitude, $setting->longitude";
+        $marker['draggable'] = true;
+        $marker['ondragend'] = 'setMapToForm(event.latLng.lat(), event.latLng.lng());';
+        $this->googlemaps->add_marker($marker);
+
+        $map=$this->googlemaps->create_map();
+        $data['map'] = $map;
+
+        $data['title'] = "LAPOR";
+        $data['kodelaporan'] = $this->generatekodelaporan;
+    	$data['wil_kab'] = $this->M_wilayah->get_all_kab();
         $data['recaptcha'] = $this->recaptcha->create_box();
         $data['_view'] = "public/lapor";
     	$this->load->view('public/layout',$data);
@@ -149,8 +164,41 @@ class Lapor extends CI_Controller
             }
 
     }
-    function cobamap()
+    public function insertdummy($x)
     {
-		$this->load->view('map');
+        for($i=1;$i<=$x;$i++)
+        {
+            $kodelaporan = $this->generatekodelaporan().rand(1,100);
+            $params = array(
+                'kodelaporan' => $kodelaporan,
+                'tgl_laporan' => date("Y-m-d H:i:s")
+                    ,
+                'nama_pelapor' => 'pelapor-'.rand(1,100),
+                'nik' => rand(100000000,900000000),
+                'alamat_pelapor' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
+                'kab_pelapor' => '92.0'.rand(1,9),
+                'kec_pelapor' => '92.0'.rand(1,9).'0'.rand(1,4),
+                'des_pelapor' => '92.0'.rand(1,9).'.0'.rand(1,4).'.'.rand(1000,1010),
+                'no_hp' => rand(10000000000,999999999999),
+                'email' => 'email'.rand(1,100).'@mail.com',
+                'isi_laporan' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak',
+                'infrastruktur' => 'Irigasi',
+                'nama_ruasjalan' => 'Jalan '.rand(1,100),
+                'lokasi_kabkota' => '92.0'.rand(1,9),
+                'lokasi_distrik' => '92.0'.rand(1,9).'.0'.rand(1,4),
+                'latitude' => rand(100,1000),
+                'longitude' => rand(100,1000),
+                'status' => 'Diterima',
+            );
+            $params2 = array(
+                'nama_file' => 'noimageavail.jpg',
+                'kategori' => 'dokumentasi1',
+                'kodelaporan' => $kodelaporan,
+            );
+
+            $laporan_id = $this->M_pengaduan->add($params);
+            $this->M_pengaduan->insert_dokumentasi($params2);
+        }
+        
     }
 }

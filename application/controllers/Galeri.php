@@ -10,6 +10,7 @@ class Galeri extends CI_Controller
 
     public function index()
     {
+        $data['title'] = "GALERI";
         $data['_view'] = "public/galeri";
         $this->load->view('public/layout',$data);
     }

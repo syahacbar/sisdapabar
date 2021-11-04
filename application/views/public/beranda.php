@@ -55,18 +55,25 @@
               <h1 class="section-title text-center">List Berita</h1>
               <div class="row listberita">
                 <div class="col-md-12">
+                  <?php foreach($berita AS $b) : ?>
                   <div class="row">
                     <article class="single-blog-post">
                       <div class="row">
                           <div class="col-md-4">
-                              <img src="https://img.beritasatu.com/cache/beritasatu/620x350-2/1596279230.jpg" width="80%" height="80%">
+                            <?php
+                              $CI =& get_instance();
+                              $CI->load->model('M_berita');
+                              $gb= $CI->M_berita->get_image($b->id);
+                            ?>
+                              <img src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" width="80%" height="80%">
+
                           </div>
                           <div class="col-sm-8">
                             <div class="post-meta">
                                 <!-- Title -->
-                                <h2 class="subtitle m-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
+                                <h2 class="subtitle m-0"><?php echo $b->judul;?></h2>
+                                 <p><?php echo word_limiter($b->isi, 30);?></p>
+                                 <p class="small-text d-flex justify-content-start"><i><?php echo $b->tanggal;?></i></p>
                             </div>    
                           </div>
                       </div>
@@ -74,59 +81,7 @@
 
                     </article>
                   </div>
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-md-4">
-                              <img src="https://img.okezone.com/content/2021/07/26/337/2446367/deretan-sungai-terpanjang-di-indonesia-cTEMQDuq43.jpg" width="80%" height="80%">
-                          </div>
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle m-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                      </div>
-                    </article>
-                  </div>
-
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-md-4">
-                              <img src="https://img.okezone.com/content/2021/07/26/337/2446367/deretan-sungai-terpanjang-di-indonesia-cTEMQDuq43.jpg" width="80%" height="80%">
-                          </div>
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle m-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                      </div>
-                    </article>
-                  </div>
-
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-md-4">
-                              <img src="https://img.okezone.com/content/2021/07/26/337/2446367/deretan-sungai-terpanjang-di-indonesia-cTEMQDuq43.jpg" width="80%" height="80%">
-                          </div>
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle m-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-end"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                      </div>
-                    </article>
-                  </div>
+                  <?php endforeach;?>
                 </div>
               </div>
             </div>
@@ -136,89 +91,34 @@
               <h1 class="section-title text-center">Laporan Terkini</h1>
               <div class="row laporanterkini">
                 <div class="col-md-12">
+                  <?php foreach($pengaduan AS $p) : ?>
                   <div class="row">
                     <article class="single-blog-post">
                       <div class="row">
                           <div class="col-sm-8">
                             <div class="post-meta">
                                 <!-- Title -->
-                                <h2 class="subtitle mt-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
+                                <h2 class="subtitle mt-0"><?php echo $p->nama_ruasjalan;?></h2>
+                                 <p><?php echo word_limiter($p->isi_laporan, 30);?></p>
+                                 <p class="small-text d-flex justify-content-start"><i><?php echo $p->tgl_laporan;?></i></p>
                             </div>    
                           </div>
                           <div class="col-md-4">
-                              <img src="https://img.okezone.com/content/2021/07/26/337/2446367/deretan-sungai-terpanjang-di-indonesia-cTEMQDuq43.jpg" width="80%" height="80%">
+                            <?php
+                              $CI =& get_instance();
+                              $CI->load->model('M_pengaduan');
+                              $u= $CI->M_pengaduan->get_image($p->kodelaporan);
+                            ?>
+                              <img src="<?php echo base_url('upload/dokumentasi/').$u->nama_file;?>" width="80%" height="80%">
                           </div>
                       </div>
                     </article>
                   </div>
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle mt-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                          <div class="col-md-4">
-                              <img src="https://infopublik.id/assets/upload/headline//IMG-20210105-WA0005.jpg" width="80%" height="80%">
-                          </div>
-                      </div>
-                    </article>
-                  </div>
-
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle mt-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                          <div class="col-md-4">
-                              <img src="https://i0.wp.com/wira.co.id/wp-content/uploads/2021/02/konstruksi-jembatan.jpg" width="80%" height="80%">
-                          </div>
-                      </div>
-                    </article>
-                  </div>
-
-                  <div class="row">
-                    <article class="single-blog-post">
-                      <div class="row">
-                          <div class="col-sm-8">
-                            <div class="post-meta">
-                                <!-- Title -->
-                                <h2 class="subtitle mt-0">12+ Amazing Growth Hacking Tips and Tricks</h2></a>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio perferendis assumenda ipsum maiores dolorum similique obcaecati perspiciatis.</p>
-                                 <p class="small-text d-flex justify-content-start"><i>12 November 2021 12:23</i></p>
-                            </div>    
-                          </div>
-                          <div class="col-md-4">
-                              <img src="https://www.kemenkeu.go.id/media/11125/pupr-jembatan-gantung.jpg" width="80%" height="80%">
-                          </div>
-                      </div>
-                    </article>
-                  </div>
+                  <?php endforeach;?>
                 </div>
               </div>
             </div>
         </div>
-
-
-        <div class="row mt-5 wow animated fadeInUp" data-wow-delay=".6s">
-          <!-- Button -->
-          <div class="col-md-12 text-center">
-              <a href="blog.html" class="animated4 btn btn-common" data-ripple-color="#000"><i class="material-icons mdi mdi-library-books"></i> Explore More on Blog<div class="ripple-container"></div></a>
-          </div>
-        </div>
-      </div>
     </section>
     <!-- Our BLog Section End -->
 

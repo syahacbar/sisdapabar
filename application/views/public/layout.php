@@ -5,7 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Beranda - Sisda Pabar</title>
+    <title><?php echo $title;?> | SISDA-PABAR</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<?php echo base_url();?>assets/backend/assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo base_url();?>assets/backend/assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?php echo base_url();?>assets/backend/assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/frontend/assets/css/bootstrap.min.css">
@@ -31,6 +50,12 @@
 
     <!-- Color CSS Styles  -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/assets/frontend/assets/css/colors/indigo.css" media="screen" />
+
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
 <style>
 #beritalatest .col-md-6.col-lg-6.col-xl-6 {
     width: 48%;
@@ -91,7 +116,7 @@ section#beritalatest .col-md-4 img {
               <span class="mdi mdi-menu"></span>
               <span class="mdi mdi-menu"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt=""></a>
+            <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt=""></a> -->
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
@@ -169,110 +194,6 @@ section#beritalatest .col-md-4 img {
             </a>
           </li>
 
-          <li>
-            <a href="#">
-            Pages
-            </a>
-            <ul class="dropdown">
-              <li>
-                <a href="about-us.html">About Us 1</a>
-              </li>
-              <li>
-                <a href="about-us2.html">About Us 2</a>
-              </li>
-              <li>
-                <a href="team.html">Team Members</a>
-              </li>
-              <li>
-                <a href="services.html">Services</a>
-              </li>
-              <li>
-                  <a href="contact-us.html">Contact Us 1</a>
-              </li>
-              <li>
-                  <a href="contact-us2.html">Contact Us 2</a>
-              </li>
-              <li>
-                  <a href="404.html">404</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-            Elements
-            </a>
-            <ul class="dropdown">
-              <li>
-                <a href="tab.html">Tabs</a>
-              </li>
-              <li>
-                <a href="alert.html">Alert</a>
-              </li>
-              <li>
-                <a href="accordion.html">Accordions</a>
-              </li>
-              <li>
-               <a href="pricing.html">Pricing Tables</a>
-              </li>
-              <li>
-                  <a href="buttons.html">Buttons</a>
-              </li>
-              <li>
-                  <a href="icons.html">Icons</a>
-              </li>
-              <li>
-                  <a href="carousel.html">Carousel</a>
-              </li>
-              <li>
-                  <a href="counter.html">Counter</a>
-              </li>
-              <li>
-                 <a href="map.html">Google Map</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-            Portfolio
-            </a>
-            <ul class="dropdown">
-              <li>
-                <a href="portfolio-2.html">Portfolio 2 columns</a>
-              </li>
-              <li>
-                <a href="portfolio.html">Portfolio 3 columns</a>
-              </li>
-              <li>
-                <a href="portfolio-single.html">Portfolio Single</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="about.html">
-            Blog
-            </a>
-            <ul class="dropdown">
-              <li>
-                <a href="blog.html">Blog Page</a>
-              </li>
-              <li>
-                <a href="#"></a>Blog Single Page</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-            Contact Us
-            </a>
-            <ul class="dropdown">
-              <li>
-                <a href="contact-us.html">Contact Us 1</a>
-              </li>
-              <li>
-                <a href="contact-us2.html">Contact Us 2</a>
-              </li>
-            </ul>
-          </li>
         </ul>
         <!-- Mobile Menu End -->
       </nav>
@@ -340,7 +261,7 @@ section#beritalatest .col-md-4 img {
               <p><a class="dark-grey-text" href="https://www.dpupapuabarat.com/" target="_blank">Dinas PU Papua Barat</a></p>
               <p><a class="dark-grey-text" href=" https://lpse.pu.go.id/" target="_blank">LPSE PUPR</a></p>
               <p><a class="dark-grey-text" href="https://www.pu.go.id/" target="_blank">Kementerian PUPR</a></p>
-              <p><a class="dark-grey-text" href="http://sda.pu.go.id/" target="_blank">Dirjen SDA PUPR</a></p>
+              <p><a class="dark-grey-text" href="https://sda.pu.go.id/" target="_blank">Dirjen SDA PUPR</a></p>
           </div>
           <!--/.Fourth column-->
 
@@ -353,7 +274,7 @@ section#beritalatest .col-md-4 img {
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>&copy; 2021 SISDA PABAR | Powered By Underground Dev.<i class="mdi mdi-heart"></i></p>
+                    <p>&copy; 2021 SISDA PABAR | Powered By Underground Dev.</p>
                 </div>
             </div>
           </div>
