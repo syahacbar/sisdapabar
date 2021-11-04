@@ -73,7 +73,7 @@
                                 <!-- Title -->
                                 <h2 class="subtitle m-0"><?php echo $b->judul;?></h2>
                                  <p><?php echo word_limiter($b->isi, 30);?></p>
-                                 <p class="small-text d-flex justify-content-start"><i><?php echo $b->tanggal;?></i></p>
+                                 <p class="small-text d-flex justify-content-end"><i><?php echo $b->tanggal;?></i></p>
                             </div>    
                           </div>
                       </div>

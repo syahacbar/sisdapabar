@@ -14,4 +14,11 @@ class Berita extends CI_Controller
         $data['_view'] = "public/berita";
         $this->load->view('public/layout',$data);
     }
+
+    public function detail_berita()
+    {
+        $data['title'] = "DETAIL BERITA";
+        $data['_view'] = "public/detail_berita";
+        $this->load->view('public/layout',$data);
+    }
 }
