@@ -16,7 +16,7 @@
             <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
-
+ 
                     <!-- Sales Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
@@ -28,7 +28,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/a6fc3-picture18.png" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6><?php echo $count_irigasi;?> Laporan</h6>
 
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/423b1-picture13.jpg" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <h6><?php echo $count_sungai;?> Laporan</h6>
 
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         <img src="https://sda.pu.go.id/assets/uploads/gallery/9cafc-picture20.jpg" width="80" height="50">
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6><?php echo $count_pantai;?> Laporan</h6>
 
                                     </div>
                                 </div>
@@ -92,16 +92,24 @@
                                 <script>
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart"), {
-                                            series: [{
-                                                name: 'Irigasi',
-                                                data: [31, 40, 28],
-                                            }, {
-                                                name: 'Sungai',
-                                                data: [11, 32, 45]
-                                            }, {
-                                                name: 'Pantai',
-                                                data: [15, 11, 32]
-                                            }],
+                                            series: [
+                                            <?php foreach($list_infra AS $li) : ?>
+                                            {
+                                                name: '<?php echo $li->infrastruktur; ?>',
+                                                data: 
+                                                [
+                                                <?php
+                                                  $CI =& get_instance();
+                                                  $CI->load->model('M_pengaduan');
+                                                  $cm= $CI->M_pengaduan->count_by_month($li->infrastruktur,3);
+                                                  foreach($cm AS $cmx):
+                                                    echo $cmx->jumlah.',';
+                                                    endforeach;
+                                                ?>
+                                                ],
+                                            },
+                                            <?php endforeach;?>
+                                            ],
                                             chart: {
                                                 height: 350,
                                                 type: 'area',
@@ -131,7 +139,7 @@
                                             },
                                             xaxis: {
                                                 type: 'month',
-                                                categories: ["September 2021", "Oktober 2021", "November 2021"]
+                                                categories: [<?php foreach($list_month AS $lm) : echo '"'.medium_bulan($lm->bulan).'-'.$lm->tahun.'",'; endforeach; ?>]
                                             },
                                             tooltip: {
                                                 x: {
@@ -167,46 +175,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach($pengaduan AS $peng) : ?>
                                         <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                            <td>$165</td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><?php echo $peng->kodelaporan;?></th>
+                                            <td><?php echo mediumdate_indo(substr($peng->tgl_laporan,0,10));?></td>
+                                            <td><?php echo $peng->nama_pelapor;?></td>
+                                            <td><?php echo $peng->nama_ruasjalan;?></td>
+                                            <td><?php echo ucwords(strtolower($peng->nama_kabkota));?></td>
+                                            <td>
+                                                <?php if($peng->status == 'Menunggu') { ?>
+                                                <span class="badge bg-warning"><?php echo $peng->status;?></span>
+                                            <?php } elseif ($peng->status == 'Diterima') { ?>
+                                                <span class="badge bg-success"><?php echo $peng->status;?></span>
+                                            <?php } elseif ($peng->status == 'Ditolak') { ?>
+                                                <span class="badge bg-danger"><?php echo $peng->status;?></span>
+                                            <?php } ?>
+
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                            <td>$165</td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                            <td>$165</td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                            <td>$67</td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                            <td>$67</td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                    <?php endforeach; ?>
+                                       
                                     </tbody>
                                 </table>
 
@@ -223,65 +211,6 @@
             <!-- Right side columns -->
             <div class="col-lg-4">
 
-                <!-- Recent Activity -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Aktifitas Login <span>| Hari Ini</span></h5>
-
-                        <div class="activity">
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">32 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">56 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptatem blanditiis blanditiis eveniet
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 hrs</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptates corrupti molestias voluptatem
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">1 day</div>
-                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                <div class="activity-content">
-                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 days</div>
-                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                <div class="activity-content">
-                                    Est sit eum reiciendis exercitationem
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">4 weeks</div>
-                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                <div class="activity-content">
-                                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                </div>
-                            </div><!-- End activity item-->
-
-                        </div>
-
-                    </div>
-                </div><!-- End Recent Activity -->
 
                 <!-- Website Traffic -->
                 <div class="card">
@@ -297,12 +226,13 @@
                                         trigger: 'item'
                                     },
                                     legend: {
-                                        top: '5%',
+                                        top: '2%',
                                         left: 'center',
-                                        show: false
+                                        show: true
                                     },
                                     series: [{
-                                        name: 'Access From',
+                                        top: '20%',
+                                        name: 'Wilayah',
                                         type: 'pie',
                                         radius: ['40%', '70%'],
                                         avoidLabelOverlap: false,
@@ -313,21 +243,21 @@
                                         emphasis: {
                                             label: {
                                                 show: true,
-                                                fontSize: '18',
+                                                fontSize: '14',
                                                 fontWeight: 'bold'
                                             }
                                         },
                                         labelLine: {
-                                            show: false
+                                            show: true
                                         },
 
                                         data: [
                                         <?php 
-                                            foreach($listkabupaten AS $kab) :
+                                            foreach($count_kab AS $ck) :
                                         ?>
                                             {
-                                                value: <?php echo(rand(10,100));?>,
-                                                name: '<?php echo $kab->nama;?>'
+                                                value: <?php echo $ck->jumlah;?>,
+                                                name: '<?php echo $ck->nama;?>'
                                             },
                                         <?php endforeach;?>    
                                         ]
@@ -346,35 +276,18 @@
                         <h5 class="card-title">Berita Terbaru </h5>
 
                         <div class="news">
+                        <?php foreach ($berita AS $news) : ?>
                             <div class="post-item clearfix">
-                                <img src="<?php echo base_url();?>/assets/backend/assets/img/news-1.jpg" alt="">
-                                <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                                <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                            <?php
+                              $CI =& get_instance();
+                              $CI->load->model('M_berita');
+                              $gb= $CI->M_berita->get_image($news->id);
+                            ?>
+                                <img src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" alt="">
+                                <h4><a href="#"><?php echo $news->judul;?></a></h4>
+                                <p><?php echo word_limiter($news->isi, 20);?></p>
                             </div>
-
-                            <div class="post-item clearfix">
-                                <img src="<?php echo base_url();?>/assets/backend/assets/img/news-2.jpg" alt="">
-                                <h4><a href="#">Quidem autem et impedit</a></h4>
-                                <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="<?php echo base_url();?>/assets/backend/assets/img/news-3.jpg" alt="">
-                                <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="<?php echo base_url();?>/assets/backend/assets/img/news-4.jpg" alt="">
-                                <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                                <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="<?php echo base_url();?>/assets/backend/assets/img/news-5.jpg" alt="">
-                                <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                            </div>
+                        <?php endforeach;?>
 
                         </div><!-- End sidebar recent posts-->
 

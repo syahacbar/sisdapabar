@@ -166,12 +166,13 @@ class Lapor extends CI_Controller
     }
     public function insertdummy($x)
     {
+        $month = '08';
         for($i=1;$i<=$x;$i++)
         {
             $kodelaporan = $this->generatekodelaporan().rand(1,100);
             $params = array(
                 'kodelaporan' => $kodelaporan,
-                'tgl_laporan' => date("Y-m-d H:i:s")
+                'tgl_laporan' => date("Y-".$month."-d H:i:s")
                     ,
                 'nama_pelapor' => 'pelapor-'.rand(1,100),
                 'nik' => rand(100000000,900000000),
