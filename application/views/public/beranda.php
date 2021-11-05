@@ -135,6 +135,7 @@
     <!-- work-counter area -->
     <section id="laporanmasuk" class="work-counter-section section-padding">
         <div class="container">
+              <h1 class="section-title text-center">Jumlah Laporan</h1>
             <div class="row">
                 <!-- Single Counter -->
                 <div class="col-md-4 col-sm-6 work-counter-widget text-center wow animated fadeInUp" data-wow-delay=".2s">
@@ -142,7 +143,7 @@
                         <div class="icon">
                           <img class="img-thumbnail" src="https://sda.pu.go.id/assets/uploads/gallery/a6fc3-picture18.png">
                         </div>
-                        <div class="timer">347</div>
+                        <div class="timer"><?php echo $count_irigasi;?></div>
                         <p>Irigasi</p>
                     </div>
                 </div>
@@ -152,7 +153,7 @@
                         <div class="icon">
                           <img class="img-thumbnail" src="https://sda.pu.go.id/assets/uploads/gallery/423b1-picture13.jpg">
                         </div>
-                        <div class="timer">8896</div>
+                        <div class="timer"><?php echo $count_sungai;?></div>
                         <p>Sungai</p>
                     </div>
                 </div>
@@ -162,7 +163,7 @@
                         <div class="icon">
                           <img class="img-thumbnail" src="https://sda.pu.go.id/assets/uploads/gallery/9cafc-picture20.jpg">
                         </div>
-                        <div class="timer">35</div>
+                        <div class="timer"><?php echo $count_pantai;?></div>
                         <p>Pantai</p>
                     </div>
                 </div>

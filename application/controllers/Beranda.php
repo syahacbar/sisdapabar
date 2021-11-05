@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Beranda extends CI_Controller
+class Beranda extends CI_Controller 
 {
     function __construct()
     {
@@ -11,6 +11,9 @@ class Beranda extends CI_Controller
 
     public function index()
     {
+        $data['count_irigasi'] = $this->M_pengaduan->count_by_infra('Irigasi')->num_rows();
+        $data['count_sungai'] = $this->M_pengaduan->count_by_infra('Sungai')->num_rows();
+        $data['count_pantai'] = $this->M_pengaduan->count_by_infra('Pantai')->num_rows();
         $data['slider'] = $this->M_berita->get_slider();
         $data['pengaduan'] = $this->M_pengaduan->get_filter(NULL,NULL,'Diterima',NULL,NULL,3);
         $data['berita'] = $this->M_berita->get_all(3);

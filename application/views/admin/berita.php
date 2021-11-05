@@ -4,7 +4,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
 
 <style>
-/*    div#newsTable_filter,
+/*    div#newsTable_filter, 
     input.dataTable-input,
     .dataTable-top .dataTable-dropdown,
     .dataTable-top .dataTable-search {
@@ -97,8 +97,13 @@
                                             <td><?php echo $news->tanggal; ?></td>
                                             <td><?php echo $news->judul; ?></td>
                                             <td><?php echo $news->kategori; ?></td>
+                                             <?php
+                                                  $CI =& get_instance();
+                                                  $CI->load->model('M_berita');
+                                                  $sl= $CI->M_berita->get_slider_by_idberita($news->id);
+                                                ?>
                                             <td class="text-center">
-                                                <div class="toggle-btn">
+                                                <div data-sliderstatus="<?php echo $sl->slider;?>" data-idberita="<?php echo $sl->idberita;?>" class="toggle-btn <?php echo ($sl->slider =='1') ? 'active' : ''; ?>">
                                                     <div class="inner-circle"></div>
                                                 </div>
                                             </td>
@@ -188,8 +193,41 @@ $('#judul_berita').keyup(function(){
 
 <script type='text/javascript'>
     $(document).ready(function(){
-    $('.toggle-btn').click(function() {
-    $(this).toggleClass('active').siblings().removeClass('active');
-    });
+        $('.toggle-btn').click(function() {
+            $(this).toggleClass('active').siblings().removeClass('active');
+
+            var idberita = $(this).attr('data-idberita');
+            var sliderstatus = $(this).attr('data-sliderstatus');
+
+            if(sliderstatus == '0')
+            {
+                $.ajax({
+                    type: "POST",
+                    url : "<?php echo base_url(); ?>admin/berita/switchslider/1",
+                    data:{idberita : idberita,sliderstatus:sliderstatus},
+                    success:function(data) {
+                        var objData = jQuery.parseJSON(data);
+                        console.log(objData.status);
+                    }
+                });
+            }
+            else if(sliderstatus == '1')
+            {
+                $.ajax({
+                    type: "POST",
+                    url : "<?php echo base_url(); ?>admin/berita/switchslider/0",
+                    data:{idberita : idberita,sliderstatus:sliderstatus},
+                    success:function(data) {
+                        var objData = jQuery.parseJSON(data);
+                        console.log(objData.status);
+                    }
+                });
+            }
+            
+            
+           
+        });
+
+
     });
 </script>

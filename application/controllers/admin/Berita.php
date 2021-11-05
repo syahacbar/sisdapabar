@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
+ 
 class Berita extends CI_Controller
 {
 
@@ -20,7 +20,7 @@ class Berita extends CI_Controller
         $this->load->view('admin/layout',$data);
     }
 
-public function kategori($cat)
+    public function kategori($cat)
     {
         $data['title'] = "BERITA - ".$cat;
         $data['berita'] = $this->M_berita->get_all(NULL,$cat);
@@ -36,5 +36,21 @@ public function kategori($cat)
         $data['list_kategori'] = $this->M_berita->get_kategori();
         $data['_view'] = "public/detail_berita";
         $this->load->view('public/layout',$data);
+    }
+
+    public function switchslider($sliderstatus)
+    {
+        $idberita = $this->input->post('idberita');
+        //$sliderstatus = $this->input->post('sliderstatus');
+        if($this->M_berita->switchslider($idberita,$sliderstatus))
+        {
+            echo json_encode(array('status' => TRUE));
+        }
+        else
+        {
+            echo json_encode(array('status' => FALSE));
+        }
+
+        //function json_encode ini untuk melempar ke console, agar di JS halaman html bisa mencetaknya di bagian ajax success
     }
 }

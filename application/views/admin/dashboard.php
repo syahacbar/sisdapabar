@@ -181,7 +181,12 @@
                                             <td><?php echo mediumdate_indo(substr($peng->tgl_laporan,0,10));?></td>
                                             <td><?php echo $peng->nama_pelapor;?></td>
                                             <td><?php echo $peng->nama_ruasjalan;?></td>
-                                            <td><?php echo ucwords(strtolower($peng->nama_kabkota));?></td>
+                                            <?php
+                                                  $CI =& get_instance();
+                                                  $CI->load->model('M_wilayah');
+                                                  $kab= $CI->M_wilayah->get_by_id($peng->lokasi_kabkota);
+                                            ?>
+                                            <td><?php echo ucwords(strtolower($kab->nama));?></td>
                                             <td>
                                                 <?php if($peng->status == 'Menunggu') { ?>
                                                 <span class="badge bg-warning"><?php echo $peng->status;?></span>

@@ -62,7 +62,7 @@ section#halprofil .container {
             </div>
         </div>
         <div class="row">
-          <div class="col-md-4 col-lg-4 col-xs-12">
+          <div class="col-md-6 col-lg-6 col-xs-12">
             <div class="Material-tab mb-3">
               <!-- Nav tabs -->
               <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -91,7 +91,7 @@ section#halprofil .container {
             </div>
           </div>
 
-          <div class="col-md-8 col-lg-8 col-xs-12">
+          <div class="col-md-6 col-lg-6 col-xs-12">
             <div class="Material-tab mb-3">
                 <div class="tab-content">
                     <!-- <img width="100%" src="<?// echo base_url();?>assets/frontend/assets/images/kinerja_pelayanan.png"> -->

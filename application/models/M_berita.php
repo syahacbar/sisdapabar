@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+ 
 class M_berita extends CI_Model
 {
     public function get_all($limit=NULL,$cat=NULL)
@@ -50,6 +50,18 @@ class M_berita extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM galeriberita WHERE slider='1'");
         return $query->result();
+    }
+
+    public function get_slider_by_idberita($idberita)
+    {
+        $query = $this->db->query("SELECT * FROM galeriberita WHERE idberita='$idberita'");
+        return $query->row();
+    }
+
+    public function switchslider($idberita,$sliderstatus)
+    {
+        $query = $this->db->query("UPDATE galeriberita SET slider='$sliderstatus' WHERE idberita='$idberita'");
+        return TRUE;
     }
 
 }

@@ -276,7 +276,7 @@ $(document).on('change', '#pilihinfrastruktur', function(){
 });
 </script>
 
-<!--     <script>
+ <script>
 $(document).ready(function (){
     var table = $('#tabelLaporan').DataTable({
         dom: 'lrtip'
