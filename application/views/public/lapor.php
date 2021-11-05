@@ -122,11 +122,28 @@
 
   #modalBantuan img,
   #modalBantuan1 img,
-  #modalBantuan2 img,
+  #modalSelfi img,
   #modalKTP img {
     width: 100%;
-    height: 300px;
+    height: 250px;
+    max-height: 250px;
     object-fit: cover;
+  }
+
+  #modalDoc img {
+    width: 40% !important;
+    height: auto !important;
+    margin: 0 30% !important;
+  }
+
+  #modalSelfi img {
+    object-position: center right;
+  }
+
+  #modalBantuan .modal-dialog,
+  #modalDoc .modal-dialog,
+  #modalSelfi .modal-dialog {
+    margin-top: 4.5rem;
   }
 
 textarea#isi_laporan,
@@ -412,7 +429,7 @@ textarea#alamat_pelapor {
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
               <div class="form-group">
                 <!-- <label>Foto 3</label> -->
-                <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalBantuan2">
+                <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalSelfi">
                   <i class="bi bi-info-square-fill"></i>
                 </button>
                 <div id="dokumentasi" class="dropzone dokumentasi dokumentasi3" requireda>
@@ -421,19 +438,16 @@ textarea#alamat_pelapor {
               </div>
             </div>
           </div>
-          <div id="buktiLaporan" class="row">
+          <div id="buktiLaporan" class="row mt-3">
             <div class="col-md-12">
               <div class="form-group mt-0">
                 <label class="hitam">Lampirkan Dokumen (Jika ada)</label>
-                <div class="alert alert-warning alert-dismissible fade show peringatan mb-0" role="alert">
-                  <strong>Petunjuk!</strong> Silakan lampirkan dokumen pendukung, file dapat berupa file .doc, .docx, .pdf
-                </div><br>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mt-0">
                 <!-- <label>Foto 2</label> -->
-                <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalBantuan1">
+                <button type="button" class="btn btn-primary d-flex justify-content-center" data-toggle="modal" data-target="#modalDoc">
                   <i class="bi bi-info-square-fill"></i>
                 </button>
                 <div id="dokumentasi" class="dropzone dokumentasi dokumen" requireda>
@@ -486,14 +500,14 @@ textarea#alamat_pelapor {
                     <div id="gambar1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/drainase-rusak.jpg') ?>" alt="First slide">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/abrasi.jpg') ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="Second slide">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/sungai_rusak.jpg') ?>" alt="Second slide">
                             </div>
 
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jembatan-rusak.jpg') ?>" alt="Second slide">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/irigasi_rusak.jpg') ?>" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#gambar1" role="button" data-slide="prev">
@@ -528,14 +542,14 @@ textarea#alamat_pelapor {
                     <div id="gambar2" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jembatan-rusak.jpg') ?>" alt="tampak samping jalan">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/sungai_rusak.jpg') ?>" alt="tampak samping jalan">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/drainase-rusak.jpg') ?>" alt="tampak samping darainase">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/abrasi.jpg') ?>" alt="tampak samping darainase">
                             </div>
 
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="tampak samping darainase">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/irigasi_rusak.jpg') ?>" alt="tampak samping darainase">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#gambar2" role="button" data-slide="prev">
@@ -557,17 +571,34 @@ textarea#alamat_pelapor {
     <!-- Akhir Modal Bantuan -->
 
     <!-- Modal Bantuan 3 -->
-    <div class="modal fade" id="modalBantuan2" tabindex="-1" role="dialog" aria-labelledby="modalBantuan2Label" aria-hidden="true">
+    <div class="modal fade" id="modalSelfi" tabindex="-1" role="dialog" aria-labelledby="modalSelfiLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalBantuan2Label">Info!</h5>
+                    <h5 class="modal-title" id="modalSelfiLabel">Info!</h5>
                     <!-- <span aria-hidden="true">&times;</span> -->
                     </button>
                 </div>
                 <div class="modal-body">
                     Silakan buat pose selfi dengan membelakangi jalan rusak.
-                    <img src="<?php echo base_url('assets/frontend/assets/images/jalan-rusak.jpg') ?>" alt="">
+                    <div id="selfi" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/selfi_abrasi.jpg') ?>" alt="tampak samping jalan">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/selfi_irigasi_rusak.jpg') ?>" alt="tampak samping darainase">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#selfi" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#selfi" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -576,6 +607,47 @@ textarea#alamat_pelapor {
         </div>
     </div>
     <!-- Akhir Modal Bantuan -->
+
+    <!-- Modal Bantuan 3 -->
+    <div class="modal fade" id="modalDoc" tabindex="-1" role="dialog" aria-labelledby="modalDocLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDocLabel">Info!</h5>
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <div class="alert alert-warning alert-dismissible fade show peringatan mb-3" role="alert">
+                      <strong>Petunjuk!</strong> Silakan lampirkan dokumen pendukung, file dapat berupa file .doc, .docx, .pdf
+                    </div>
+                    <div id="doc" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/pdf.png') ?>" alt="tampak samping jalan">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="<?php echo base_url('assets/frontend/assets/images/doc.png') ?>" alt="tampak samping darainase">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#doc" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#doc" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Modal Bantuan -->
+
 
 
     <!-- Modal Panduan Unggah KTP -->
