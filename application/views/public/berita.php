@@ -47,6 +47,14 @@
             padding: 10px;
             font-size: 18px !important;
         }
+
+        #berita .featured-image img {
+            object-fit: cover;
+        }
+
+        section#halberita .container {
+            margin-top: 7rem;
+        }
     </style>
     <!-- Page Titile Area -->
     <!-- <section class="page-title-section section-padding">
@@ -66,7 +74,7 @@
     <!-- Page Titile Area End -->
 
         <!-- Our BLog Section -->
-    <section class="Material-blog-section section-padding mt-5">
+    <section id="halberita" class="Material-blog-section section-padding mt-5">
       <div class="container">
         <div class="row">
             <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
@@ -74,12 +82,12 @@
             </div>
         </div>
 
-        <div class="row">
+        <div id="berita" class="row">
             <div class="col-md-10">
                 <div class="row">
                     <!-- Single Article -->
                     <?php foreach($berita AS $news) : ?>
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp" data-wow-delay=".3s">
+                    <div class="col-md-6 col-lg-3 col-xl-3 wow animated fadeInUp" data-wow-delay=".3s">
                         <article class="single-blog-post">
                             <!-- Featured Image -->
                             <?php
@@ -89,7 +97,7 @@
                             ?>
                             <div class="featured-image">
                                 <a href="<?php echo site_url('berita/detail/').url_title($news->judul,'dash',true);?>">
-                                    <img width="100" height="300" src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" alt="">
+                                    <img width="100" height="150" src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" alt="">
                                 </a>
                             </div>
                             <!-- Post Meta -->

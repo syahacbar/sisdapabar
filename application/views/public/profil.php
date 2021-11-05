@@ -1,3 +1,8 @@
+<style>
+  section.welcome-section.section-padding.section-dark .container {
+      margin-top: 7rem;
+  }
+</style>
       <!-- Page Titile Area -->
       <section class="page-title-section section-padding">
           <div class="container">
