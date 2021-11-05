@@ -140,6 +140,7 @@
     object-position: center right;
   }
 
+  #modalBantuan1 .modal-dialog,
   #modalBantuan .modal-dialog,
   #modalDoc .modal-dialog,
   #modalSelfi .modal-dialog {
