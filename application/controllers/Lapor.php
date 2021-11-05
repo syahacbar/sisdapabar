@@ -51,8 +51,7 @@ class Lapor extends CI_Controller
     {
     	$params = array(
     		'kodelaporan' => $this->input->post('kodelaporan'),
-	    	'tgl_laporan' => date("Y-m-d H:i:s")
-	    		,
+	    	'tgl_laporan' => date("Y-m-d H:i:s"),
 	    	'nama_pelapor' => $this->input->post('nama_pelapor'),
 	    	'nik' => $this->input->post('nik'),
 	    	'alamat_pelapor' => $this->input->post('alamat_pelapor'),
@@ -159,6 +158,23 @@ class Lapor extends CI_Controller
                 $kodelaporan=$this->input->post('kodelaporan');
                 $nama=$this->upload->data('file_name');
                 $kategori='dokumentasi3';
+                $uploaded_on=date("Y-m-d H:i:s");
+                $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
+            }
+
+    }
+
+    function dokumen_tambahan()
+    {
+            $config['upload_path']   = FCPATH.'/upload/dokumen-tambahan/';
+            $config['allowed_types'] = '*';
+            $this->load->library('upload',$config);
+
+            if($this->upload->do_upload('dokumen_tambahan')){
+                $token=$this->input->post('token_dokumentasi');
+                $kodelaporan=$this->input->post('kodelaporan');
+                $nama=$this->upload->data('file_name');
+                $kategori='dokumen_tambahan';
                 $uploaded_on=date("Y-m-d H:i:s");
                 $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
             }

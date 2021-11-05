@@ -56,23 +56,7 @@
             margin-top: 7rem;
         }
     </style>
-    <!-- Page Titile Area -->
-    <!-- <section class="page-title-section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-center">
-                        <div class="title-middle">
-                            <h2 class="page-tagline">Know about our</h2> 
-                            <h1 class="page-title">Berita</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Page Titile Area End -->
-
+    
         <!-- Our BLog Section -->
     <section id="halberita" class="Material-blog-section section-padding mt-5">
       <div class="container">

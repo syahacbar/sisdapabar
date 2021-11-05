@@ -68,12 +68,6 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <button type="button" class="btn btn-info text-white" data-toggle="modal" data-target="#addNewNews">Tambah Berita</button>
                                 </div>
-
-<!--                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-3">
-                                    <div class="panel-heading mt-2">
-                                    <input class="form-control border-1 border-info" type="text" id="kolomcari" placeholder="Ketik kata kunci di sini" >
-                                </div>
-                                </div> -->
                             </div>
 
                             <!-- Table with stripped rows -->
