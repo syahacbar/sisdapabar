@@ -22,6 +22,42 @@
     padding-top: 0;
   }
 
+  @media (max-width: 660px) {
+    section#laporanpengaduan {
+      width: 100%;
+      margin: 7rem 0 5rem 0 !important;
+    }
+
+  .row.judulsection .col-md-12 h1 {
+    font-size: 1.5rem;
+  }
+
+/*  .col-md-12.wow.animated.fadeInRight {
+      padding: 0;
+  }
+
+  .left-text.col-lg-12.col-md-12.col-sm-12.col-xs-12.mb-2 {
+      padding: 0;
+  }
+
+  form#contactForm .col-lg-6 {
+      padding: 0;
+  }
+
+  .col-md-6.wow.animated.fadeInRight {
+      padding: 0;
+  }*/
+
+/*  .row .col-md-12 {
+      padding: 0 5px;
+  }*/
+
+.col-md-12.col-sm-12.col-xs-12.wow.animated.fadeInRight {
+    padding: 0;
+}
+
+  }
+
   section#laporanpengaduan .container {
     background: #fff !important;
   }
@@ -142,8 +178,8 @@ textarea#alamat_pelapor {
           </div>
         </div>
       </div>   
-      <div class="col-lg-6">
-        <div class="col-md-12 wow animated fadeInRight" data-wow-delay=".2s">
+      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12 wow animated fadeInRight" data-wow-delay=".2s">
           <!-- Name -->
           <div class="form-group label-floating">
             <label class="hitam" for="nik">NIK</label>
@@ -152,7 +188,7 @@ textarea#alamat_pelapor {
           </div>
         </div>
 
-        <div class="col-md-12 wow animated fadeInRight">
+        <div class="col-md-12 col-sm-12 col-xs-12 wow animated fadeInRight">
           <div class="form-group label-floating">
             <label class="hitam" for="nama_pelapor">Nama Lengkap</label>
             <input class="form-control" id="nama_pelapor" type="text" name="nama_pelapor" required data-error="Silakan isi nama Anda">
@@ -163,7 +199,7 @@ textarea#alamat_pelapor {
     </div>
 
     <div class="row">
-        <div class="col-md-6 wow animated fadeInRight">
+        <div class="col-md-6 col-sm-12 wow animated fadeInRight">
           <div class="form-group label-floating">
             <label class="hitam" for="no_hp">Nomor WhatsApp</label>
             <input class="form-control" id="no_hp" type="text" name="no_hp" required data-error="Silakan isi nomor WA Anda">
@@ -171,7 +207,7 @@ textarea#alamat_pelapor {
           </div>
         </div>
 
-        <div class="col-md-6 wow animated fadeInRight">
+        <div class="col-md-6 col-sm-12 wow animated fadeInRight">
           <div class="form-group label-floating">
             <label class="hitam" for="email">Email</label>
             <input class="form-control" id="email" type="email" name="email" required data-error="Silakan isi Email Anda">
