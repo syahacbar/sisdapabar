@@ -225,3 +225,37 @@ $('#judul_berita').keyup(function(){
 
     });
 </script>
+
+<script>
+        $(document).ready(function() {
+            var table = $('#dataTable').DataTable();
+            $("#dataTable").on("click", ".editform", function() {
+                event.preventDefault();
+                $("input#judulAgenda").val($(this).data('judul'));
+                $("textarea#isiAgenda").val($(this).data('isi_agenda'));
+                $("#userFile").val($(this).data('userfile'));
+                $("input#id").val($(this).data('id'));
+
+                $('#formagenda').attr('action', '<?php echo site_url('administrator/agenda/edit'); ?>');
+            });
+
+            $(document).on('click', '.deletedata', function() {
+                var id = $(this).data("id");
+                if (confirm("Are you sure you want to delete this?")) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/agenda/delete",
+                        method: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            alert("Data Berhasil Dihapus");
+                            location.reload();
+                        }
+                    });
+                } else {
+                    return false;
+                }
+            });
+        });
+</script>

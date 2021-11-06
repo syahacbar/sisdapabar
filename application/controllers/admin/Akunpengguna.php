@@ -20,21 +20,19 @@ class Akunpengguna extends CI_Controller
     public function nonaktifkanuser()
     {
         $id = $this->input->post('iduser');
-        if ($this->ion_auth->is_admin())
-        {
+        if ($this->ion_auth->is_admin()) {
             $this->ion_auth->deactivate($id);
         }
-        echo json_encode(array('status'=>TRUE));
+        echo json_encode(array('status' => TRUE));
     }
 
     public function aktifkanuser()
     {
         $id = $this->input->post('iduser');
-        if ($this->ion_auth->is_admin())
-        {
+        if ($this->ion_auth->is_admin()) {
             $this->ion_auth->activate($id);
         }
-        echo json_encode(array('status'=>TRUE));
+        echo json_encode(array('status' => TRUE));
     }
 
     public function edit()
@@ -43,6 +41,4 @@ class Akunpengguna extends CI_Controller
         $data['hasil'] = $id;
         $this->load->view('admin/formedituser', $data);
     }
-
-    
 }

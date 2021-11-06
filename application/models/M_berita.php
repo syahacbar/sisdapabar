@@ -64,4 +64,25 @@ class M_berita extends CI_Model
         return TRUE;
     }
 
+
+    // upload data di admin panel
+    function add($data)
+    {
+        $this->db->insert('berita', $data);
+        return TRUE;
+    }
+
+    function edit($data, $id){
+        $this->db->where('id',$id);
+        $this->db->update('berita', $data);
+        return TRUE;
+    }
+
+    function delete($id)
+    {
+        $this->db->where("id", $id);
+        $this->db->delete("berita");
+        return true;
+    }
+
 }

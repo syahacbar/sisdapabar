@@ -14,6 +14,6 @@ class Galeri extends CI_Controller
         $data['title'] = "GALERI";
         $data['list_kategori'] = $this->M_berita->get_kategori();
         $data['_view'] = "public/galeri";
-        $this->load->view('public/layout',$data);
+        $this->load->view('public/layout', $data);
     }
 }

@@ -12,6 +12,6 @@ class Profil extends CI_Controller
     public function index()
     {
         $data['_view'] = "admin/profil";
-        $this->load->view('admin/layout',$data);
+        $this->load->view('admin/layout', $data);
     }
 }

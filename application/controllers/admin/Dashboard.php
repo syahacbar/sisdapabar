@@ -6,8 +6,8 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(['M_wilayah','M_pengaduan','M_berita']);
-    } 
+        $this->load->model(['M_wilayah', 'M_pengaduan', 'M_berita']);
+    }
 
     public function index()
     {
@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller
         $data['count_kab'] = $this->M_pengaduan->count_by_kab();
         $data['count_month'] = $this->M_pengaduan->count_by_month();
         $data['berita'] = $this->M_berita->get_all(5);
-        $data['pengaduan'] = $this->M_pengaduan->get_all(); 
+        $data['pengaduan'] = $this->M_pengaduan->get_all();
         $data['_view'] = 'admin/dashboard';
         $this->load->view('admin/layout', $data);
     }

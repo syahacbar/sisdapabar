@@ -5,10 +5,10 @@ class Lapor extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(['M_pengaduan','M_wilayah','M_setting']);
-        $this->load->library('recaptcha'); 
-
+        $this->load->model(['M_pengaduan', 'M_wilayah', 'M_setting']);
+        $this->load->library('recaptcha');
     }
+
     function generatekodelaporan()
     {
         //generate kode laporan
@@ -18,13 +18,13 @@ class Lapor extends CI_Controller
         } else {
             $idlap = 1;
         }
-        return $kodelaporan = date("YmdHis").$idlap;
+        return $kodelaporan = date("YmdHis") . $idlap;
     }
 
     function index()
     {
         //map
-        $setting=$this->M_setting->list_setting();
+        $setting = $this->M_setting->list_setting();
         $this->load->library('googlemaps');
         $config['center'] = "$setting->latitude, $setting->longitude";
         $config['zoom'] = "$setting->zoom";
@@ -36,43 +36,42 @@ class Lapor extends CI_Controller
         $marker['ondragend'] = 'setMapToForm(event.latLng.lat(), event.latLng.lng());';
         $this->googlemaps->add_marker($marker);
 
-        $map=$this->googlemaps->create_map();
+        $map = $this->googlemaps->create_map();
         $data['map'] = $map;
 
         $data['title'] = "LAPOR";
         $data['kodelaporan'] = $this->generatekodelaporan();
-    	$data['wil_kab'] = $this->M_wilayah->get_all_kab();
+        $data['wil_kab'] = $this->M_wilayah->get_all_kab();
         $data['recaptcha'] = $this->recaptcha->create_box();
         $data['_view'] = "public/lapor";
-    	$this->load->view('public/layout',$data);
+        $this->load->view('public/layout', $data);
     }
 
     function savelaporan()
     {
-    	$params = array(
-    		'kodelaporan' => $this->input->post('kodelaporan'),
-	    	'tgl_laporan' => date("Y-m-d H:i:s"),
-	    	'nama_pelapor' => $this->input->post('nama_pelapor'),
-	    	'nik' => $this->input->post('nik'),
-	    	'alamat_pelapor' => $this->input->post('alamat_pelapor'),
-	    	'kab_pelapor' => $this->input->post('kab_pelapor'),
-	    	'kec_pelapor' => $this->input->post('kec_pelapor'),
-	    	'des_pelapor' => $this->input->post('des_pelapor'),
-	    	'no_hp' => $this->input->post('no_hp'),
-	    	'email' => $this->input->post('email'),
-	    	'isi_laporan' => $this->input->post('isi_laporan'),
-	    	'infrastruktur' => $this->input->post('infrastruktur'),
-	    	'nama_ruasjalan' => $this->input->post('nama_ruasjalan'),
-	    	'lokasi_kabkota' => $this->input->post('lokasi_kabkota'),
-	    	'lokasi_distrik' => $this->input->post('lokasi_distrik'),
-	    	'latitude' => $this->input->post('latitude'),
-	    	'longitude' => $this->input->post('longitude'),
-	    	'status' => 'Menunggu',
-    	);
+        $params = array(
+            'kodelaporan' => $this->input->post('kodelaporan'),
+            'tgl_laporan' => date("Y-m-d H:i:s"),
+            'nama_pelapor' => $this->input->post('nama_pelapor'),
+            'nik' => $this->input->post('nik'),
+            'alamat_pelapor' => $this->input->post('alamat_pelapor'),
+            'kab_pelapor' => $this->input->post('kab_pelapor'),
+            'kec_pelapor' => $this->input->post('kec_pelapor'),
+            'des_pelapor' => $this->input->post('des_pelapor'),
+            'no_hp' => $this->input->post('no_hp'),
+            'email' => $this->input->post('email'),
+            'isi_laporan' => $this->input->post('isi_laporan'),
+            'infrastruktur' => $this->input->post('infrastruktur'),
+            'nama_ruasjalan' => $this->input->post('nama_ruasjalan'),
+            'lokasi_kabkota' => $this->input->post('lokasi_kabkota'),
+            'lokasi_distrik' => $this->input->post('lokasi_distrik'),
+            'latitude' => $this->input->post('latitude'),
+            'longitude' => $this->input->post('longitude'),
+            'status' => 'Menunggu',
+        );
 
-    	 $laporan_id = $this->M_pengaduan->add($params);
-    	 echo json_encode(array('status' => TRUE));
-
+        $laporan_id = $this->M_pengaduan->add($params);
+        echo json_encode(array('status' => TRUE));
     }
 
     function add_ajax_kec($id)
@@ -98,89 +97,84 @@ class Lapor extends CI_Controller
     function uploadktp()
     {
 
-        $config['upload_path']   = FCPATH.'/upload/ktp/';
+        $config['upload_path']   = FCPATH . '/upload/ktp/';
         $config['allowed_types'] = 'gif|jpg|png|ico|jpeg';
-        $this->load->library('upload',$config);
+        $this->load->library('upload', $config);
 
-        if($this->upload->do_upload('filektp')){
-            $token=$this->input->post('token_foto');
-            $kodelaporan=$this->input->post('kodelaporan');
-            $file_name=$this->upload->data('file_name');
-            $kategori='ktp';
-            $uploaded_on=date("Y-m-d H:i:s");
-            $this->db->insert('upload',array('nama_file'=>$file_name,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
+        if ($this->upload->do_upload('filektp')) {
+            $token = $this->input->post('token_foto');
+            $kodelaporan = $this->input->post('kodelaporan');
+            $file_name = $this->upload->data('file_name');
+            $kategori = 'ktp';
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('upload', array('nama_file' => $file_name, 'token' => $token, 'kategori' => $kategori, 'uploaded_on' => $uploaded_on, 'kodelaporan' => $kodelaporan));
         }
     }
 
-
     function uploaddokumentasi1()
     {
-            $config['upload_path']   = FCPATH.'/upload/dokumentasi/';
-            $config['allowed_types'] = '*';
-            $this->load->library('upload',$config);
+        $config['upload_path']   = FCPATH . '/upload/dokumentasi/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
 
-            if($this->upload->do_upload('filedokumentasi1')){
-                $token=$this->input->post('token_dokumentasi');
-                $kodelaporan=$this->input->post('kodelaporan');
-                $nama=$this->upload->data('file_name');
-                $kategori='dokumentasi1';
-                $uploaded_on=date("Y-m-d H:i:s");
-                $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
-            }
-
+        if ($this->upload->do_upload('filedokumentasi1')) {
+            $token = $this->input->post('token_dokumentasi');
+            $kodelaporan = $this->input->post('kodelaporan');
+            $nama = $this->upload->data('file_name');
+            $kategori = 'dokumentasi1';
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('upload', array('nama_file' => $nama, 'token' => $token, 'kategori' => $kategori, 'uploaded_on' => $uploaded_on, 'kodelaporan' => $kodelaporan));
+        }
     }
 
     function uploaddokumentasi2()
     {
-            $config['upload_path']   = FCPATH.'/upload/dokumentasi/';
-            $config['allowed_types'] = '*';
-            $this->load->library('upload',$config);
+        $config['upload_path']   = FCPATH . '/upload/dokumentasi/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
 
-            if($this->upload->do_upload('filedokumentasi2')){
-                $token=$this->input->post('token_dokumentasi');
-                $kodelaporan=$this->input->post('kodelaporan');
-                $nama=$this->upload->data('file_name');
-                $kategori='dokumentasi2';
-                $uploaded_on=date("Y-m-d H:i:s");
-                $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
-            }
-
+        if ($this->upload->do_upload('filedokumentasi2')) {
+            $token = $this->input->post('token_dokumentasi');
+            $kodelaporan = $this->input->post('kodelaporan');
+            $nama = $this->upload->data('file_name');
+            $kategori = 'dokumentasi2';
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('upload', array('nama_file' => $nama, 'token' => $token, 'kategori' => $kategori, 'uploaded_on' => $uploaded_on, 'kodelaporan' => $kodelaporan));
+        }
     }
 
     function uploaddokumentasi3()
     {
-            $config['upload_path']   = FCPATH.'/upload/dokumentasi/';
-            $config['allowed_types'] = '*';
-            $this->load->library('upload',$config);
+        $config['upload_path']   = FCPATH . '/upload/dokumentasi/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
 
-            if($this->upload->do_upload('filedokumentasi3')){
-                $token=$this->input->post('token_dokumentasi');
-                $kodelaporan=$this->input->post('kodelaporan');
-                $nama=$this->upload->data('file_name');
-                $kategori='dokumentasi3';
-                $uploaded_on=date("Y-m-d H:i:s");
-                $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
-            }
-
+        if ($this->upload->do_upload('filedokumentasi3')) {
+            $token = $this->input->post('token_dokumentasi');
+            $kodelaporan = $this->input->post('kodelaporan');
+            $nama = $this->upload->data('file_name');
+            $kategori = 'dokumentasi3';
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('upload', array('nama_file' => $nama, 'token' => $token, 'kategori' => $kategori, 'uploaded_on' => $uploaded_on, 'kodelaporan' => $kodelaporan));
+        }
     }
 
     function dokumen_tambahan()
     {
-            $config['upload_path']   = FCPATH.'/upload/dokumen-tambahan/';
-            $config['allowed_types'] = '*';
-            $this->load->library('upload',$config);
+        $config['upload_path']   = FCPATH . '/upload/dokumen-tambahan/';
+        $config['allowed_types'] = '*';
+        $this->load->library('upload', $config);
 
-            if($this->upload->do_upload('dokumen_tambahan')){
-                $token=$this->input->post('token_dokumentasi');
-                $kodelaporan=$this->input->post('kodelaporan');
-                $nama=$this->upload->data('file_name');
-                $kategori='dokumen_tambahan';
-                $uploaded_on=date("Y-m-d H:i:s");
-                $this->db->insert('upload',array('nama_file'=>$nama,'token'=>$token,'kategori'=>$kategori,'uploaded_on'=>$uploaded_on,'kodelaporan'=>$kodelaporan));
-            }
-
+        if ($this->upload->do_upload('dokumen_tambahan')) {
+            $token = $this->input->post('token_dokumentasi');
+            $kodelaporan = $this->input->post('kodelaporan');
+            $nama = $this->upload->data('file_name');
+            $kategori = 'dokumen_tambahan';
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('upload', array('nama_file' => $nama, 'token' => $token, 'kategori' => $kategori, 'uploaded_on' => $uploaded_on, 'kodelaporan' => $kodelaporan));
+        }
     }
-    
+
     // INI JUGA CUMA ALAT BANTU
     // public function insertdummy($x)
     // {
@@ -218,6 +212,6 @@ class Lapor extends CI_Controller
     //         $laporan_id = $this->M_pengaduan->add($params);
     //         $this->M_pengaduan->insert_dokumentasi($params2);
     //     }
-        
+
     // }
 }

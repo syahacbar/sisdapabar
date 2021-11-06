@@ -6,10 +6,8 @@ class Pengaduan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_pengaduan');
-        $this->load->model(['M_pengaduan','M_wilayah']);
-
+        $this->load->model(['M_pengaduan', 'M_wilayah']);
     }
-
 
     public function index()
     {
@@ -19,7 +17,7 @@ class Pengaduan extends CI_Controller
         $data['pengaduan'] = $this->M_pengaduan->get_all();
         $data['_view'] = 'admin/pengaduan';
         $this->load->view('admin/layout', $data);
-    } 
+    }
 
     public function insertdummy($jumlah)
     {
@@ -53,10 +51,10 @@ class Pengaduan extends CI_Controller
     }
 
 
-//set nama tabel yang akan kita tampilkan datanya
+    //set nama tabel yang akan kita tampilkan datanya
     var $table = 'pengaduan';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
-    var $column_order = array(NULL,'namalengkap','namalengkap');
+    var $column_order = array(NULL, 'namalengkap', 'namalengkap');
 
     var $column_search = array('nama');
     // default order 
@@ -77,26 +75,23 @@ class Pengaduan extends CI_Controller
         // $this->db->join('pengaduan tb', 'tb.username = u.username');
 
         //$this->db->group_start();
-        
-        if(isset($_POST['is_infrastruktur']) && $_POST['is_infrastruktur'] != "0") 
-        {
-            $this->db->where('infrastruktur',$_POST['is_infrastruktur']);
+
+        if (isset($_POST['is_infrastruktur']) && $_POST['is_infrastruktur'] != "0") {
+            $this->db->where('infrastruktur', $_POST['is_infrastruktur']);
         }
 
-        if(isset($_POST['is_lokasi_kabkota']) && $_POST['is_lokasi_kabkota'] != "0") 
-        {
+        if (isset($_POST['is_lokasi_kabkota']) && $_POST['is_lokasi_kabkota'] != "0") {
             // $this->db->group_start();
-            $this->db->where('lokasi_kabkota',$_POST['lokasi_kabkota']);
+            $this->db->where('lokasi_kabkota', $_POST['lokasi_kabkota']);
             // $this->db->or_where('prodipilihan2',$_POST['is_prodi']);
             // $this->db->or_where('prodipilihan3',$_POST['is_prodi']);
             // $this->db->group_end();
-           
-        } 
-        
 
-        if(isset($_POST['is_status']) && $_POST['is_status'] != '0') 
-        {
-            $this->db->where('status',$_POST['is_status']);
+        }
+
+
+        if (isset($_POST['is_status']) && $_POST['is_status'] != '0') {
+            $this->db->where('status', $_POST['is_status']);
         }
 
         $this->db->group_end();
@@ -149,5 +144,4 @@ class Pengaduan extends CI_Controller
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
-
 }
