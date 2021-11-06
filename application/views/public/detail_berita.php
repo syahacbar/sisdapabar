@@ -4,6 +4,7 @@
             margin: 0 5%;
             width: 90%;
             min-width: 90%;
+            margin-top: 7rem;
         }
 
         .sidebar-widget-title {

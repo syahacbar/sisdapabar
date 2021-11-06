@@ -1,280 +1,253 @@
+
 <style>
-
-        section.Material-blog-section.section-padding.mt-5 .container {
-            padding: 0;
-            margin: 0 5%;
-            width: 90%;
-            min-width: 90%;
-        }
-        .sidebar-widget-title {
-            background: #5065d8;
-            padding: 0;
-        }
-
-        ul.nav.nav-pills a.active {
-            padding: 10px;
-            margin: 5px;
-            background: #2196f3;
-            color: #fff;
-            -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-        }
-    
-        ul.nav.nav-pills {
-            float: right;
-        }
-
-        ul.nav.nav-pills {
-            float: right;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        ul.nav.nav-pills li a {
-            font-size: 15px;
-            color: #333;
-            background-color: #eee;
-            padding: 10px 12px;
-            margin: 5px;
-            display: block;
-            border-radius: 2px;
-            text-transform: capitalize;
-            cursor: pointer;
-        }
-
-
-        /* hover image */
-        figure {
-            position: relative;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .img-fluid {
-            max-width: 100%;
-            height: auto;
-        }
-
-        figure:hover figcaption {
-            -webkit-transition: all .5s ease 0s;
-            transition: all .5s ease 0s;
-            cursor: pointer;
-            opacity: 1;
-            margin-bottom: 0;
-        }
-
-        figure figcaption {
-            background: #fff;
-            bottom: 0;
-            padding: 0 20px;
-            position: absolute;
-            width: 100%;
-            margin-bottom: -15px;
-            opacity: 0;
-            -webkit-transition: height .5s ease 0s;
-            transition: height .5s ease 0s;
-        }
-
-.btn.btn-fab, .input-group-btn .btn.btn-fab {
-    border-radius: 50%;
-    font-size: 24px;
-    height: 40px;
-    margin-right: 10px;
-    min-width: 40px;
-    width: 40px;
-    padding: 0;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.subtitle {
-    color: #5166d8;
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
 section.Material-blog-section.section-padding.mt-5 .container {
     margin-top: 7rem;
 }
 
-    </style>
+.row {
+  margin: 10px -16px;
+}
 
-    <!-- <section class="page-title-section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-center">
-                        <div class="title-middle">
-                            <h1 class="page-title">Galeri</h1>
-                        </div>
-                    </div>
-                </div>
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+figure.single-portfolio img {
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.single-portfolio {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+#myBtnContainer .btn.active{
+  padding: 10px;
+  margin: 5px;
+  background: #2196f3;
+  color: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+#filterGaleri button.btn {
+    padding: 10px 15px !important;
+    background-color: #ecf0f6;
+    text-transform: capitalize;
+}
+
+.column.irigasi.col-md-4.show {
+  padding: 0;
+}
+
+.subtitle {
+  font-size: 18px !important;
+  padding-right: 50px;
+}
+
+.col-md-6.col-sm-6 {
+  width: 50% !important;
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN (Center website) -->
+<section class="Material-blog-section section-padding mt-5">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-6" data-wow-delay=".2s">
+            <h1 class="section-title">Galeri</h1>
+        </div>
+        <div class="col-md-6 col-sm-6" data-wow-delay=".2s">
+            <div id="filterGaleri">
+              <button class="btn active" onclick="filterSelection('semua')"> Semua</button>
+              <button class="btn" onclick="filterSelection('irigasi')"> Irigasi</button>
+              <button class="btn" onclick="filterSelection('sungai')"> Sungai</button>
+              <button class="btn" onclick="filterSelection('pantai')"> Pantai</button>
             </div>
         </div>
-    </section> -->
-    <!-- Page Titile Area End -->
+    </div>
 
-    <!-- Our BLog Section -->
-    <section class="Material-blog-section section-padding mt-5">
-      <div class="container">
-        <div class="row">
-            <div class="col-md-6 wow animated fadeInLeft" data-wow-delay=".2s">
-                <h1 class="section-title">Galeri</h1>
+    <div class="row">
+      <div class="col-md-12">
+          <div class="row d-flex">
+              <?php foreach($berita AS $news) : ?>
+            <div class="column irigasi col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <figure class="single-portfolio">
+                      <?php
+                        $CI =& get_instance();
+                        $CI->load->model('M_berita');
+                        $gb= $CI->M_berita->get_image($news->id);
+                      ?>
+                  <div class="featured-image">
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/').$gb->nama_file; ?>" alt="">
+                  </div>
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/').url_title($news->judul,'dash',true);?>"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="<?php echo site_url('berita/detail/').url_title($news->judul,'dash',true);?>">
+                          <h1 class="subtitle"><?php echo $news->judul;?></h1>
+                      </a>
+                      </figcaption>
+                  </figure>
             </div>
-            <div class="col-md-6 wow animated fadeInLeft" data-wow-delay=".2s">
-                <ul class="nav nav-pills">
-                <li><a class="filter active" data-filter="all">Semua</a></li>
-                <li><a class="filter" data-filter=".business">Irigasi</a></li>
-                <li><a class="filter" data-filter=".development">Sungai</a></li>
-                <li><a class="filter" data-filter=".creative">Pantai</a></li>
-                <li><a class="filter" data-filter=".more">Lain-Lain</a></li>
-                </ul>
+              <?php endforeach;?>
+          </div>
+
+          <div class="row">
+            <div class="column sungai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita2.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita3.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita2.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita4.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita5.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita6.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 col-xl-4 wow animated fadeInUp col-md-6 col-lg-4 col-xl-4 mix development more">
-                        <figure class="single-portfolio">
-                        <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita6.jpg" alt="">
-                            <figcaption class="hover-content">
-                            <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                                <div class="ripple-container"></div>
-                            </a>
-                            <a href="portfolio-single.html">
-                                <h2 class="subtitle">Brochure Design</h2>
-                            </a>
-                            <p>Tesla Motors</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-
-                </div>
+            <div class="column sungai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita3.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
             </div>
-        </div>
+            <div class="column sungai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
+              </div>
+            </div>
 
-
+          <div class="row">
+            <div class="column pantai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita3.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
+            </div>
+            <div class="column pantai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
+            </div>
+            <div class="column pantai">
+              <figure class="single-portfolio">
+                  <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita2.jpg" alt="">
+                      <figcaption class="hover-content">
+                      <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a href="portfolio-single.html">
+                          <h2 class="subtitle">Brochure Design</h2>
+                      </a>
+                      <p>Tesla Motors</p>
+                      </figcaption>
+                  </figure>
+          </div>
       </div>
-    </section>
-    <!-- Our BLog Section End -->
+  </div>
+</section>
+
+<script>
+filterSelection("semua")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "semua") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
 
 
+// Add active class to the current button (highlight it)
+// var btnContainer = document.getElementById("myBtnContainer");
+// var btns = btnContainer.getElementsByClassName("btn");
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function(){
+//     var current = document.getElementsByClassName("active");
+//     current[0].className = current[0].className.replace(" active", "");
+//     this.className += " active";
+//   });
+// }
+</script>

@@ -10,10 +10,10 @@
             display: none;
         }
 
-.panel-heading {
-    padding: 0;
-    margin: 0 !important;
-}
+        .panel-heading {
+            padding: 0;
+            margin: 0 !important;
+        }
     </style>
 
     <main id="main" class="main">
@@ -109,7 +109,8 @@
                                             <td><?php echo $p->status; ?></td>
                                             <td><?php echo $p->tgl_laporan; ?></td>
                                             <td><?php echo $p->kodelaporan; ?></td>
-                                            <td><?php echo ucwords(strtolower($p->nama_kabkota));?></td>
+                                            <!-- <td><?php //echo ucwords(strtolower($p->nama_kabkota));?></td> -->
+                                            <td><?php echo $p->lokasi_kabkota; ?></td>
                                             <td><?php echo $p->isi_laporan; ?></td>
                                             <td><?php echo $p->infrastruktur; ?></td>
                                             <td><?php echo $p->nama_ruasjalan; ?></td>

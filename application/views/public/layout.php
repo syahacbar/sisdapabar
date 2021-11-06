@@ -109,6 +109,12 @@ section#beritalatest .col-md-4 img {
     object-position: center top -20px;
 }
 
+img.default_slider {
+  height: 550px !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+}
+
 </style>
   </head>
   <body>

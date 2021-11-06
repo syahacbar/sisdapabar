@@ -1,3 +1,6 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+
 <style>
   section.welcome-section.section-padding.section-dark .container {
       margin-top: 7rem;
@@ -92,20 +95,26 @@ section#halprofil .container {
           </div>
 
           <div class="col-md-6 col-lg-6 col-xs-12">
-            <div class="Material-tab mb-3">
+            <div class="Material-tab mb-3 lightbox-gallery">
                 <div class="tab-content">
                     <!-- <img width="100%" src="<?// echo base_url();?>assets/frontend/assets/images/kinerja_pelayanan.png"> -->
 
                   <div id="sliderContol" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="<?php echo base_url();?>assets/frontend/assets/images/kinerja_pelayanan.png" alt="First slide">
+                          <a href="<?php echo base_url();?>assets/frontend/assets/images/kinerja_pelayanan.png" data-toggle="lightbox" data-title="A random title" data-gallery="example-gallery" data-footer="A custom footer text">
+                              <img src="<?php echo base_url();?>assets/frontend/assets/images/kinerja_pelayanan.png" class="img-fluid">
+                          </a>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi.png" alt="Second slide">
+                          <a href="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi.png" data-toggle="lightbox" data-title="A random title" data-gallery="example-gallery" data-footer="A custom footer text">
+                              <img src="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi.png" class="img-fluid">
+                          </a>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi1.png" alt="Third slide">
+                          <a href="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi1.png" data-toggle="lightbox" data-title="A random title" data-gallery="example-gallery" data-footer="A custom footer text">
+                              <img src="<?php echo base_url();?>assets/frontend/assets/images/daerah_irigasi1.png" class="img-fluid">
+                          </a>
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#sliderContol" role="button" data-slide="prev">

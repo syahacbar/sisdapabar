@@ -16,9 +16,9 @@
 
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://preview.uideck.com/items/material/assets/images/slider/slider-bg3.jpg" alt="First slide">
+                        <img class="d-block w-100 default_slider" src="<?php echo base_url('assets/frontend/assets/images/default_slider.png')  ?>" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                          <h2>Lorem Ipsum</h2>
+                          <h2>SELAMAT DATANG DI<br>SISTEM INFORMASI INFRASTRUKTUR SDA PAPUA BARAT</h2>
                           <a href="<?php echo site_url('lapor');?>" class="animated4 btn btn-common">Buat Laporan Sekarang</a>
                           <!-- <p>...</p> -->
                         </div>

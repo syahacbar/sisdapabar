@@ -34,7 +34,7 @@
 body {
     width: 100%;
     height: 100 vh;
-    background-image: url(../assets/frontend/assets/images/banner-bg.png);
+    background-image: url(<?php echo base_url('assets/frontend/assets/images/login_bg.png')  ?>);
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
