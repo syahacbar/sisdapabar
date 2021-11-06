@@ -115,6 +115,7 @@
       /* object-fit: contain !important; */
       object-position: center !important;
       width: 100% !important;
+      background-color: #5166d8 !important;
     }
   </style>
 </head>
