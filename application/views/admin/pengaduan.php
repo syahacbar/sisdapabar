@@ -134,7 +134,7 @@
                                 <?php foreach ($pengaduan as $p) :  ?>
                                     <tr>
                                         <td>
-                                            <button class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLaporan"><i class="bi bi-eye"></i></button>
+                                            <button class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLaporan<?php echo $p->kodelaporan ?>"><i class="bi bi-eye"></i></button>
 
                                             <?php if ($p->status == 'Diterima') { ?>
                                                 <a class="btn btn-danger btn-sm btnTolak" href="" data-idlaporan="<?php echo $p->id; ?>"><i class="bi bi-x-square"></i></a>
@@ -160,6 +160,7 @@
                                         <td><?php echo $p->infrastruktur; ?></td>
                                         <td><?php echo $p->nama_ruasjalan; ?></td>
                                     </tr>
+
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -176,7 +177,7 @@
 <!-- End #main -->
 
 <!-- Modal -->
-<div class="modal fade" id="detailLaporan" tabindex="-1" role="dialog" aria-labelledby="detailLaporanLabel" aria-hidden="true">
+<div class="modal fade" id="detailLaporan<?php echo $p->kodelaporan ?>" tabindex="-1" role="dialog" aria-labelledby="detailLaporanLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -263,7 +264,7 @@
                                                     <td width="30%">Koordinat Lokasi</td>
                                                     <td>:</td>
                                                     <td>
-                                                        <span id="latitude">Latitude: <?php echo $p->latitude; ?></span><br>
+                                                        <a href="<?php echo $p->latitude; ?>"><span id="latitude">Latitude: <?php echo $p->latitude; ?></span></a><br>
                                                         <span id="koordinat">Longitude: <?php echo $p->longitude; ?></span>
                                                     </td>
                                                 </tr>
@@ -311,20 +312,25 @@
                                                 <li data-target="#dokIndikator" data-slide-to="2"></li>
                                             </ol>
                                             <div class="carousel-inner">
-                                                <?php foreach ($upload as $up) :
-                                                    $file   = $up['nama_file'];
+                                                <?php
+                                                $CI = &get_instance();
+                                                $CI->load->model('M_pengaduan');
+                                                $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
                                                 ?>
+                                                <div class="carousel-item active">
+                                                    <?php if ($gb) { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
+                                                    <?php } else { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
+                                                    <?php } ?>
 
-                                                    <div class="carousel-item active">
-                                                        <img class="d-block w-100" src="<?php echo base_url('upload/dokumentasi/') . $up->nama_file; ?>" alt="First slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block w-100" src="" alt="Second slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block w-100" src="" alt="Third slide">
-                                                    </div>
-                                                <?php endforeach; ?>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100" src="" alt="Second slide">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100" src="" alt="Third slide">
+                                                </div>
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -349,12 +355,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary save">Save changes</button>
+                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>

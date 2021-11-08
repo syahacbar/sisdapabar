@@ -121,7 +121,11 @@
                         $CI->load->model('M_pengaduan');
                         $u = $CI->M_pengaduan->get_image($p->kodelaporan);
                         ?>
-                       <img src="<?php echo base_url('upload/dokumentasi/') . $u->nama_file; ?>" width="80%" height="80%">
+                       <?php if ($gb) { ?>
+                         <img width="80%" height="80%" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                       <?php } else { ?>
+                         <img width="80%" height="80%" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                       <?php } ?>
                      </div>
                    </div>
                  </article>

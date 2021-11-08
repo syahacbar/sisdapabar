@@ -6,6 +6,7 @@ class Pengaduan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_pengaduan');
+        $this->load->model('M_berita');
         $this->load->model(['M_pengaduan', 'M_wilayah']);
     }
 

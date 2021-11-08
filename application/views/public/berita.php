@@ -81,7 +81,11 @@
                                     ?>
                                     <div class="featured-image">
                                         <a href="<?php echo site_url('berita/detail/') . url_title($news->judul, 'dash', true); ?>">
-                                            <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                                            <?php if ($gb) { ?>
+                                                <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                                            <?php } else { ?>
+                                                <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                                            <?php } ?>
                                         </a>
                                     </div>
                                     <!-- Post Meta -->

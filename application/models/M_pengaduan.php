@@ -76,6 +76,11 @@ class M_pengaduan extends CI_Model
         return $query->row();
     }
 
+    function get_allimage($kodelaporan, $kategori = NULL)
+    {
+        $query = $this->db->query("SELECT * FROM upload WHERE kodelaporan='$kodelaporan' AND kategori='$kategori'");
+        return $query->row();
+    }
     function add($params)
     {
         $this->db->insert('pengaduan', $params);

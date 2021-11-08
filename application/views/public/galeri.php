@@ -100,8 +100,14 @@
                   $CI->load->model('M_berita');
                   $gb = $CI->M_berita->get_image($gi->id);
                   ?>
+
                   <div class="featured-image">
-                    <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php if ($gb) { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php } else { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                    <?php } ?>
+
                   </div>
                   <figcaption class="hover-content">
                     <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
@@ -125,7 +131,14 @@
                   $CI->load->model('M_berita');
                   $gb = $CI->M_berita->get_image($gs->id);
                   ?>
-                  <img class="img-fluid" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                  <div class="featured-image">
+                    <?php if ($gb) { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php } else { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                    <?php } ?>
+
+                  </div>
                   <figcaption class="hover-content">
                     <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
                       <div class="ripple-container"></div>
@@ -133,7 +146,6 @@
                     <a href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>">
                       <h2 class="subtitle"><?php echo $gs->judul; ?></h2>
                     </a>
-                    <p>Tesla Motors</p>
                   </figcaption>
                 </figure>
               </div>
@@ -149,7 +161,14 @@
                   $CI->load->model('M_berita');
                   $gb = $CI->M_berita->get_image($gp->id);
                   ?>
-                  <img class="img-fluid" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                  <div class="featured-image">
+                    <?php if ($gb) { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php } else { ?>
+                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                    <?php } ?>
+
+                  </div>
                   <figcaption class="hover-content">
                     <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
                       <div class="ripple-container"></div>
@@ -157,7 +176,6 @@
                     <a href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>">
                       <h2 class="subtitle"><?php echo $gp->judul; ?></h2>
                     </a>
-                    <p>Tesla Motors</p>
                   </figcaption>
                 </figure>
               </div>
