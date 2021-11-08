@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <!-- CSS Bootstrap 3 -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' />
 <style>
@@ -43,7 +44,7 @@
         border: 0 !important;
     }
 
-    #detailLaporan h3 {
+    #detailLap h3 {
         font-size: 24px;
         color: #17919e;
         text-shadow: 1px 1px #ccc;
@@ -52,6 +53,36 @@
 
     .modal-header {
         justify-content: start !important;
+    }
+
+    #IsiLaporan h4 {
+        font-weight: bold;
+    }
+
+    div#foto-ktp img,
+    div#dokIndikator img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        background-color: #17919e;
+        padding: 10px !important;
+        border-radius: 2px;
+        width: 100px;
+        height: 20px;
+        background-size: 35%;
+    }
+
+    div#detailLap .card {
+        box-shadow: none !important;
+    }
+
+    #DetailLaporan tr,
+    #identitasPelapor tr {
+        border: 0 !important;
     }
 </style>
 
@@ -132,10 +163,20 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($pengaduan as $p) :  ?>
+                                    <?php
+                                    $CI = &get_instance();
+                                    $CI->load->model('M_wilayah');
+                                    $CI->load->model('M_pengaduan');
+                                    // $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan);
+                                    $kab = $CI->M_wilayah->get_by_id($p->lokasi_kabkota);
+                                    $kec = $CI->M_wilayah->get_by_id($p->lokasi_distrik);
+                                    $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
+                                    ?>
                                     <tr>
-                                        <td>
-                                            <button class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLaporan<?php echo $p->kodelaporan ?>"><i class="bi bi-eye"></i></button>
-
+                                        <td width="130px">
+                                            <a id="DetailLap" class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLap" data-kodelaporan="<?php echo $p->kodelaporan; ?>" data-nik="<?php echo $p->nik; ?>" data-namapelapor="<?php echo $p->nama_pelapor; ?>" data-alamatpelapor="<?php echo $p->alamat_pelapor; ?>" data-email="<?php echo $p->email; ?>" data-nohp="<?php echo $p->no_hp; ?>" data-tgllaporan="<?php echo $p->tgl_laporan; ?>" data-infrastruktur="<?php echo $p->infrastruktur; ?>" data-koordinatlokasi="<?php echo $p->latitude, $p->longitude; ?>" data-namaruasjalan="<?php echo $p->nama_ruasjalan; ?>" data-namakabkota="<?php echo ucwords(strtolower($kab->nama)); ?>" data-namadistrik="<?php echo $kec->nama; ?>" data-isilaporan="<?php echo $p->isi_laporan; ?>">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
                                             <?php if ($p->status == 'Diterima') { ?>
                                                 <a class="btn btn-danger btn-sm btnTolak" href="" data-idlaporan="<?php echo $p->id; ?>"><i class="bi bi-x-square"></i></a>
                                             <?php } elseif ($p->status == 'Ditolak') { ?>
@@ -146,17 +187,11 @@
                                             <?php } ?>
                                         </td>
                                         <td><?php echo $p->status; ?></td>
-                                        <td><?php echo $p->tgl_laporan; ?></td>
+                                        <td width="150px"><?php echo $p->tgl_laporan; ?></td>
                                         <td><?php echo $p->kodelaporan; ?></td>
-                                        <?php
-                                        $CI = &get_instance();
-                                        $CI->load->model('M_wilayah');
-                                        $kab = $CI->M_wilayah->get_by_id($p->lokasi_kabkota);
-                                        $kec = $CI->M_wilayah->get_by_id($p->lokasi_distrik);
-                                        ?>
                                         <td><?php echo ucwords(strtolower($kab->nama));
                                             ?></td>
-                                        <td><?php echo $p->isi_laporan; ?></td>
+                                        <td><?php echo word_limiter($p->isi_laporan, 55); ?></td>
                                         <td><?php echo $p->infrastruktur; ?></td>
                                         <td><?php echo $p->nama_ruasjalan; ?></td>
                                     </tr>
@@ -176,16 +211,17 @@
 </main>
 <!-- End #main -->
 
-<!-- Modal -->
-<div class="modal fade" id="detailLaporan<?php echo $p->kodelaporan ?>" tabindex="-1" role="dialog" aria-labelledby="detailLaporanLabel" aria-hidden="true">
+
+<div class="modal fade" id="detailLap" tabindex="-1" role="dialog" aria-labelledby="detailLapLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="detailLaporanLabel"><i class="bi bi-file-earmark-fill"></i>Detail Laporan <?php echo $p->kodelaporan; ?></h3>
+                <h3 class="modal-title" id="detailLapLabel"><i class="bi bi-file-earmark-fill"></i>Kode Laporan
+                    <span id="kodelaporan"></span>
+                </h3>
             </div>
             <div class="modal-body">
                 <div role="tabpanel">
-                    <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">
                             <a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Data Pelapor</a>
@@ -196,39 +232,39 @@
                         </li>
                     </ul>
 
-                    <!-- Tab panes -->
                     <div class="tab-content mt-3">
                         <div role="tabpanel" class="tab-pane active" id="uploadTab">
                             <div id="identity" class="col-sm-7 m-0">
                                 <div class="card">
                                     <div class="card-body">
-                                        <table class="table table-borderless">
+                                        <table id="identitasPelapor" class="table table-borderless">
                                             <tbody>
                                                 <tr>
-                                                    <td width="30%">NIK</td>
-                                                    <td>:</td>
-                                                    <td><span id="nikModal"></span><?php echo $p->nik; ?></td>
+                                                    <th>NIK</th>
+                                                    <td>: </td>
+                                                    <td><span id="nik"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Nama Lengkap</td>
-                                                    <td>:</td>
-                                                    <td><span id="namaModal"></span><?php echo $p->nama_pelapor; ?></td>
+                                                    <th>Nama Pelapor</th>
+                                                    <td>: </td>
+                                                    <td><span id="nama_pelapor"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Alamat Lengkap</td>
-                                                    <td>:</td>
-                                                    <td><span id="alamatModal"></span><?php echo $p->alamat_pelapor; ?></td>
+                                                    <th>Alamat Pelapor</th>
+                                                    <td>: </td>
+                                                    <td><span id="alamat_pelapor"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Email</td>
-                                                    <td>:</td>
-                                                    <td><span id="emailModal"></span><?php echo $p->email; ?></td>
+                                                    <th>Email</th>
+                                                    <td>: </td>
+                                                    <td><span id="email"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Nomor HP</td>
-                                                    <td>:</td>
-                                                    <td><span id="nohpModal"></span><?php echo $p->no_hp; ?></td>
+                                                    <th>No. WhatsApp</th>
+                                                    <td>: </td>
+                                                    <td><span id="nohp"></span></td>
                                                 </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -238,7 +274,11 @@
                             <div id="foto-ktp" class="col-sm-5 m-0">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img width="100%" src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2020/02/04/4132631623.jpg" alt="">
+                                        <?php if ($gb) { ?>
+                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/') . $gb->nama_file; ?>" alt="">
+                                        <?php } else { ?>
+                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/noimageavail.jpg'); ?>" alt="">
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -248,41 +288,43 @@
                             <div id="report" class="col-sm-7">
                                 <div class="card">
                                     <div class="card-body">
-                                        <table class="table table-borderless">
+                                        <table id="DetailLaporan" class="table table-borderless">
                                             <tbody>
                                                 <tr>
-                                                    <td width="30%">Tanggal Laporan</td>
-                                                    <td>:</td>
-                                                    <td><span id="infra"></span><?php echo $p->tgl_laporan; ?></td>
+                                                    <th>Tanggal Laporan</th>
+                                                    <td>: </td>
+                                                    <td><span id="tgl_laporan"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Jenis Infrastruktur</td>
-                                                    <td>:</td>
-                                                    <td><span id="infra"></span><?php echo $p->infrastruktur; ?></td>
+                                                    <th>Jenis Infrastruktur</th>
+                                                    <td>: </td>
+                                                    <td><span id="infrastruktur"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Koordinat Lokasi</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <a href="<?php echo $p->latitude; ?>"><span id="latitude">Latitude: <?php echo $p->latitude; ?></span></a><br>
-                                                        <span id="koordinat">Longitude: <?php echo $p->longitude; ?></span>
-                                                    </td>
+                                                    <th>Koordinat Lokasi</th>
+                                                    <td>: </td>
+                                                    <td><a href="<?php echo ('https://www.google.com/maps/place/') . $p->latitude, ',' . $p->longitude; ?>" target="_blank"><span id="koordinatlokasi"></span></a></td>
+                                                </tr>
+                                                <!-- <tr>
+                                                    <th>Longitude</th>
+                                                    <td><span id="longitude"></span></td>
+                                                </tr> -->
+                                                <tr>
+                                                    <th>Nama Ruas Jalan</th>
+                                                    <td>: </td>
+                                                    <td><span id="nama_ruasjalan"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Nama Ruas Jalan</td>
-                                                    <td>:</td>
-                                                    <td><span id="ruasjalan"></span><?php echo $p->nama_ruasjalan; ?></td>
+                                                    <th>Nama Kab./Kota</th>
+                                                    <td>: </td>
+                                                    <td><span id="nama_kabkota"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td width="30%">Kec/Distrik</td>
-                                                    <td>:</td>
-                                                    <td><span id="lokasidistrik"></span><?php echo ucwords(strtolower($kab->nama)); ?></td>
+                                                    <th>Nama Kec./Distrik</th>
+                                                    <td>: </td>
+                                                    <td><span id="nama_distrik"></span></td>
                                                 </tr>
-                                                <tr>
-                                                    <td width="30%">Kab/Kota</td>
-                                                    <td>:</td>
-                                                    <td><span id="lokasikabkota"></span><?php echo $kec->nama; ?></td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -292,19 +334,6 @@
                             <div class="gbrDok" class="col-sm-5">
                                 <div class="card">
                                     <div class="card-body">
-
-                                        <!-- <div class="row">
-                                            <div class="col-sm-4">
-                                                <img id="dok1" src="" alt="jalan1">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <img id="dok2" src="" alt="jalan2">
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <img id="dok3" src="" alt="jalan3">
-                                            </div>
-                                        </div> -->
-
                                         <div id="dokIndikator" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
                                                 <li data-target="#dokIndikator" data-slide-to="0" class="active"></li>
@@ -312,24 +341,26 @@
                                                 <li data-target="#dokIndikator" data-slide-to="2"></li>
                                             </ol>
                                             <div class="carousel-inner">
-                                                <?php
-                                                $CI = &get_instance();
-                                                $CI->load->model('M_pengaduan');
-                                                $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
-                                                ?>
                                                 <div class="carousel-item active">
                                                     <?php if ($gb) { ?>
                                                         <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
                                                     <?php } else { ?>
                                                         <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
                                                     <?php } ?>
-
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img class="d-block w-100" src="" alt="Second slide">
+                                                    <?php if ($gb) { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
+                                                    <?php } else { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
+                                                    <?php } ?>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img class="d-block w-100" src="" alt="Third slide">
+                                                    <?php if ($gb) { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
+                                                    <?php } else { ?>
+                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -345,9 +376,9 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
-                                <h5>Isi Laporan:</h5>
-                                <p id="pengaduan"><?php echo $p->isi_laporan; ?>
+                            <div id="IsiLaporan" class="col-sm-12">
+                                <h4>Isi Laporan:</h4>
+                                <p id="isilaporan">
                                 <p>
                             </div>
                         </div>
@@ -360,6 +391,11 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -428,5 +464,42 @@
         $('#myModal').modal('hide');
         //$(this).tab('show')
         return false;
+    })
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '#DetailLap', function() {
+            var kodelaporan = $(this).data('kodelaporan');
+            var nik = $(this).data('nik');
+            var namapelapor = $(this).data('namapelapor');
+            var alamatpelapor = $(this).data('alamatpelapor');
+            var email = $(this).data('email');
+            var nohp = $(this).data('nohp');
+            var tgllaporan = $(this).data('tgllaporan');
+            var infrastruktur = $(this).data('infrastruktur');
+            var koordinatlokasi = $(this).data('koordinatlokasi');
+            var namaruasjalan = $(this).data('namaruasjalan');
+            var namakabkota = $(this).data('namakabkota');
+            var namadistrik = $(this).data('namadistrik');
+            var isilaporan = $(this).data('isilaporan');
+            // var gambardoumentasi = $(this).data('gambardoumentasi');
+
+            $('#kodelaporan').text(kodelaporan);
+            $('#nik').text(nik);
+            $('#nama_pelapor').text(namapelapor);
+            $('#alamat_pelapor').text(alamatpelapor);
+            $('#email').text(email);
+            $('#nohp').text(nohp);
+            $('#tgl_laporan').text(tgllaporan);
+            $('#infrastruktur').text(infrastruktur);
+            $('#koordinatlokasi').text(koordinatlokasi);
+            $('#nama_ruasjalan').text(namaruasjalan);
+            $('#nama_kabkota').text(namakabkota);
+            $('#nama_distrik').text(namadistrik);
+            $('#isilaporan').text(isilaporan);
+            // $('#gambardoumentasi').attr(gambardoumentasi);
+
+        })
     })
 </script>

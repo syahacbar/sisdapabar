@@ -158,7 +158,7 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.4) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
+    background: rgba(255, 255, 255, 0.1) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: 15% !important;
