@@ -80,13 +80,25 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane fade show active" id="latar_belakang" role="tabpanel">
-              <p>Luas wilayah Provinsi Papua Barat sangat luas. Terbatasnya konektifitas antar wilayah Kab/Kota sehingga Masyarakat kesulitan menyampaikan usulan program/aduan. Sulitnya mendapatkan informasi infrastruktur sehingga ada stigma pembangunan kurang tepat sasaran.</p>
+              <ul>
+                <li>Luas wilayah Provinsi Papua Barat sangat luas.</li>
+                <li>Terbatasnya konektifitas antar wilayah Kab/Kota sehingga Masyarakat kesulitan menyampaikan usulan program/aduan. </li>
+                <li>Sulitnya mendapatkan informasi infrastruktur sehingga ada stigma pembangunan kurang tepat sasaran.</li>
+              </ul>
             </div>
             <div class="tab-pane fade" id="tujuan" role="tabpanel">
-              <p>Mendapatkan data laporan masyarakat secara cepat dan sesuai kondisi tekini dengan memanfaatkan TI. Menentukan Kebijakan dalam Penentuan Program Prioritas. Menyelenggarakan Pemerintahan yang efektif dan akuntabel dalam Bidang Pembangunan Infrastruktur SDA.</p>
+              <ul>
+                <li>Mendapatkan data laporan masyarakat secara cepat dan sesuai kondisi tekini dengan memanfaatkan TI.</li>
+                <li>Menentukan Kebijakan dalam Penentuan Program Prioritas.</li>
+                <li>Menyelenggarakan Pemerintahan yang efektif dan akuntabel dalam Bidang Pembangunan Infrastruktur SDA.</li>
+              </ul>
             </div>
             <div class="tab-pane fade" id="manfaat" role="tabpanel">
-              <p>Mempermudah Masyarakat Mendapatkatkan Informasi Pembangunan Infrastruktur SDA di Provinsi Papua Barat. Memutus birokrasi yang berbelit-belit dalam menyampaikan usulan program/aduan serta menghindarkan Konflik Kepentingan. Mempermudah Penyelenggara Infrastruktur dalam Menyusun Program Kerja. </p>
+              <ul>
+                <li>Mempermudah Masyarakat Mendapatkatkan Informasi Pembangunan Infrastruktur SDA di Provinsi Papua Barat.</li>
+                <li>Memutus birokrasi yang berbelit-belit dalam menyampaikan usulan program/aduan serta menghindarkan Konflik Kepentingan.</li>
+                <li>Mempermudah Penyelenggara Infrastruktur dalam Menyusun Program Kerja.</li>
+              </ul>
             </div>
           </div>
         </div>
