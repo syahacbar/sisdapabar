@@ -50,4 +50,58 @@ class Berita extends CI_Controller
 
         //function json_encode ini untuk melempar ke console, agar di JS halaman html bisa mencetaknya di bagian ajax success
     }
+
+    public function deleteberita()
+    {
+        $idberita = $this->input->post('idberita');
+        if ($this->M_berita->deletedata($idberita)) {
+            echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus berita'));
+        } else {
+            echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus berita'));
+        }
+    }
+
+    public function add()
+    {
+        $data['_view'] = "admin/berita_add";
+        $this->load->view('admin/layout', $data);
+    }
+
+    public function edit($idberita)
+    {
+        $data['berita'] = $this->M_berita->get_by_id($idberita);
+        $data['_view'] = "admin/berita_edit";
+        $this->load->view('admin/layout', $data);
+    }
+
+    public function saveberita()
+    {
+        $slug =  url_title($this->input->post('judulberita'), 'dash', true);
+        $params = array(
+            'tanggal' => date("Y-m-d H:i:s"),
+            'judul' => $this->input->post('judulberita'),
+            'isi' => $this->input->post('isiberita'),
+            'slug' => $slug,
+            'kategori' => $this->input->post('kategoriberita'),
+            'id' => $this->input->post('idberita'),
+        );
+
+        // $this->M_berita->add($params);
+        $this->M_berita->add_berita($params);
+        echo json_encode(array('status' => TRUE));
+    }
+
+    public function uploadgbrberita()
+    {
+        $config['upload_path']   = FCPATH . '/upload/berita/';
+        $config['allowed_types'] = 'gif|jpg|png|ico|jpeg';
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('gambar_berita')) {
+            $idberita = $this->input->post('idberita');
+            $file_name = $this->upload->data('file_name');
+            $uploaded_on = date("Y-m-d H:i:s");
+            $this->db->insert('galeriberita', array('idberita' => $idberita, 'nama_file' => $file_name, 'uploaded_on' => $uploaded_on));
+        }
+    }
 }

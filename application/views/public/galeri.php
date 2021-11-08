@@ -91,23 +91,24 @@
       <div class="row">
         <div class="col-md-12">
           <div class="row d-flex">
-            <?php foreach ($berita as $news) : ?>
+            <?php foreach ($galeri_irigasi as $gi) : ?>
+
               <div class="column irigasi col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <figure class="single-portfolio">
                   <?php
                   $CI = &get_instance();
                   $CI->load->model('M_berita');
-                  $gb = $CI->M_berita->get_image($news->id);
+                  $gb = $CI->M_berita->get_image($gi->id);
                   ?>
                   <div class="featured-image">
                     <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
                   </div>
                   <figcaption class="hover-content">
-                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($news->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
+                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
                       <div class="ripple-container"></div>
                     </a>
-                    <a href="<?php echo site_url('berita/detail/') . url_title($news->judul, 'dash', true); ?>">
-                      <h1 class="subtitle"><?php echo $news->judul; ?></h1>
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>">
+                      <h1 class="subtitle"><?php echo $gi->judul; ?></h1>
                     </a>
                   </figcaption>
                 </figure>
@@ -116,93 +117,51 @@
           </div>
 
           <div class="row">
-            <div class="column sungai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita2.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column sungai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita3.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column sungai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
+            <?php foreach ($galeri_sungai as $gs) : ?>
+              <div class="column sungai">
+                <figure class="single-portfolio">
+                  <?php
+                  $CI = &get_instance();
+                  $CI->load->model('M_berita');
+                  $gb = $CI->M_berita->get_image($gs->id);
+                  ?>
+                  <img class="img-fluid" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                  <figcaption class="hover-content">
+                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
+                      <div class="ripple-container"></div>
+                    </a>
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>">
+                      <h2 class="subtitle"><?php echo $gs->judul; ?></h2>
+                    </a>
+                    <p>Tesla Motors</p>
+                  </figcaption>
+                </figure>
+              </div>
+            <?php endforeach; ?>
           </div>
 
           <div class="row">
-            <div class="column pantai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita3.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column pantai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita1.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="column pantai">
-              <figure class="single-portfolio">
-                <img class="img-fluid" src="https://sisdapabar.com/upload/berita/berita2.jpg" alt="">
-                <figcaption class="hover-content">
-                  <a class="btn btn-round btn-fab btn-xs" href="portfolio-single.html"><i class="material-icons mdi mdi-arrow-right"></i>
-                    <div class="ripple-container"></div>
-                  </a>
-                  <a href="portfolio-single.html">
-                    <h2 class="subtitle">Brochure Design</h2>
-                  </a>
-                  <p>Tesla Motors</p>
-                </figcaption>
-              </figure>
-            </div>
+            <?php foreach ($galeri_sungai as $gp) : ?>
+              <div class="column pantai">
+                <figure class="single-portfolio">
+                  <?php
+                  $CI = &get_instance();
+                  $CI->load->model('M_berita');
+                  $gb = $CI->M_berita->get_image($gp->id);
+                  ?>
+                  <img class="img-fluid" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                  <figcaption class="hover-content">
+                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
+                      <div class="ripple-container"></div>
+                    </a>
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>">
+                      <h2 class="subtitle"><?php echo $gp->judul; ?></h2>
+                    </a>
+                    <p>Tesla Motors</p>
+                  </figcaption>
+                </figure>
+              </div>
+            <?php endforeach; ?>
           </div>
         </div>
   </section>

@@ -1,23 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
- 
+
 class M_berita extends CI_Model
 {
-    public function get_all($limit=NULL,$cat=NULL)
+    public function get_all($limit = NULL, $cat = NULL)
     {
         $this->db->select("*");
         $this->db->from("berita");
 
-        if($cat != NULL)
-        {
-            $this->db->where("kategori",$cat);
+        if ($cat != NULL) {
+            $this->db->where("kategori", $cat);
         }
 
-        if($limit != NULL)
-        {
+        if ($limit != NULL) {
             $query = $this->db->limit($limit);
         }
-        
+
         $query = $this->db->get();
         return $query->result();
     }
@@ -32,6 +30,12 @@ class M_berita extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM berita WHERE id='$id'");
         return $query->row();
+    }
+
+    public function get_by_cat($cat)
+    {
+        $query = $this->db->query("SELECT * FROM berita WHERE kategori='$cat'");
+        return $query->result();
     }
 
     public function get_image($idberita)
@@ -55,34 +59,40 @@ class M_berita extends CI_Model
     public function get_slider_by_idberita($idberita)
     {
         $query = $this->db->query("SELECT * FROM galeriberita WHERE idberita='$idberita'");
-        return $query->row();
+        return $query;
     }
 
-    public function switchslider($idberita,$sliderstatus)
+    public function switchslider($idberita, $sliderstatus)
     {
         $query = $this->db->query("UPDATE galeriberita SET slider='$sliderstatus' WHERE idberita='$idberita'");
         return TRUE;
     }
 
-
-    // upload data di admin panel
-    function add($data)
+    public function add_berita($params)
     {
-        $this->db->insert('berita', $data);
-        return TRUE;
+        $this->db->insert('berita', $params);
+        return $this->db->insert_id();
     }
 
-    function edit($data, $id){
-        $this->db->where('id',$id);
-        $this->db->update('berita', $data);
-        return TRUE;
+    public function get_lastrow()
+    {
+        $last_idbr = $this->db->order_by('id')
+            ->limit(1)
+            ->get('berita');
+        return $last_idbr;
     }
 
-    function delete($id)
+    public function deletedata($id)
     {
         $this->db->where("id", $id);
         $this->db->delete("berita");
         return true;
     }
 
+    public function edit($data, $id)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('berita', $data);
+        return TRUE;
+    }
 }

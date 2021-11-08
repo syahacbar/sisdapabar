@@ -10,22 +10,22 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>assets/backend/assets/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="<?php echo base_url();?>assets/backend/assets/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>assets/backend/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="<?php echo base_url();?>assets/backend/assets/favicon/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?php echo base_url(); ?>assets/backend/assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo base_url(); ?>assets/backend/assets/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?php echo base_url();?>assets/backend/assets/favicon/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="<?php echo base_url(); ?>assets/backend/assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Google Fonts -->
@@ -44,6 +44,12 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/backend/assets/css/style.css'); ?>" rel="stylesheet">
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
@@ -52,7 +58,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="<?php echo site_url('admin/dashboard');?>" class="logo d-flex align-items-center">
+            <a href="<?php echo site_url('admin/dashboard'); ?>" class="logo d-flex align-items-center">
                 <img src="<?php echo base_url('assets/backend/assets/img/logopapuabarat.png'); ?>" alt="">
                 <span class="d-none d-lg-block">SISDA-PABAR</span>
             </a>
@@ -150,20 +156,21 @@
 
                 </li><!-- End Notification Nav -->
 
-            
+
 
                 <li class="nav-item dropdown pe-3">
                     <?php $user = $this->ion_auth->user()->row(); ?>
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="<?php echo base_url('assets/backend/assets/img/profile-img.jpg'); ?>" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php //echo $user->first_name;?></span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php //echo $user->first_name;
+                                                                                ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name.' '.$user->last_name;?></h6>
-                            <span><?php echo $this->ion_auth->get_users_groups()->row()->name;?></span>
+                            <h6><?php echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name . ' ' . $user->last_name; ?></h6>
+                            <span><?php echo $this->ion_auth->get_users_groups()->row()->name; ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -193,7 +200,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('auth/logout');?>">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('auth/logout'); ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Keluar</span>
                             </a>
@@ -213,7 +220,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('admin/dashboard') ?>">
+                <a class="nav-link <?php echo ($this->uri->segment(2) == 'dashboard') ? '' : 'collapsed'; ?>" href="<?php echo site_url('admin/dashboard') ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -222,25 +229,25 @@
             <li class="nav-heading">Laporan Pengaduan</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo site_url('admin/pengaduan'); ?>">
+                <a class="nav-link  <?php echo ($this->uri->segment(2) == 'pengaduan') ? '' : 'collapsed'; ?>" href="<?php echo site_url('admin/pengaduan'); ?>">
                     <i class="bi bi-menu-button-wide"></i><span>Data Pengaduan</span>
-                    
+
                 </a>
-                
+
             </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo site_url('admin/download'); ?>">
+                <a class="nav-link  <?php echo ($this->uri->segment(2) == 'download') ? '' : 'collapsed'; ?>" href="<?php echo site_url('admin/download'); ?>">
                     <i class="bi bi-journal-text"></i><span>Unduh Laporan</span>
                 </a>
-              
+
             </li><!-- End Forms Nav -->
-        
+
 
             <li class="nav-heading">Manajemen Pengguna</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo site_url('admin/akunpengguna') ?>">
+                <a class="nav-link  <?php echo ($this->uri->segment(2) == 'akunpengguna') ? '' : 'collapsed'; ?>" href="<?php echo site_url('admin/akunpengguna') ?>">
                     <i class="bi bi-person"></i>
                     <span>Akun Pengguna</span>
                 </a>
@@ -248,14 +255,16 @@
 
             <li class="nav-heading">Manajemen Website</li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo site_url('admin/profil') ?>">
+            <!-- <li class="nav-item">
+                <a class="nav-link  <?php //echo ($this->uri->segment(2) == 'profil') ? '' : 'collapsed'; 
+                                    ?>" href="<?php //echo site_url('admin/profil') 
+                                                ?>">
                     <i class="bi bi-info-circle"></i>
                     <span>Profil</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo site_url('admin/berita') ?>">
+                <a class="nav-link  <?php echo ($this->uri->segment(2) == 'berita') ? '' : 'collapsed'; ?>" href="<?php echo site_url('admin/berita') ?>">
                     <i class="bi bi-images"></i>
                     <span>Berita</span>
                 </a>

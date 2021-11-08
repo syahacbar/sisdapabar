@@ -148,6 +148,22 @@
   .dropzone .dz-preview .dz-image {
     margin: 0 auto;
   }
+
+  /* loader */
+  #loader {
+    display: none;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 15% !important;
+    z-index: 10000;
+  }
 </style>
 <?php echo $map['js']; ?>
 
@@ -464,6 +480,7 @@
           </div>
 
           <div class="row">
+            <!-- Ini untuk ditangkap oleh ajax di bagian script -->
             <input type="hidden" name="kodelaporan" id="kodelaporan" value="<?php echo $kodelaporan; ?>">
           </div>
 
@@ -478,6 +495,9 @@
       </div>
     </form>
   </div>
+
+  <div id="loader"></div>
+
   </div>
 </section>
 <!-- Contact Us Section End -->
@@ -677,7 +697,7 @@
   }
 
   Dropzone.autoDiscover = false;
-  // var spinner = $('#loader');
+  var spinner = $('#loader');
   $(document).ready(function() {
 
 
@@ -713,7 +733,7 @@
     unggah_ktp.on("sending", function(a, b, c) {
       a.token = Math.random();
       c.append("token_foto", a.token); //Menmpersiapkan token untuk masing masing foto
-      c.append("kodelaporan", $('#ktp').val());
+      c.append("kodelaporan", $('#kodelaporan').val()); //id diambil dari bagian input hidden di form di atas, sebelum btn kirim laporan
     });
 
     var dokumentasi1_upload = new Dropzone(".dokumentasi1", {
@@ -731,7 +751,7 @@
     dokumentasi1_upload.on("sending", function(a, b, c) {
       a.token = Math.random();
       c.append("token_dokumentasi", a.token); //Menmpersiapkan token untuk masing masing foto
-      c.append("kodelaporan", $('#dokumentasi').val());
+      c.append("kodelaporan", $('#kodelaporan').val()); //id diambil dari bagian input hidden di form di atas, sebelum btn kirim laporan
       c.append("kategori", "dokumentasi1");
     });
     var dokumentasi2_upload = new Dropzone(".dokumentasi2", {
@@ -749,7 +769,7 @@
     dokumentasi2_upload.on("sending", function(a, b, c) {
       a.token = Math.random();
       c.append("token_dokumentasi", a.token); //Menmpersiapkan token untuk masing masing foto
-      c.append("kodelaporan", $('#dokumentasi').val());
+      c.append("kodelaporan", $('#kodelaporan').val()); //id diambil dari bagian input hidden di form di atas, sebelum btn kirim laporan
       c.append("kategori", "dokumentasi2");
     });
     var dokumentasi3_upload = new Dropzone(".dokumentasi3", {
@@ -767,7 +787,7 @@
     dokumentasi3_upload.on("sending", function(a, b, c) {
       a.token = Math.random();
       c.append("token_dokumentasi", a.token); //Menmpersiapkan token untuk masing masing foto
-      c.append("kodelaporan", $('#dokumentasi').val());
+      c.append("kodelaporan", $('#kodelaporan').val()); //id diambil dari bagian input hidden di form di atas, sebelum btn kirim laporan
       c.append("kategori", "dokumentasi3");
     });
 
@@ -787,12 +807,14 @@
     dokumen_upload.on("sending", function(a, b, c) {
       a.token = Math.random();
       c.append("token_dokumentasi", a.token); //Menmpersiapkan token untuk masing masing foto
-      c.append("kodelaporan", $('#dokumen_tambahan').val());
+      c.append("kodelaporan", $('#kodelaporan').val()); //id diambil dari bagian input hidden di form di atas, sebelum btn kirim laporan
       c.append("kategori", "dokumen_tambahan");
     });
 
     $('#formulirLaporan').submit(function(e) {
       e.preventDefault();
+      spinner.show();
+
       var kodelaporan = $("input[name='kodelaporan']").val();
       var nama_pelapor = $("input[name='nama_pelapor']").val();
       var nik = $("input[name='nik']").val();
@@ -804,7 +826,7 @@
       var email = $("input[name='email']").val();
       var isi_laporan = $("textarea[name='isi_laporan']").val();
       var infrastruktur = $("input[name='infrastruktur']").val();
-      var nama_ruasjalan = $("textarea[name='nama_ruasjalan']").val();
+      var nama_ruasjalan = $("input[name='nama_ruasjalan']").val();
       var lokasi_kabkota = $("select[name='lokasi_kabkota']").val();
       var lokasi_distrik = $("select[name='lokasi_distrik']").val();
       var latitude = $("input[name='latitude']").val();
@@ -833,17 +855,24 @@
           // 'g-recaptcha-response': grecaptcha.getResponse()
         },
         error: function() {
-          console.log('Tidak berhasil simpan data');
-        },
-        success: function(data) {
-          var objData = jQuery.parseJSON(data);
+          // console.log('Tidak berhasil simpan data');
+          alert('Something is wrong');
 
-          if (objData.status) {
-            console.log('Simpan berhasil');
-            location.reload();
-          } else {
-            console.log('Gagal simpan');
-          }
+        },
+        // success: function(data) {
+        //   var objData = jQuery.parseJSON(data);
+
+        //   if (objData.status) {
+        //     console.log('Simpan berhasil');
+        //     spinner.hide();
+        //     location.reload();
+        //   } else {
+        //     console.log('Gagal simpan');
+        //   }
+        success: function(data) {
+          alert("Laporan Berhasil Terkirim");
+          spinner.hide();
+          location.reload();
         }
       });
 

@@ -3,9 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_wilayah extends CI_Model
 {
-    public function get_by_id($id)
+    public function get_by_id($kode)
     {
-        $query = $this->db->get_where('wilayah_2020',array('kode'=>$id));
+        //kita persempit querynya hanya ambil nama wilayah di Papua Barat, supaya gak terlalu loading
+        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LEFT(kode,2) = '92' AND kode='$kode'");
         return $query->row();
     }
 
@@ -14,5 +15,4 @@ class M_wilayah extends CI_Model
         $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '92'");
         return $query->result();
     }
-
 }

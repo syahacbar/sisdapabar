@@ -11,6 +11,9 @@ class Galeri extends CI_Controller
     public function index()
     {
         $data['berita'] = $this->M_berita->get_all();
+        $data['galeri_irigasi'] = $this->M_berita->get_by_cat('Irigasi');
+        $data['galeri_sungai'] = $this->M_berita->get_by_cat('Sungai');
+        $data['galeri_pantai'] = $this->M_berita->get_by_cat('Pantai');
         $data['title'] = "GALERI";
         $data['list_kategori'] = $this->M_berita->get_kategori();
         $data['_view'] = "public/galeri";

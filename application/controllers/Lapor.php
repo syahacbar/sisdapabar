@@ -71,7 +71,102 @@ class Lapor extends CI_Controller
         );
 
         $laporan_id = $this->M_pengaduan->add($params);
+        $nowapelapor = $this->input->post('no_hp');
+        $namapelapor = $this->input->post('nama_pelapor');
+        $ruasjalan = $this->input->post('nama_ruasjalan');
+        $distrik = $this->M_setting->get_wilayah($this->input->post('lokasi_distrik'));
+        $kabupaten = $this->M_setting->get_wilayah($this->input->post('lokasi_kabkota'));
+        $this->wasendpelapor($nowapelapor, $namapelapor, $ruasjalan, $distrik, $kabupaten);
+
+        $nowakabid = '081248803652'; //anggap aja km sebagai kabid, tapi km jg melapor sbg pelapor
+        $kodelap = $this->input->post('kodelaporan');
+        $image = $this->M_setting->get_image($kodelap);
+        $imageurl = base_url() . 'upload/dokumentasi/' . $image;
+        $this->wasendkabid($nowakabid, $kodelap, $ruasjalan, $kabupaten, $distrik, $imageurl);
         echo json_encode(array('status' => TRUE));
+    }
+
+    //mainkan brooo, sa disconnect anydeskn nya, bye2, atensi beriktnya dari WAGroup
+    // function cobawapelapor()
+    // {
+
+    //     $nowapelapor = '081248803652';
+    //     $namapelapor = 'Alvian';
+    //     $ruasjalan = 'Pantai Pasir Putih';
+    //     $distrik = 'Manokwari Utara';
+    //     $kabupaten = 'Manokwari';
+    //     $this->wasendpelapor($nowapelapor, $namapelapor, $ruasjalan, $distrik, $kabupaten);
+
+    //     echo '<script> console.log("Pesan terkirim ke pelapor")</script>';
+    // }
+
+    // function cobawakabid()
+    // {
+    //     $nowakabid = '081248803652';
+    //     $kodelap = 'ertueiuteirotueor';
+    //     $image = 'konser_6.jpg';
+    //     // $imageurl = base_url() . 'upload/dokumentasi/' . $image;
+    //     $imageurl = 'https://picsum.photos/id/995/200/300.jpg';
+    //     $ruasjalan = 'SUNGAI SFSKFSDF';
+    //     $distrik = 'Manokwari Barat';
+    //     $kabupaten = 'Manokwari';
+    //     $this->wasendkabid($nowakabid, $kodelap, $ruasjalan, $kabupaten, $distrik, $imageurl);
+    // }
+
+    function wasendpelapor($nowapelapor, $nama, $ruasjalan, $distrik, $kabupaten)
+    {
+        $setting = $this->M_setting->list_setting();
+        $userkey = $setting->userkey;
+        $passkey = $setting->passkey;
+        $telepon = $nowapelapor;
+        $message = 'Hai *' . $nama . '*, ' . PHP_EOL . 'Laporan Anda Tentang Ruas Jalan *' . $ruasjalan . '* di Distrik *' . strtoupper($distrik) . ' ' . $kabupaten . '* telah kami terima dan akan diverifikasi lebih lanjut. ' . PHP_EOL . ' ' . PHP_EOL . 'Terima Kasih. | sisdapabar.com' . PHP_EOL . ' ' . PHP_EOL . '*-Don\'t Reply!-*';;
+        $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+        $curlHandle = curl_init();
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curlHandle, CURLOPT_POST, 1);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+            'userkey' => $userkey,
+            'passkey' => $passkey,
+            'to' => $telepon,
+            'message' => $message
+        ));
+        $results = json_decode(curl_exec($curlHandle), true);
+        curl_close($curlHandle);
+    }
+
+    function wasendkabid($nowakabid, $kodelap, $ruasjalan, $kabupaten, $distrik, $imageurl)
+    {
+        $setting = $this->M_setting->list_setting();
+        $userkey = $setting->userkey;
+        $passkey = $setting->passkey;
+        $telepon = $nowakabid;
+        $image_link =  $imageurl;
+        $caption  = 'Yth. Kabid. Sumber Daya Air ' . PHP_EOL . ' ' . PHP_EOL . 'Anda mendapatkan 1 laporan tentang Ruas Jalan *' . $ruasjalan . '* di Distrik *' . strtoupper($distrik) . ', ' . $kabupaten . '*.' . PHP_EOL . 'Silahkan masuk ke dashboard sisdapabar.com untuk melihat detail laporan.' . PHP_EOL . 'Kode: *' . $kodelap . '* ' . PHP_EOL . ' ' . PHP_EOL . 'Terima Kasih. | sisdapabar.com' . PHP_EOL . ' ' . PHP_EOL . '*-Don\'t Reply!-*';
+        // $caption  = 'tes wa kabid dengan gambar';
+        $url = 'https://console.zenziva.net/wareguler/api/sendWAFile/';
+
+        $curlHandle = curl_init();
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curlHandle, CURLOPT_POST, 1);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+            'userkey' => $userkey,
+            'passkey' => $passkey,
+            'to' => $telepon,
+            'link' => $image_link,
+            'caption' => $caption
+        ));
+        $results = json_decode(curl_exec($curlHandle), true);
+        curl_close($curlHandle);
     }
 
     function add_ajax_kec($id)
@@ -175,6 +270,8 @@ class Lapor extends CI_Controller
         }
     }
 
+
+
     // INI JUGA CUMA ALAT BANTU
     // public function insertdummy($x)
     // {
@@ -214,4 +311,5 @@ class Lapor extends CI_Controller
     //     }
 
     // }
+
 }
