@@ -13,6 +13,7 @@
       width: 100%;
       max-width: 100%;
       margin: 0;
+      min-width: 100%;
     }
 
     section#beritalatest .col-md-4 img {
