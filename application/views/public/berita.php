@@ -55,6 +55,12 @@
         section#halberita .container {
             margin-top: 7rem;
         }
+
+        @media (max-width: 767px) {
+            .single-blog-post .post-meta {
+                padding: 0px 5px;
+            }
+        }
     </style>
 
     <!-- Our BLog Section -->
