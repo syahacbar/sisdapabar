@@ -9,9 +9,9 @@
     margin: 0;
   }
 
-  form#formulirLaporan .col-md-12 textarea {
+  /* form#formulirLaporan .col-md-12 textarea {
     height: auto !important;
-  }
+  } */
 
   #contactForm .form-group label.control-label,
   .form-group.label-floating select {
@@ -163,6 +163,11 @@
     background-position: center center !important;
     background-size: 15% !important;
     z-index: 10000;
+  }
+
+  form#formulirLaporan .col-md-12 textarea {
+    height: auto !important;
+    padding: 5px;
   }
 </style>
 <?php echo $map['js']; ?>

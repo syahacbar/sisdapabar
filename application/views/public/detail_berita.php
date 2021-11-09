@@ -48,22 +48,25 @@
             padding: 10px;
             font-size: 18px !important;
         }
+
+        @media (max-width: 767px) {
+            .single-blog-post {
+                margin-top: 0;
+            }
+
+            .col-md-12.col-lg-12.col-xl-12.wow.animated.fadeInUp {
+                padding: 0;
+            }
+
+            .single-blog-post .post-meta {
+                padding: 10px 10px;
+            }
+
+            section.Material-blog-section.section-padding.mt-5 .container {
+                margin-top: 10px !important;
+            }
+        }
     </style>
-    <!-- Page Titile Area -->
-    <!-- <section class="page-title-section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-center">
-                        <div class="title-middle">
-                            <h1 class="page-title"></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Page Titile Area End -->
 
     <!-- Our BLog Section -->
     <section class="Material-blog-section section-padding mt-5">
@@ -81,14 +84,17 @@
                                     $CI->load->model('M_berita');
                                     $gb = $CI->M_berita->get_image($detail->id);
                                     ?>
-                                    <img src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
-
+                                    <?php if ($gb) { ?>
+                                        <img src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                                    <?php } ?>
                                 </div>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
                                     <!-- Title -->
                                     <h2 class="subtitle"><?php echo $detail->judul; ?></h2>
-                                    <p align="justify"><?php echo $detail->isi; ?></p>
+                                    <p align-item="justify"><?php echo $detail->isi; ?></p>
                                 </div>
                             </article>
                         </div>

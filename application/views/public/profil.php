@@ -51,6 +51,37 @@
     object-fit: contain;
     height: auto !important;
   }
+
+  @media (max-width: 767px) {
+    .Material-tab ul.nav.nav-tabs .nav-item .nav-link {
+      font-size: 13px;
+      padding: 14px 5px;
+      padding: 10px 15px !important;
+    }
+
+    .Material-tab .tab-content {
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 26%);
+    }
+
+    .Material-tab .tab-content ul {
+      padding-left: 15px;
+    }
+
+    .carousel-inner {
+      margin-top: 0;
+    }
+
+    .single-blog-post .post-meta {
+      padding: 10px 7px;
+    }
+
+    .single-blog-post {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 </style>
 
 <!-- Welcome Section Start -->

@@ -89,6 +89,7 @@ class Berita extends CI_Controller
         // $this->M_berita->add($params);
         $this->M_berita->add_berita($params);
         echo json_encode(array('status' => TRUE));
+        redirect('auth/login', 'refresh');
     }
 
     public function uploadgbrberita()

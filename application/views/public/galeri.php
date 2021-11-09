@@ -66,6 +66,50 @@
   .col-md-6.col-sm-6 {
     width: 50% !important;
   }
+
+  @media (max-width: 767px) {
+    .section-title::before {
+      display: none;
+    }
+
+    .col-md-6.col-sm-4 {
+      width: 30% !important;
+      max-width: 30% !important;
+    }
+
+    .section-title {
+      font-size: 20px;
+      position: initial;
+      margin-bottom: 0;
+    }
+
+    .column.irigasi.col-lg-4.col-md-4.col-sm-6.col-xs-12.show {
+      width: 50%;
+    }
+
+    .column.sungai.show {
+      width: 50%;
+    }
+
+    .column.pantai.show {
+      width: 50%;
+    }
+
+    .subtitle {
+      font-size: 12px !important;
+      padding-right: 15px;
+      line-height: 1.5;
+    }
+
+    figcaption.hover-content {
+      padding: 0;
+    }
+
+    a.btn.btn-round.btn-fab.btn-xs {
+      display: none;
+    }
+
+  }
 </style>
 </head>
 
@@ -75,10 +119,10 @@
   <section class="Material-blog-section section-padding mt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-6" data-wow-delay=".2s">
+        <div class="col-md-6 col-sm-4" data-wow-delay=".2s">
           <h1 class="section-title">Galeri</h1>
         </div>
-        <div class="col-md-6 col-sm-6" data-wow-delay=".2s">
+        <div class="col-md-6 col-sm-8" data-wow-delay=".2s">
           <div id="filterGaleri">
             <button class="btn active" onclick="filterSelection('semua')"> Semua</button>
             <button class="btn" onclick="filterSelection('irigasi')"> Irigasi</button>
