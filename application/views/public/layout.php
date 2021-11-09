@@ -9,48 +9,48 @@
   <title><?php echo $title; ?> | SISDA-PABAR</title>
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-57x57.png'); ?>">
-  <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-60x60.png'); ?>">
-  <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-72x72.png'); ?>">
-  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-76x76.png'); ?>">
-  <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-114x114.png'); ?>">
-  <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-120x120.png'); ?>">
-  <link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-144x144.png'); ?>">
-  <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-152x152.png'); ?>">
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-180x180.png'); ?>">
-  <link rel="icon" type="image/png" sizes="192x192" href="<?php echo base_url('assets/backend/assets/favicon/android-icon-192x192.png'); ?>">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url('assets/backend/assets/favicon/favicon-32x32.png'); ?>">
-  <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url('assets/backend/assets/favicon/favicon-96x96.png'); ?>">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/backend/assets/favicon/favicon-16x16.png'); ?>">
-  <link rel="manifest" href="<?php echo base_url('assets/backend/assets/favicon/manifest.json'); ?>">
+  <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>assets/backend/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="<?php echo base_url(); ?>assets/backend/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/backend/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo base_url(); ?>assets/backend/assets/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="<?php echo base_url('assets/backend/assets/favicon/ms-icon-144x144.png'); ?>">
+  <meta name="msapplication-TileImage" content="<?php echo base_url(); ?>assets/backend/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/bootstrap.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/bootstrap.min.css">
   <!-- Meterial Icon CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/materialdesignicons.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/materialdesignicons.min.css">
   <!-- Material CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/material.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/material.min.css">
   <!-- Ripples CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/ripples.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/ripples.min.css">
   <!-- Owl Carousel CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/owl.carousel.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/owl.carousel.css">
   <!-- Magnific Popup -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/magnific-popup.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/magnific-popup.css">
   <!-- Slicknav CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/slicknav.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/slicknav.css">
   <!-- Animate CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/animate.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/animate.css">
   <!-- Style CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/style.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/style.css">
   <!-- Responsive CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/frontend/assets/css/responsive.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/responsive.css">
 
 
   <!-- Color CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/frontend/assets/css/colors/indigo.css'); ?>" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/frontend/assets/css/colors/indigo.css" media="screen" />
 
 
   <!-- Bootstrap icons-->
@@ -64,7 +64,7 @@
     #beritalatest .col-md-6.col-lg-6.col-xl-6 {
       width: 48%;
       max-width: 48%;
-      margin: 1% !important;
+      margin: 1% !IMPORTANT;
     }
 
     .small-text {
