@@ -126,7 +126,7 @@
                     isiberita: isiberita,
                     slugberita: slugberita,
                     kategoriberita: kategoriberita,
-                    idberita: idberita,
+                    idberita: idberita
                 },
 
                 error: function() {
@@ -160,7 +160,7 @@
 
         unggah_gbrberita.on("sending", function(a, b, c) {
             a.token = Math.random();
-            // c.append("token_foto", a.token); //Menmpersiapkan token untuk masing masing foto
+            c.append("token_foto", a.token); //Menmpersiapkan token untuk masing masing foto
             c.append("idberita", $('#idberita').val()); //ambil dari idberita yang tipe hidden di atas, sebelum button Simpan
         });
 

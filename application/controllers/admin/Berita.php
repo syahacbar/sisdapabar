@@ -86,10 +86,14 @@ class Berita extends CI_Controller
             'id' => $this->input->post('idberita'),
         );
 
-        // $this->M_berita->add($params);
+
         $this->M_berita->add_berita($params);
         echo json_encode(array('status' => TRUE));
         redirect('auth/login', 'refresh');
+        if ($this->db->affected_rows() > 0) {
+            echo "<script>alert('Berita Berhasil Ditambahkan')</script>";
+        }
+        echo "<script>window.location='" . site_url('admin/berita') . "';</script>";
     }
 
     public function uploadgbrberita()

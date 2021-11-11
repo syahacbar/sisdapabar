@@ -50,7 +50,9 @@ class Auth extends CI_Controller
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			$this->data['_view'] = 'admin/akunpengguna';
+			$this->load->view('admin/layout', $this->data);
 		}
 	}
 
@@ -161,6 +163,8 @@ class Auth extends CI_Controller
 				'type' => 'hidden',
 				'value' => $user->id,
 			];
+			$this->data['_view'] = 'auth/change_password';
+
 
 			// render
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'change_password', $this->data);
@@ -495,7 +499,9 @@ class Auth extends CI_Controller
 				'value' => $this->form_validation->set_value('password_confirm'),
 			];
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			$this->data['_view'] = 'admin/akunpengguna';
+			$this->load->view('admin/layout', $this->data);
 		}
 	}
 	/**
@@ -504,7 +510,7 @@ class Auth extends CI_Controller
 	public function redirectUser()
 	{
 		if ($this->ion_auth->is_admin()) {
-			redirect('auth', 'refresh');
+			redirect('admin/akunpengguna', 'refresh');
 		}
 		redirect('/', 'refresh');
 	}
@@ -790,5 +796,16 @@ class Auth extends CI_Controller
 		if ($returnhtml) {
 			return $view_html;
 		}
+	}
+
+	public function hapus_user()
+	{
+		$id = $this->input->post('id');
+		$this->ion_auth_model->deleteuser($id);
+
+		if ($this->db->affected_rows() > 0) {
+			echo "<script>alert('Data Berhasil Dihapus')</script>";
+		}
+		echo "<script>window.location='" . site_url('admin/akunpengguna') . "';</script>";
 	}
 }

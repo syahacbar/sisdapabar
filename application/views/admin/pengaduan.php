@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" /> -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <!-- CSS Bootstrap 3 -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' />
@@ -100,49 +100,50 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <!-- <h5 class="card-title"></h5> -->
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Infrastruktur</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihinfrastruktur" name="pilihinfrastruktur" aria-controls="pilihinfrastruktur" class="custom-select custom-select-sm form-control form-control-sm form-select">
-                                        <option value="0">- Pilih Semua Infrastruktur - </option>
-                                        <option value="Jalan">Jalan</option>
-                                        <option value="Drainase">Drainase</option>
-                                        <option value="Jembatan">Jembatan</option>
+                                        <option value="">- Pilih Infrastruktur - </option>
+                                        <option value="Irigasi">Irigasi</option>
+                                        <option value="Sungai">Sungai</option>
+                                        <option value="Pantai">Pantai</option>
                                     </select>
                                 </div>
-                            </div>
-
+                            </div> -->
+                            <!-- 
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Kab/Kota</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihlokasi_kabkota" name="pilihlokasi_kabkota" aria-controls="pilihlokasi_kabkota" class="custom-select custom-select-sm form-control form-control-sm form-select">
                                         <option value="0"><i class="bi bi-chevron-down"></i>- Pilih Semua Kab./Kota - </option>
                                         <?php
-                                        foreach ($kabupaten as $kab) {
-                                            echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
-                                        } ?>
+                                        //foreach ($kabupaten as $kab) {
+                                        //echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
+                                        //} 
+                                        ?>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Status</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihstatus" name="pilihstatus" aria-controls="pilihstatus" class="custom-select custom-select-sm form-control form-control-sm form-select">
-                                        <option value="0"><i class="bi bi-chevron-down"></i>- Pilih Semua Status - </option>
+                                        <option value=""><i class="bi bi-chevron-down"></i>- Pilih Semua Status - </option>
                                         <option value="Diterima">Diterima</option>
                                         <option value="Ditolak">Ditolak</option>
                                         <option value="Menunggu">Menunggu</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Cari Laporan</label>
                                 <div class="panel-heading mt-2">
-                                    <input class="form-control border-1 border-success" type="text" id="kolomcari" placeholder="Ketik kata kunci di sini">
+                                    <input class="form-control border-1 border-secondary" type="text" id="kolomcari" placeholder="Ketik kata kunci di sini">
                                 </div>
                             </div>
                         </div>
@@ -216,7 +217,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="detailLapLabel"><i class="bi bi-file-earmark-fill"></i>Kode Laporan
+                <h3 class="modal-title" id="detailLapLabel"><i class="bi bi-file-earmark-fill"></i>Detail Laporan
                     <span id="kodelaporan"></span>
                 </h3>
             </div>
@@ -394,11 +395,8 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script> -->
 
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -502,4 +500,20 @@
 
         })
     })
+</script>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#tabelLaporan').DataTable();
+
+        $('#pilihinfrastruktur').on('change', function() {
+            table.columns(7).search(this.value).draw();
+        });
+        $('#pilihlokasi_kabkota').on('change', function() {
+            table.columns(5).search(this.value).draw();
+        });
+        $('#pilihstatus').on('change', function() {
+            table.columns(2).search(this.value).draw();
+        });
+    });
 </script>

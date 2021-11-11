@@ -49,6 +49,60 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 
+    <style>
+        input {
+            width: 100%;
+            padding: 2px 10px;
+            border: 1px solid #0d6efd;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.25;
+            color: #55595c;
+            background-color: #fff;
+            background-image: none;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 0.25rem;
+        }
+
+        .col-sm-6 {
+            width: 100% !important;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        .uneditable-input:focus {
+            border-color: #ced4da;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+            outline: 0 none;
+        }
+    </style>
 
 </head>
 
@@ -65,33 +119,30 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <!-- <div class="search-bar">
+        <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
                 <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div> -->
-        <!-- End Search Bar -->
+        </div><!-- End Search Bar -->
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <!-- <li class="nav-item d-block d-lg-none">
+                <li class="nav-item d-block d-lg-none">
                     <a class="nav-link nav-icon search-bar-toggle " href="#">
                         <i class="bi bi-search"></i>
                     </a>
-                </li> -->
-                <!-- End Search Icon-->
+                </li><!-- End Search Icon-->
 
-                <!-- <li class="nav-item dropdown"> -->
+                <li class="nav-item dropdown">
 
-                <!-- <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
                         <span class="badge bg-primary badge-number">4</span>
-                    </a> -->
-                <!-- End Notification Icon -->
+                    </a><!-- End Notification Icon -->
 
-                <!-- <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
                             4 Pengaduan Infrastruktur
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Lihat Semua</span></a>
@@ -155,31 +206,25 @@
                             <a href="#">Show all notifications</a>
                         </li>
 
-                    </ul> -->
-                <!-- End Notification Dropdown Items -->
+                    </ul><!-- End Notification Dropdown Items -->
 
-                <!-- </li> -->
-                <!-- End Notification Nav -->
+                </li><!-- End Notification Nav -->
 
 
 
                 <li class="nav-item dropdown pe-3">
                     <?php $user = $this->ion_auth->user()->row(); ?>
-                    <!-- 
+
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php // echo base_url('assets/backend/assets/img/profile-img.jpg'); 
-                                    ?>" alt="Profile" class="rounded-circle">
+                        <img src="<?php echo base_url('assets/backend/assets/img/profile-img.jpg'); ?>" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php //echo $user->first_name;
                                                                                 ?></span>
-                    </a> -->
-                    <!-- End Profile Iamge Icon -->
+                    </a><!-- End Profile Iamge Icon -->
 
-                    <!-- <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php // echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name . ' ' . $user->last_name; 
-                                ?></h6>
-                            <span><?php // echo $this->ion_auth->get_users_groups()->row()->name; 
-                                    ?></span>
+                            <h6><?php echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name . ' ' . $user->last_name; ?></h6>
+                            <span><?php echo $this->ion_auth->get_users_groups()->row()->name; ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -214,22 +259,8 @@
                                 <span>Keluar</span>
                             </a>
                         </li>
-                    </ul> -->
 
-                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/change_password'); ?>">Change Password</a></li>
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/login_history'); ?>">Login History</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- End Profile Dropdown Items -->
+                    </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
             </ul>
@@ -300,12 +331,129 @@
     </aside><!-- End Sidebar-->
 
 
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Data Pengaduan</h1>
+        </div>
+        <!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
 
 
-    <?php
-    if (isset($_view) && $_view)
-        $this->load->view($_view);
-    ?>
+
+                    <!-- Filter dan Picker -->
+                    <div class="row mb-4">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    <?php echo lang('edit_user_subheading'); ?>
+                                </div>
+                                <div class="card-body">
+                                    <div id="infoMessage"><?php echo $message; ?></div>
+                                    <?php echo form_open(uri_string()); ?>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="control-label">Nama Depan</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($first_name); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="control-label">Nama belakang</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($last_name); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+
+                                                <label for="country" class="control-label">Nama Instansi</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($company); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="control-label">Nomor WhatsApp</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($phone); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="control-label">Kata Sandi</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($password); ?>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="control-label">Konfirmasi Kata Sandi</label>
+                                                <div class="col-sm-6">
+                                                    <?php echo form_input($password_confirm); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <?php if ($this->ion_auth->is_admin()) :
+                                            ?>
+                                                <?php foreach ($groups as $group) :
+                                                ?>
+                                                    <label class="checkbox">
+                                                        <label for="country" class="control-label"><?php echo lang('edit_user_groups_heading');
+                                                                                                    ?></label>
+                                                        <input class="form-check-input" type="checkbox" name="groups[]" value="<?php echo $group['id'];
+                                                                                                                                ?>" <?php echo (in_array($group, $currentGroups)) ? 'checked="checked"' : null;
+                                                                                                                                    ?>>
+                                                        <?php echo htmlspecialchars($group['description'], ENT_QUOTES, 'UTF-8');
+                                                        ?>
+                                                    </label>
+                                                <?php endforeach
+                                                ?>
+                                            <?php endif
+                                            ?>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <?php echo form_hidden('id', $user->id); ?>
+                                    <?php echo form_hidden($csrf); ?>
+
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <?php echo form_submit('submit', lang('edit_user_submit_btn'), array('class' => 'btn btn-sm btn-primary', 'Simpan')); ?>
+                                        </div>
+                                    </div>
+
+                                    <?php echo form_close(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 
 

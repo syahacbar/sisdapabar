@@ -2617,4 +2617,10 @@ class Ion_auth_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+	public function deleteuser($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('users');
+	}
 }
