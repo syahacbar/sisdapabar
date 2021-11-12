@@ -1,5 +1,11 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+<style>
+    textarea#isiberita {
+        width: 100%;
+        padding: 10px;
+    }
+</style>
 
 <main id="main" class="main">
     <div class="pagetitle">
@@ -10,8 +16,8 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-                <?php echo $this->session->flashdata('notif'); ?>
-                <?php echo form_open_multipart('berita/saveberita', array('id' => 'formInputberita')); ?>
+                <?php echo $this->session->flashdata('message'); ?>
+                <?php echo form_open_multipart('admin/berita/saveberita', array('id' => 'formInputberita')); ?>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                         <div class="row">
@@ -43,7 +49,10 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <label for="" class="">Ubah Isi Berita</label>
+                        <label for="isiberita">Ubah Isi Berita</label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <!-- disini bisa disi dngan value nanti klo dipake di form edit -->
                         <textarea class="tinymce-editor" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
                     </div>

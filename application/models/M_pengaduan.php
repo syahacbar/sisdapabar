@@ -81,6 +81,8 @@ class M_pengaduan extends CI_Model
         $query = $this->db->query("SELECT * FROM upload WHERE kodelaporan='$kodelaporan' AND kategori='$kategori'");
         return $query->row();
     }
+
+
     function add($params)
     {
         $this->db->insert('pengaduan', $params);

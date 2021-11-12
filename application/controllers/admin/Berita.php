@@ -10,14 +10,28 @@ class Berita extends CI_Controller
         $this->load->model(['M_berita']);
     }
 
+
     public function index()
     {
         $data['berita'] = $this->M_berita->get_all();
         $data['title'] = "BERITA";
         $data['list_kategori'] = $this->M_berita->get_kategori();
+        $data['id'] = $this->generateidberita();
 
         $data['_view'] = "admin/berita";
         $this->load->view('admin/layout', $data);
+    }
+
+    public function generateidberita()
+    {
+        $last_idbr = $this->M_berita->get_lastrow();
+        if ($last_idbr->num_rows > 0) {
+            $idberita = (int)$last_idbr->row()->idberita + 1;
+        } else {
+            $idberita = 1;
+        }
+        return $idberita = $idberita;
+        $idberita = $idberita;
     }
 
     public function kategori($cat)
@@ -65,6 +79,7 @@ class Berita extends CI_Controller
     {
         $data['_view'] = "admin/berita_add";
         $this->load->view('admin/layout', $data);
+        $data['idberita'] = $this->generateidberita();
     }
 
     public function edit($idberita)
@@ -72,6 +87,9 @@ class Berita extends CI_Controller
         $data['berita'] = $this->M_berita->get_by_id($idberita);
         $data['_view'] = "admin/berita_edit";
         $this->load->view('admin/layout', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Berita telah berhasil diubah. Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.</div>');
+        echo json_encode(array('status' => TRUE));
     }
 
     public function saveberita()
@@ -88,12 +106,19 @@ class Berita extends CI_Controller
 
 
         $this->M_berita->add_berita($params);
+        $this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+          Berita telah berhasil ditambahkan. Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.
+        </div>
+      </div>');
         echo json_encode(array('status' => TRUE));
-        redirect('auth/login', 'refresh');
-        if ($this->db->affected_rows() > 0) {
-            echo "<script>alert('Berita Berhasil Ditambahkan')</script>";
-        }
-        echo "<script>window.location='" . site_url('admin/berita') . "';</script>";
+        redirect('admin/berita_add', 'refresh');
+
+        // if ($this->db->affected_rows() > 0) {
+        //     echo "<script>alert('Berita Berhasil Ditambahkan')</script>";
+        // }
+        // echo "<script>window.location='" . site_url('admin/berita') . "';</script>";
     }
 
     public function uploadgbrberita()
@@ -105,8 +130,9 @@ class Berita extends CI_Controller
         if ($this->upload->do_upload('gambar_berita')) {
             $idberita = $this->input->post('idberita');
             $file_name = $this->upload->data('file_name');
+            $slider = $this->input->post('slider');
             $uploaded_on = date("Y-m-d H:i:s");
-            $this->db->insert('galeriberita', array('idberita' => $idberita, 'nama_file' => $file_name, 'uploaded_on' => $uploaded_on));
+            $this->db->insert('galeriberita', array('idberita' => $idberita, 'nama_file' => $file_name, 'slider' => $slider, 'uploaded_on' => $uploaded_on));
         }
     }
 }

@@ -8,5 +8,4 @@ class M_lapor extends CI_Model
         $query = $this->db->get('pengaduan');
         return $query->result();
     }
-
 }

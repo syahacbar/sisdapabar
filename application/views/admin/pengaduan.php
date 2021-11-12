@@ -102,7 +102,7 @@
                     <div class="card-body">
                         <!-- <h5 class="card-title"></h5> -->
                         <div class="row">
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Infrastruktur</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihinfrastruktur" name="pilihinfrastruktur" aria-controls="pilihinfrastruktur" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -112,23 +112,23 @@
                                         <option value="Pantai">Pantai</option>
                                     </select>
                                 </div>
-                            </div> -->
-                            <!-- 
+                            </div>
+
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Kab/Kota</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihlokasi_kabkota" name="pilihlokasi_kabkota" aria-controls="pilihlokasi_kabkota" class="custom-select custom-select-sm form-control form-control-sm form-select">
                                         <option value="0"><i class="bi bi-chevron-down"></i>- Pilih Semua Kab./Kota - </option>
                                         <?php
-                                        //foreach ($kabupaten as $kab) {
-                                        //echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
-                                        //} 
+                                        foreach ($kabupaten as $kab) {
+                                            echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
+                                        }
                                         ?>
                                     </select>
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Status</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihstatus" name="pilihstatus" aria-controls="pilihstatus" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -138,9 +138,9 @@
                                         <option value="Menunggu">Menunggu</option>
                                     </select>
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Cari Laporan</label>
                                 <div class="panel-heading mt-2">
                                     <input class="form-control border-1 border-secondary" type="text" id="kolomcari" placeholder="Ketik kata kunci di sini">
@@ -168,14 +168,14 @@
                                     $CI = &get_instance();
                                     $CI->load->model('M_wilayah');
                                     $CI->load->model('M_pengaduan');
-                                    // $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan);
+                                    //   $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan);
                                     $kab = $CI->M_wilayah->get_by_id($p->lokasi_kabkota);
                                     $kec = $CI->M_wilayah->get_by_id($p->lokasi_distrik);
-                                    $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
+                                    $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'ktp');
                                     ?>
                                     <tr>
                                         <td width="130px">
-                                            <a id="DetailLap" class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLap" data-kodelaporan="<?php echo $p->kodelaporan; ?>" data-nik="<?php echo $p->nik; ?>" data-namapelapor="<?php echo $p->nama_pelapor; ?>" data-alamatpelapor="<?php echo $p->alamat_pelapor; ?>" data-email="<?php echo $p->email; ?>" data-nohp="<?php echo $p->no_hp; ?>" data-tgllaporan="<?php echo $p->tgl_laporan; ?>" data-infrastruktur="<?php echo $p->infrastruktur; ?>" data-koordinatlokasi="<?php echo $p->latitude, $p->longitude; ?>" data-namaruasjalan="<?php echo $p->nama_ruasjalan; ?>" data-namakabkota="<?php echo ucwords(strtolower($kab->nama)); ?>" data-namadistrik="<?php echo $kec->nama; ?>" data-isilaporan="<?php echo $p->isi_laporan; ?>">
+                                            <a id="DetailLap" class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLap" data-kodelaporan="<?php echo $p->kodelaporan; ?>" data-nik="<?php echo $p->nik; ?>" data-namapelapor="<?php echo $p->nama_pelapor; ?>" data-alamatpelapor="<?php echo $p->alamat_pelapor; ?>" data-email="<?php echo $p->email; ?>" data-nohp="<?php echo $p->no_hp; ?>" data-tgllaporan="<?php echo $p->tgl_laporan; ?>" data-infrastruktur="<?php echo $p->infrastruktur; ?>" data-koordinatlokasi="<?php echo $p->latitude, $p->longitude; ?>" data-namaruasjalan="<?php echo $p->nama_ruasjalan; ?>" data-namakabkota="<?php echo ucwords(strtolower($kab->nama)); ?>" data-namadistrik="<?php echo $kec->nama; ?>" data-isilaporan="<?php echo $p->isi_laporan; ?>" data-ktp="">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                             <?php if ($p->status == 'Diterima') { ?>
@@ -275,11 +275,7 @@
                             <div id="foto-ktp" class="col-sm-5 m-0">
                                 <div class="card">
                                     <div class="card-body">
-                                        <?php if ($gb) { ?>
-                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/') . $gb->nama_file; ?>" alt="">
-                                        <?php } else { ?>
-                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/noimageavail.jpg'); ?>" alt="">
-                                        <?php } ?>
+                                        <img width="100" height="150" src="<?php echo base_url() ?>upload/ktp/konser_11.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -335,6 +331,20 @@
                             <div class="gbrDok" class="col-sm-5">
                                 <div class="card">
                                     <div class="card-body">
+                                        <!-- <div class="row">
+                                            <div class="col-md-4">
+                                                <?php // if ($gb) { 
+                                                ?>
+                                                    <img width="100" height="150" src="<?php // echo base_url('upload/dokumentasi/') . $gb->nama_file; 
+                                                                                        ?>" alt="">
+                                                <?php // } else { 
+                                                ?>
+                                                    <img width="100" height="150" src="<?php // echo base_url('upload/dokumentasi/noimageavail.jpg'); 
+                                                                                        ?>" alt="">
+                                                <?php // } 
+                                                ?>
+                                            </div>
+                                        </div> -->
                                         <div id="dokIndikator" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
                                                 <li data-target="#dokIndikator" data-slide-to="0" class="active"></li>
@@ -364,15 +374,16 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#dokIndikator" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#dokIndikator" role="button" data-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Next</span>
                                             </a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -481,7 +492,7 @@
             var namakabkota = $(this).data('namakabkota');
             var namadistrik = $(this).data('namadistrik');
             var isilaporan = $(this).data('isilaporan');
-            // var gambardoumentasi = $(this).data('gambardoumentasi');
+            // var ktp = $(this).data('ktp');
 
             $('#kodelaporan').text(kodelaporan);
             $('#nik').text(nik);
@@ -496,7 +507,7 @@
             $('#nama_kabkota').text(namakabkota);
             $('#nama_distrik').text(namadistrik);
             $('#isilaporan').text(isilaporan);
-            // $('#gambardoumentasi').attr(gambardoumentasi);
+            // $('#ktp').attr(ktp);
 
         })
     })

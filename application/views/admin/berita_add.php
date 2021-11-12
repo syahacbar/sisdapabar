@@ -10,8 +10,8 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-                <?php echo $this->session->flashdata('notif'); ?>
-                <?php echo form_open_multipart('berita/saveberita', array('id' => 'formInputberita')); ?>
+                <?php echo $this->session->flashdata('message'); ?>
+                <?php echo form_open_multipart('admin/berita/saveberita', array('id' => 'formInputberita')); ?>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                         <div class="row">
@@ -32,6 +32,29 @@
                             </div>
                         </div>
 
+                        <div class="col-sm-12 mb-3">
+                            <label for="" class="">Tampilkan gambar berita sebagai slider di halaman beranda?</label>
+                            <div class="row">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="slider" id="tampil_slider" checked>
+                                        <label class="form-check-label" for="tampil_slider">
+                                            Ya
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="slider" id="no_slider">
+                                        <label class="form-check-label" for="no_slider">
+                                            Tidak
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
@@ -42,6 +65,7 @@
                         </div>
                     </div>
 
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <label for="" class="">Isi Berita</label>
                         <!-- disini bisa disi dngan value nanti klo dipake di form edit -->
@@ -50,9 +74,8 @@
 
                     <!-- diparsing di bagian script -->
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="hidden" name="idberita" id="idberita">
+                        <input type="hidden" name="idberita" id="idberita" value="<?php echo $idberita; ?>">
                     </div>
-
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
                         <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
@@ -116,6 +139,7 @@
             var judulberita = $("input[name='judulberita']").val();
             var slugberita = $("input[name='slugberita']").val();
             var kategoriberita = $("select[name='kategoriberita']").val();
+            var slider = $("input[name='slider']").val();
             var idberita = $("input[name='idberita']").val();
 
             $.ajax({
@@ -126,6 +150,7 @@
                     isiberita: isiberita,
                     slugberita: slugberita,
                     kategoriberita: kategoriberita,
+                    slider: slider,
                     idberita: idberita
                 },
 
@@ -162,6 +187,7 @@
             a.token = Math.random();
             c.append("token_foto", a.token); //Menmpersiapkan token untuk masing masing foto
             c.append("idberita", $('#idberita').val()); //ambil dari idberita yang tipe hidden di atas, sebelum button Simpan
+            c.append("slider", $('slider').val()); //ambil dari idberita yang tipe hidden di atas, sebelum button Simpan
         });
 
 
