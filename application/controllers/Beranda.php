@@ -6,9 +6,6 @@ class Beranda extends CI_Controller
     {
         parent::__construct();
         $this->load->model(['M_berita', 'M_pengaduan']);
-        if (!$this->session->userdata('is_logged_in')) {
-            redirect('auth/login');
-        }
     }
 
     public function index()

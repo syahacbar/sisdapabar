@@ -8,6 +8,9 @@ class Berita extends CI_Controller
         parent::__construct();
         $this->load->library(['ion_auth', 'form_validation']);
         $this->load->model(['M_berita']);
+        if (!$this->session->userdata('is_logged_in')) {
+            redirect('auth/login');
+        }
     }
 
 
