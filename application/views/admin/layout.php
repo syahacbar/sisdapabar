@@ -43,6 +43,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/backend/assets/css/style.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/backend/assets/css/csstambahan/layout.css'); ?>" rel="stylesheet">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -165,20 +166,17 @@
 
                 <li class="nav-item dropdown pe-3">
                     <?php $user = $this->ion_auth->user()->row(); ?>
-                    <!-- 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php // echo base_url('assets/backend/assets/img/profile-img.jpg'); 
-                                    ?>" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php //echo $user->first_name;
-                                                                                ?></span>
-                    </a> -->
+                        <img src="<?php echo base_url('assets/backend/assets/img/profile-img.jpg'); ?>" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $user->first_name; ?></span>
+                    </a>
                     <!-- End Profile Iamge Icon -->
 
-                    <!-- <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php // echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name . ' ' . $user->last_name; 
+                            <h6><?php echo ($this->ion_auth->get_users_groups()->row()->name == 'admin') ? 'Administrator' : $user->first_name . ' ' . $user->last_name;
                                 ?></h6>
-                            <span><?php // echo $this->ion_auth->get_users_groups()->row()->name; 
+                            <span><?php echo $this->ion_auth->get_users_groups()->row()->name;
                                     ?></span>
                         </li>
                         <li>
@@ -188,7 +186,7 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-gear"></i>
                                 <span>Pengaturan Akun</span>
@@ -196,10 +194,10 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
+                        </li> -->
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                            <a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#adminBantuan">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Panduan Admin</span>
                             </a>
@@ -214,22 +212,7 @@
                                 <span>Keluar</span>
                             </a>
                         </li>
-                    </ul> -->
-
-                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/change_password'); ?>">Change Password</a></li>
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/login_history'); ?>">Login History</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
-                            </ul>
-                        </li>
                     </ul>
-                    <!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
             </ul>
@@ -307,6 +290,102 @@
         $this->load->view($_view);
     ?>
 
+    <div class="modal fade" id="adminBantuan" tabindex="-1" aria-labelledby="adminBantuanLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminBantuanLabel">Panduan Singkat Panel Admin SISDA-PABAR</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="datapengaduan-tab" data-bs-toggle="tab" data-bs-target="#datapengaduan" type="button" role="tab" aria-controls="datapengaduan" aria-selected="false">Data Pengaduan</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="unduhlaporan-tab" data-bs-toggle="tab" data-bs-target="#unduhlaporan" type="button" role="tab" aria-controls="unduhlaporan" aria-selected="false">Unduh Laporan</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="akunpengguna-tab" data-bs-toggle="tab" data-bs-target="#akunpengguna" type="button" role="tab" aria-controls="akunpengguna" aria-selected="false">Akun Pengguna</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="berita-tab" data-bs-toggle="tab" data-bs-target="#berita" type="button" role="tab" aria-controls="berita" aria-selected="false">Berita</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade mt-3 show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                Pada bagian ini, Anda akan menemukan data laporan sesuai dengan jenis infrastruktur, diantaranya:
+                                <ul>
+                                    <li>Total laporan masuk sesuai dengan jenis infrastruktur</li>
+                                    <li>Grafik bulanan laporan pengaduan sesuai dengan infrastrukur</li>
+                                    <li>Diagram laporan pengaduan sesuai dengan kabupaten/kota</li>
+                                    <li>Laporan pengaduan yang masuk (sampai saat ini), dan</li>
+                                    <li>Lima berita terakhir yang telah diunggah melalui admin panel.</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade mt-3" id="datapengaduan" role="tabpanel" aria-labelledby="datapengaduan-tab">
+                                Halaman data pengaduan berisi laporan masuk. Pada bagian ini Anda dapat:
+                                <ul>
+                                    <li>
+                                        Melakukan filter terhadap laporan yang telah masuk, baik berdasarkan infrastruktur, kabupaten/kota, maupun berdasarkan status laporan.
+                                    </li>
+                                    <li>Mencari laporan secara spesifik dengan memanfaatkan fasilitas Cari Laporan;</li>
+                                    <li>Menyortir laporan berdasarkan aksi, status, tanggal laporan, kode laporan, kabupaten/kota, isi laporan, infrastrukur, dan lokasi;</li>
+                                    <li>Melihat detail laporan;</li>
+                                    <li>Menerima laporan masuk; dan</li>
+                                    <li>Menolak laporan masuk.</li>
+                                </ul>
+
+
+
+
+                            </div>
+                            <div class="tab-pane fade mt-3" id="unduhlaporan" role="tabpanel" aria-labelledby="unduhlaporan-tab">
+                                Jika ingin mencetak laporan atau mengunduhnya dalam bentuk file excel atau pdf, Anda dapat masuk ke halaman Unduh Laporan. Di halaman ini Anda dapat:
+                                <ul>
+                                    <li>Memilih laporan sesuai dengan jenis infrastruktur yang akan diunduh;</li>
+                                    <li>Memilih laporan berdasarkan kabupaten/kota yang akan diunduh;</li>
+                                    <li>Memilih rentang waktu laporan yang akan diunduh;</li>
+                                    <li>Memilih format laporan yang akan diunduh;</li>
+                                    <li>Memilih status laporan yang akan diunduh; dan</li>
+                                    <li>Memilih jenis laporan yang akan diunnduh apakah dengan gambar aatau tidak.</li>
+                                </ul>
+
+                            </div>
+                            <div class="tab-pane fade mt-3" id="akunpengguna" role="tabpanel" aria-labelledby="akunpengguna-tab">
+                                Pada halaman ini, seorang admin dapat:
+                                <ul>
+                                    <li>Membuat akun admin baru;</li>
+                                    <li>Mengaktifkan/menonaktifkan akun admin; dan</li>
+                                    <li>Menghapus akun admin.</li>
+                                </ul>
+
+                            </div>
+                            <div class="tab-pane fade mt-3" id="berita" role="tabpanel" aria-labelledby="berita-tab">
+                                Pada halaman ini, Admin dapat:
+                                <ul>
+                                    <li>Menambahkan berita baru;</li>
+                                    <li>Mengubah berita yang telah dipublikasi (edit);</li>
+                                    <li>Mnghapus berita yang telah dipublikasi; dan</li>
+                                    <li>Mengaktikfan/menonaktifkan slider. Bagian slider ini untuk menjadikan gambar yang diunggah ketika menunggah berita baru muncul di bagian slider halaman beranda sisdapabar.com.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
 
 
     <!-- ======= Footer ======= -->

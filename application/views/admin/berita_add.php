@@ -74,7 +74,7 @@
 
                     <!-- diparsing di bagian script -->
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="hidden" name="idberita" id="idberita" value="<?php echo $idberita; ?>">
+                        <input type="hidden" name="idberita" id="idberita" value="">
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">

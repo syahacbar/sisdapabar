@@ -59,8 +59,8 @@
                   </div>
 
                   <!-- <form class="row g-3 needs-validation" novalidate> -->
+                  <?php echo $this->session->flashdata('message'); ?></p>
                   <?php echo form_open("auth/login"); ?>
-
                   <div class="col-12">
                     <label for="identity" class="form-label">Email/Username</label>
                     <input type="text" name="identity" class="form-control" id="identity" required>

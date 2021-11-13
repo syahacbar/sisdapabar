@@ -59,6 +59,7 @@ class Auth extends CI_Controller
 	/**
 	 * Log the user in
 	 */
+
 	public function login()
 	{
 		$this->data['title'] = $this->lang->line('login_heading');
@@ -80,7 +81,8 @@ class Auth extends CI_Controller
 			} else {
 				// if the login was un-successful
 				// redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				// $this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username/Password salah</div>');
 				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		} else {
