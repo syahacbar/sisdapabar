@@ -61,7 +61,7 @@ class Lapor extends CI_Controller
             'no_hp' => $this->input->post('no_hp'),
             'email' => $this->input->post('email'),
             'isi_laporan' => $this->input->post('isi_laporan'),
-            'infrastruktur' => $this->input->post('infrastruktur'),
+            'infrastruktur' => $this->input->post('infrastruktur[]'),
             'nama_ruasjalan' => $this->input->post('nama_ruasjalan'),
             'lokasi_kabkota' => $this->input->post('lokasi_kabkota'),
             'lokasi_distrik' => $this->input->post('lokasi_distrik'),

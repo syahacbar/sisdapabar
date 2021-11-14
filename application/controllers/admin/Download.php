@@ -97,8 +97,7 @@ class Download extends CI_Controller
         $data['range'] = strtoupper($range);
         $data['status'] = strtoupper($fil_status);
         $data['filename'] = "DATA LAPORAN PENGADUAN " . $namainfrastruktur . " " . $namakabkota . " " . $range;
-
-        // $data['_view'] = 'admin/cetakexcel';
-        // $this->load->view('admin/cetakexcel', $data);
+        $data['_view'] = 'admin/cetakexcel';
+        $this->load->view('admin/cetakexcel', $data);
     }
 }
