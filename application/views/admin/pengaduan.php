@@ -102,7 +102,7 @@
                     <div class="card-body">
                         <!-- <h5 class="card-title"></h5> -->
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Infrastruktur</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihinfrastruktur" name="pilihinfrastruktur" aria-controls="pilihinfrastruktur" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -112,23 +112,23 @@
                                         <option value="Pantai">Pantai</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Kab/Kota</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihlokasi_kabkota" name="pilihlokasi_kabkota" aria-controls="pilihlokasi_kabkota" class="custom-select custom-select-sm form-control form-control-sm form-select">
                                         <option value="0"><i class="bi bi-chevron-down"></i>- Pilih Semua Kab./Kota - </option>
                                         <?php
-                                        foreach ($kabupaten as $kab) {
-                                            echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
-                                        }
+                                        //foreach ($kabupaten as $kab) {
+                                        //echo '<option value="' . $kab->kode . '">' . $kab->nama . '</option>';
+                                        //}
                                         ?>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Status</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihstatus" name="pilihstatus" aria-controls="pilihstatus" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -138,7 +138,7 @@
                                         <option value="Menunggu">Menunggu</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Cari Laporan</label>
