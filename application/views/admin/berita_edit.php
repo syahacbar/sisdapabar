@@ -54,7 +54,7 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <!-- disini bisa disi dngan value nanti klo dipake di form edit -->
-                        <textarea class="tinymce-editor" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
+                        <textarea class="tinymce-editor" height="300" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

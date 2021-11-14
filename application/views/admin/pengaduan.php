@@ -275,7 +275,11 @@
                             <div id="foto-ktp" class="col-sm-5 m-0">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img width="100" height="150" src="<?php echo base_url() ?>upload/ktp/konser_11.jpg">
+                                        <?php if ($gb) { ?>
+                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/') . $gb->nama_file; ?>">
+                                        <?php } else { ?>
+                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/default_ktp.jpg'); ?>">
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
