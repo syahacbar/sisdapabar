@@ -77,7 +77,7 @@ foreach ($pengaduan as $lap) {
     $html .= '
 <tr>
     <td align="center">' . $no++ . '</td>
-    <td>' . shortdate_indo(substr($lap->tgl_laporan,0,10)) . '</td>
+    <td>' . shortdate_indo(substr($lap->tgl_laporan, 0, 10)) . '</td>
     <td>' . $lap->infrastruktur . '</td>
     <td>' . $lap->isi_laporan . '</td>
     <td>' . $lap->nama_ruasjalan . '</td>

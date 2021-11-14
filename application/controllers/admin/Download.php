@@ -29,8 +29,8 @@ class Download extends CI_Controller
             $fil_tglakhir = $this->input->post('todate');
             $fil_formatcetak = $this->input->post('formatcetak');
             $fil_status = $this->input->post('statuslaporan');
-            $fil_dengangambar = $this->input->post('pilihangambar');
-            $range = date_indo($fil_tglawal) . " s.d. " . date_indo($fil_tglakhir);
+            // $fil_dengangambar = $this->input->post('pilihangambar');
+            $range = date($fil_tglawal) . " s.d. " . date($fil_tglakhir);
             $data['tanggal'] = $range;
 
 
@@ -97,6 +97,7 @@ class Download extends CI_Controller
         $data['range'] = strtoupper($range);
         $data['status'] = strtoupper($fil_status);
         $data['filename'] = "DATA LAPORAN PENGADUAN " . $namainfrastruktur . " " . $namakabkota . " " . $range;
+
         // $data['_view'] = 'admin/cetakexcel';
         // $this->load->view('admin/cetakexcel', $data);
     }

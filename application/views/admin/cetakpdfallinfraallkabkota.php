@@ -40,7 +40,7 @@ $html = '
     }
     
 </style>
-<div class="heading">DATA PELAPORAN<br>SEMUA INFRASTRUKTUR<br>SEMUA KAB/KOTA<br>'.$tanggal.'</div><br>
+<div class="heading">DATA PELAPORAN<br>SEMUA INFRASTRUKTUR<br>SEMUA KAB/KOTA<br>' . $tanggal . '</div><br>
 <table width="100%" border="1" cellpadding="5">
     <tr class="center">
         <th width="30">No.</th>
@@ -59,7 +59,7 @@ $html = '
 $no = 1;
 foreach ($pengaduan as $lap) {
     $noimage = base_url('assets/backend/assets/img/noimage.jpg');
-    
+
     if ($lap->dokumentasi1 != NULL) {
         $dokumentasi1 = base_url('upload/dokumentasi/') . $lap->dokumentasi1;
     } else {
@@ -78,7 +78,7 @@ foreach ($pengaduan as $lap) {
     $html .= '
 <tr>
     <td align="center">' . $no++ . '</td>
-    <td>' . shortdate_indo(substr($lap->tgl_laporan,0,10)) . '</td>
+    <td>' . shortdate_indo(substr($lap->tgl_laporan, 0, 10)) . '</td>
     <td>' . $lap->infrastruktur . '</td>
     <td>' . $lap->isi_laporan . '</td>
     <td>' . $lap->nama_ruasjalan . '</td>

@@ -7,9 +7,6 @@ class Akunpengguna extends CI_Controller
     {
         parent::__construct();
         $this->load->library(['ion_auth', 'form_validation']);
-        if (!$this->session->userdata('is_logged_in')) {
-            redirect('auth/login');
-        }
     }
 
     public function index()

@@ -1,6 +1,6 @@
 <?php
 $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-$pdf->SetTitle('DATA LAPORAN PENGADUAN INFRASTRUKTUR '.$infrastruktur.' SEMUA KAB/KOTA');
+$pdf->SetTitle('DATA LAPORAN PENGADUAN INFRASTRUKTUR ' . $infrastruktur . ' SEMUA KAB/KOTA');
 $pdf->SetHeaderMargin(20);
 $pdf->SetTopMargin(10);
 $pdf->setFooterMargin(15);
@@ -40,7 +40,7 @@ $html = '
     }
     
 </style>
-<div class="heading">DATA PELAPORAN<br>INFRASTRUKTUR '.$infrastruktur.'<br>SEMUA KAB/KOTA<br>'.$tanggal.'</div><br>
+<div class="heading">DATA PELAPORAN<br>INFRASTRUKTUR ' . $infrastruktur . '<br>SEMUA KAB/KOTA<br>' . $tanggal . '</div><br>
 <table width="100%" border="1" cellpadding="5">
     <tr class="center">
         <th width="30">No.</th>
@@ -77,10 +77,10 @@ foreach ($pengaduan as $lap) {
     $html .= '
 <tr>
     <td align="center">' . $no++ . '</td>
-    <td>' . shortdate_indo(substr($lap->tgl_laporan,0,10)) . '</td>
+    <td>' . shortdate_indo(substr($lap->tgl_laporan, 0, 10)) . '</td>
     <td>' . $lap->isi_laporan . '</td>
     <td>' . $lap->nama_ruasjalan . '</td>
-    <td>' . ucwords(strtolower($lap->nama_kabkota)). '</td>
+    <td>' . ucwords(strtolower($lap->nama_kabkota)) . '</td>
     <td>' . $lap->nama_distrik . '</td>
     <td>' . $lap->latitude . ', ' . $lap->longitude . '</td>
     <td>' . $lap->nama_pelapor . '<br>' . $lap->nik . '</td>
@@ -95,4 +95,4 @@ foreach ($pengaduan as $lap) {
 }
 $html .= '</table>';
 $pdf->writeHTML($html, true, false, true, false, '');
-$pdf->Output('DATA LAPORAN PENGADUAN INFRASTRUKTUR '.$infrastruktur.'SEMUA KAB/KOTA.pdf', 'I');
+$pdf->Output('DATA LAPORAN PENGADUAN INFRASTRUKTUR ' . $infrastruktur . 'SEMUA KAB/KOTA.pdf', 'I');

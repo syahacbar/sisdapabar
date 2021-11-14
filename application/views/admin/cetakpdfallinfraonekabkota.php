@@ -1,6 +1,6 @@
 <?php
 $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-$pdf->SetTitle('DATA LAPORAN PENGADUAN SEMUA INFRASTRUKTUR '.$kabkota);
+$pdf->SetTitle('DATA LAPORAN PENGADUAN SEMUA INFRASTRUKTUR ' . $kabkota);
 $pdf->SetHeaderMargin(20);
 $pdf->SetTopMargin(10);
 $pdf->setFooterMargin(15);
@@ -40,7 +40,7 @@ $html = '
     }
     
 </style>
-<div class="heading">DATA PELAPORAN<br>SEMUA INFRASTRUKTUR<br>'.$kabkota.'<br>'.$tanggal.'</div><br>
+<div class="heading">DATA PELAPORAN<br>SEMUA INFRASTRUKTUR<br>' . $kabkota . '<br>' . $tanggal . '</div><br>
 <table width="100%" border="1" cellpadding="5">
     <tr class="center">
         <th width="30">No.</th>
@@ -58,7 +58,7 @@ $html = '
 $no = 1;
 foreach ($pengaduan as $lap) {
     $noimage = base_url('assets/backend/assets/img/noimage.jpg');
-    
+
     if ($lap->dokumentasi1 != NULL) {
         $dokumentasi1 = base_url('upload/dokumentasi/') . $lap->dokumentasi1;
     } else {
@@ -77,7 +77,7 @@ foreach ($pengaduan as $lap) {
     $html .= '
 <tr>
     <td align="center">' . $no++ . '</td>
-    <td>' . shortdate_indo(substr($lap->tgl_laporan,0,10)) . '</td>
+    <td>' . shortdate_indo(substr($lap->tgl_laporan, 0, 10)) . '</td>
     <td>' . $lap->infrastruktur . '</td>
     <td>' . $lap->isi_laporan . '</td>
     <td>' . $lap->nama_ruasjalan . '</td>
@@ -95,4 +95,4 @@ foreach ($pengaduan as $lap) {
 }
 $html .= '</table>';
 $pdf->writeHTML($html, true, false, true, false, '');
-$pdf->Output('DATA LAPORAN PENGADUAN SEMUA INFRASTRUKTUR '.$kabkota.'.pdf', 'I');
+$pdf->Output('DATA LAPORAN PENGADUAN SEMUA INFRASTRUKTUR ' . $kabkota . '.pdf', 'I');

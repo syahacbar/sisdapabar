@@ -46,7 +46,7 @@
     foreach ($pengaduan as $lap) { ?>
       <tr>
         <td><?php echo $no++; ?></td>
-        <td><?php echo date_indo(substr($lap->tgl_laporan,0,10)); ?></td>
+        <td><?php echo date_indo(substr($lap->tgl_laporan, 0, 10)); ?></td>
         <td><?php echo $lap->kodelaporan; ?></td>
         <td><?php echo $lap->nama_pelapor; ?></td>
         <td><?php echo $lap->no_hp; ?></td>
@@ -60,7 +60,7 @@
         <td><?php echo $lap->nama_ruasjalan; ?></td>
         <td><?php echo $lap->nama_distrik; ?></td>
         <td><?php echo ucwords(strtolower($lap->nama_kabkota)); ?></td>
-        <td><?php echo $lap->latitude.", ".$lap->longitude; ?></td>
+        <td><?php echo $lap->latitude . ", " . $lap->longitude; ?></td>
       </tr>
     <?php } ?>
   </table>

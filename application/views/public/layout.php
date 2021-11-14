@@ -117,6 +117,10 @@
       width: 100% !important;
       background-color: #5166d8 !important;
     }
+
+    i.mdi.mdi-youtube-play:hover {
+      background-color: red;
+    }
   </style>
 </head>
 
@@ -230,23 +234,17 @@
       <div class="row">
         <!--First column-->
         <div class="col-md-6 col-lg-4 col-xl-4 footer-contact-widget">
-          <h3 class="footer-title">About</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates eos minus expedita ipsum soluta voluptatem sed architecto.</p>
+          <h3 class="footer-title">Tentang SISDA-PABAR</h3>
+          <p>Sistem Informasi Infrastruktur Sumber Daya Air Provinsi Papua Barat. Mengikutsertakan masyarakat dalam pembangunan infrastruktur sumber daya air (Sungai, Irigasi, dan Pantai).</p>
           <ul>
             <li>
-              <a href="#"><i class="mdi mdi-facebook"></i></a>
+              <a href="https://www.facebook.com/"><i class="mdi mdi-facebook"></i></a>
             </li>
             <li>
-              <a href="#"><i class="mdi mdi-twitter"></i></a>
+              <a href="https://twitter.com/"><i class="mdi mdi-twitter"></i></a>
             </li>
             <li>
-              <a href="#"><i class="mdi mdi-dribbble"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="mdi mdi-github-circle"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="mdi mdi-linkedin"></i></a>
+              <a href="https://www.youtube.com/"><i class="mdi mdi-youtube-play"></i></a>
             </li>
           </ul>
         </div>

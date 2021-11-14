@@ -13,7 +13,7 @@
                     Filter Data Laporan/Pengaduan Yang Akan Diunduh
                 </div>
                 <div class="card-body">
-                    <form target="_blank" action="<?php echo site_url('admin/download/cetakpdf/');?>" method="POST">
+                    <form target="_blank" action="<?php echo site_url('admin/download/cetakpdf/'); ?>" method="POST">
                         <div class="row mt-3">
                             <div class="col">
                                 <div class="row mt-3">
@@ -21,9 +21,9 @@
                                         <label for="country" class="control-label">Jenis Infrastruktur</label>
                                         <select id="pilihinfra" name="pilihinfra" aria-controls="pilihinfra" class="custom-select custom-select-sm form-control form-control-sm form-select">
                                             <option value="Semua">- Pilih Semua Infrastruktur - </option>
-                                            <option value="Jalan">Jalan</option>
-                                            <option value="Drainase">Drainase</option>
-                                            <option value="Jembatan">Jembatan</option>
+                                            <option value="Sungai">Sungai</option>
+                                            <option value="Irigasi">Irigasi</option>
+                                            <option value="Pantai">Pantai</option>
                                         </select>
                                     </div>
 
@@ -38,7 +38,7 @@
                                                 } ?>
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="row mt-3">
@@ -62,13 +62,13 @@
                                         <label>Ke Tanggal</label>
                                         <div class="form-group">
                                             <div class='input-group date' id='datetimepicker2'>
-                                                <input type="date" class="form-control" name="todate" id="datetimepick" placeholder="Pilih Tanggal Akhir" value="<?php echo date('Y-m-d');?>">
+                                                <input type="date" class="form-control" name="todate" id="datetimepick" placeholder="Pilih Tanggal Akhir" value="<?php echo date('Y-m-d'); ?>">
                                             </div>
                                         </div>
-                                    </div>             
-                                </div>  
+                                    </div>
+                                </div>
 
-                                <div class="row mt-3"> 
+                                <div class="row mt-3">
                                     <div class="col-lg-12">
                                         <label for="country" class="control-label">Pilih Format Laporan</label>
                                     </div>
@@ -86,7 +86,7 @@
                                             <label class="form-check-label">EXCEL</label>
                                         </div>
                                     </div>
-                                </div>  
+                                </div>
 
                                 <div class="row mt-3">
                                     <div class="col-sm-12">
