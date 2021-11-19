@@ -5,6 +5,26 @@
         width: 100%;
         padding: 10px;
     }
+
+/* loader */
+  #loader {
+    display: none;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 10% !important;
+    z-index: 10000;
+  }
+
+  textarea#isiberita {
+    height: 500px;
+  }
 </style>
 
 <main id="main" class="main">
@@ -54,11 +74,11 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <!-- disini bisa disi dngan value nanti klo dipake di form edit -->
-                        <textarea class="tinymce-editor" height="300" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
+                        <textarea class="tinymce-editor" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="hidden" name="idberita" id="idberita" value="">
+                        <input type="hidden" name="idberita" id="idberita" value="<?php echo date('YmdHi'); ?>">
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
@@ -69,6 +89,7 @@
 
 
                 </form>
+                <div id="loader"></div>
 
             </div>
         </div>
@@ -78,6 +99,7 @@
 <!-- JS Upload Berita Baru Halaman Admin Panel -->
 <script>
     Dropzone.autoDiscover = false;
+    var spinner = $('#loader');
     $(document).ready(function() {
 
 
@@ -119,10 +141,13 @@
 
         $('#formInputberita').submit(function(e) {
             e.preventDefault();
+            spinner.show();
+
             var isiberita = $("textarea[name='isiberita']").val();
             var judulberita = $("input[name='judulberita']").val();
             var slugberita = $("input[name='slugberita']").val();
             var kategoriberita = $("select[name='kategoriberita']").val();
+            var slider = $("input[name='slider']").val();
             var idberita = $("input[name='idberita']").val();
 
 
@@ -134,6 +159,7 @@
                     isiberita: isiberita,
                     slugberita: slugberita,
                     kategoriberita: kategoriberita,
+                    slider: slider,
                     idberita: idberita,
                 },
 
@@ -144,8 +170,11 @@
                     var objData = jQuery.parseJSON(data);
 
                     if (objData.status) {
-                        console.log('Simpan berhasil');
-                        location.reload();
+                        // console.log('Simpan berhasil');
+                        // location.reload();
+                          alert("Berita Berhasil Diubah");
+                          spinner.hide();
+                          location.reload();
                     } else {
                         console.log('Gagal simpan');
                     }
@@ -169,7 +198,9 @@
         unggah_gbrberita.on("sending", function(a, b, c) {
             a.token = Math.random();
             c.append("token_foto", a.token); //Menmpersiapkan token untuk masing masing foto
-            c.append("kodelaporan", $('#gambar_berita').val());
+            c.append("idberita", $('#idberita').val());
+            c.append("slider", $('slider').val()); //ambil dari idberita yang tipe hidden di atas, sebelum button Simpan
+
         });
 
 

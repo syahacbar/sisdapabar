@@ -61,6 +61,18 @@
                 padding: 0px 5px;
             }
         }
+
+        .subtitle {
+    color: #231757;
+}
+
+.btn-round {
+    background: #231757 !important;
+}
+
+.sidebar-widget-title {
+    background: #231757;
+}
     </style>
 
     <!-- Our BLog Section -->

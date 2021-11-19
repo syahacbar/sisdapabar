@@ -82,6 +82,15 @@
       margin-bottom: 10px;
     }
   }
+
+  .Material-tab ul.nav.nav-tabs li .active {
+    background-color: #231757 !important;
+    color: #fff;
+  }
+
+  .Material-tab li.nav-item a {
+    color: #231757;
+  }
 </style>
 
 <!-- Welcome Section Start -->

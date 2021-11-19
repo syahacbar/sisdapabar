@@ -97,7 +97,6 @@
         <div class="row">
             <div class="col-lg-12">
 
-
                 <div class="card">
                     <div class="card-body">
                         <!-- <h5 class="card-title"></h5> -->
@@ -171,11 +170,18 @@
                                     //   $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan);
                                     $kab = $CI->M_wilayah->get_by_id($p->lokasi_kabkota);
                                     $kec = $CI->M_wilayah->get_by_id($p->lokasi_distrik);
-                                    $gb = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'ktp');
+                                    $gbktp = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'ktp');
+                                    $gbdok1 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
+                                    $gbdok2 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi2');
+                                    $gbdok3 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi3');
                                     ?>
                                     <tr>
                                         <td width="130px">
-                                            <a id="DetailLap" class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLap" data-kodelaporan="<?php echo $p->kodelaporan; ?>" data-nik="<?php echo $p->nik; ?>" data-namapelapor="<?php echo $p->nama_pelapor; ?>" data-alamatpelapor="<?php echo $p->alamat_pelapor; ?>" data-email="<?php echo $p->email; ?>" data-nohp="<?php echo $p->no_hp; ?>" data-tgllaporan="<?php echo $p->tgl_laporan; ?>" data-infrastruktur="<?php echo $p->infrastruktur; ?>" data-koordinatlokasi="<?php echo $p->latitude, $p->longitude; ?>" data-namaruasjalan="<?php echo $p->nama_ruasjalan; ?>" data-namakabkota="<?php echo ucwords(strtolower($kab->nama)); ?>" data-namadistrik="<?php echo $kec->nama; ?>" data-isilaporan="<?php echo $p->isi_laporan; ?>" data-ktp="">
+                                            <a id="DetailLap" class="btn btn-info btn-sm mb-1" href="" title="Detail" data-toggle="modal" data-target="#detailLap" data-kodelaporan="<?php echo $p->kodelaporan; ?>" data-nik="<?php echo $p->nik; ?>" data-namapelapor="<?php echo $p->nama_pelapor; ?>" data-alamatpelapor="<?php echo $p->alamat_pelapor; ?>" data-email="<?php echo $p->email; ?>" data-nohp="<?php echo $p->no_hp; ?>" data-tgllaporan="<?php echo $p->tgl_laporan; ?>" data-infrastruktur="<?php echo $p->infrastruktur; ?>" data-koordinatlokasi="<?php echo $p->latitude, $p->longitude; ?>" data-namaruasjalan="<?php echo $p->nama_ruasjalan; ?>" data-namakabkota="<?php echo ucwords(strtolower($kab->nama)); ?>" data-namadistrik="<?php echo $kec->nama; ?>" data-isilaporan="<?php echo $p->isi_laporan; ?>"
+                                                data-gambarktp="<?php echo $gbktp->nama_file; ?>"
+                                                data-dokumentasi1="<?php echo $gbdok1->nama_file; ?>"
+                                                data-dokumentasi2="<?php echo $gbdok2->nama_file; ?>"
+                                                data-dokumentasi3="<?php echo $gbdok3->nama_file; ?>">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                             <?php if ($p->status == 'Diterima') { ?>
@@ -275,11 +281,7 @@
                             <div id="foto-ktp" class="col-sm-5 m-0">
                                 <div class="card">
                                     <div class="card-body">
-                                        <?php if ($gb) { ?>
-                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/') . $gb->nama_file; ?>">
-                                        <?php } else { ?>
-                                            <img width="100" height="150" src="<?php echo base_url('upload/ktp/default_ktp.jpg'); ?>">
-                                        <?php } ?>
+                                        <img id="gbktp"> 
                                     </div>
                                 </div>
                             </div>
@@ -306,10 +308,6 @@
                                                     <td>: </td>
                                                     <td><a href="<?php echo ('https://www.google.com/maps/place/') . $p->latitude, ',' . $p->longitude; ?>" target="_blank"><span id="koordinatlokasi"></span></a></td>
                                                 </tr>
-                                                <!-- <tr>
-                                                    <th>Longitude</th>
-                                                    <td><span id="longitude"></span></td>
-                                                </tr> -->
                                                 <tr>
                                                     <th>Nama Ruas Jalan</th>
                                                     <td>: </td>
@@ -335,20 +333,6 @@
                             <div class="gbrDok" class="col-sm-5">
                                 <div class="card">
                                     <div class="card-body">
-                                        <!-- <div class="row">
-                                            <div class="col-md-4">
-                                                <?php // if ($gb) { 
-                                                ?>
-                                                    <img width="100" height="150" src="<?php // echo base_url('upload/dokumentasi/') . $gb->nama_file; 
-                                                                                        ?>" alt="">
-                                                <?php // } else { 
-                                                ?>
-                                                    <img width="100" height="150" src="<?php // echo base_url('upload/dokumentasi/noimageavail.jpg'); 
-                                                                                        ?>" alt="">
-                                                <?php // } 
-                                                ?>
-                                            </div>
-                                        </div> -->
                                         <div id="dokIndikator" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
                                                 <li data-target="#dokIndikator" data-slide-to="0" class="active"></li>
@@ -357,25 +341,13 @@
                                             </ol>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
-                                                    <?php if ($gb) { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
-                                                    <?php } else { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
-                                                    <?php } ?>
+                                                    <img id="gbdok1">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <?php if ($gb) { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
-                                                    <?php } else { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
-                                                    <?php } ?>
+                                                    <img id="gbdok2">
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <?php if ($gb) { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/') . $gb->nama_file; ?>" alt="">
-                                                    <?php } else { ?>
-                                                        <img width="100" height="150" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
-                                                    <?php } ?>
+                                                    <img id="gbdok3">
                                                 </div>
                                             </div>
                                             <a class="carousel-control-prev" href="#dokIndikator" role="button" data-slide="prev">
@@ -496,7 +468,7 @@
             var namakabkota = $(this).data('namakabkota');
             var namadistrik = $(this).data('namadistrik');
             var isilaporan = $(this).data('isilaporan');
-            // var ktp = $(this).data('ktp');
+            // var ktp = $(this).data('gambarktp');
 
             $('#kodelaporan').text(kodelaporan);
             $('#nik').text(nik);
@@ -511,13 +483,28 @@
             $('#nama_kabkota').text(namakabkota);
             $('#nama_distrik').text(namadistrik);
             $('#isilaporan').text(isilaporan);
-            // $('#ktp').attr(ktp);
+            // $('#gbktp').attr('src'.ktp);
+
+            var ktp = $(this).data('gambarktp');
+             const img = document.getElementById("gbktp");
+            img.src = "<?php echo base_url('upload/ktp/');?>"+ktp;
+
+
+            var dokumentasi1 = $(this).data('dokumentasi1');
+            var dokumentasi2 = $(this).data('dokumentasi2');
+            var dokumentasi3 = $(this).data('dokumentasi3');
+             const img1 = document.getElementById("gbdok1");
+             const img2 = document.getElementById("gbdok2");
+             const img3 = document.getElementById("gbdok3");
+            img1.src = "<?php echo base_url('upload/dokumentasi/');?>"+dokumentasi1;
+            img2.src = "<?php echo base_url('upload/dokumentasi/');?>"+dokumentasi2;
+            img3.src = "<?php echo base_url('upload/dokumentasi/');?>"+dokumentasi3;
 
         })
     })
 </script>
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         var table = $('#tabelLaporan').DataTable();
 
@@ -531,4 +518,4 @@
             table.columns(2).search(this.value).draw();
         });
     });
-</script>
+</script> -->

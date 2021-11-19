@@ -32,6 +32,10 @@
         table#tablePengguna span form {
             margin: 0 3px;
         }
+
+        table#tablePengguna td:last-child {
+    display: flex;
+}
     </style>
 </head>
 

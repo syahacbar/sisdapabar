@@ -11,12 +11,14 @@ class Berita extends CI_Controller
     }
 
 
+
     public function index()
     {
         $data['berita'] = $this->M_berita->get_all();
         $data['title'] = "BERITA";
         $data['list_kategori'] = $this->M_berita->get_kategori();
-        $data['id'] = $this->generateidberita();
+        // $data['id_galeriberita'] = $this->M_berita->get_id_galeriberita();
+        // $data['id'] = $this->generateidberita();
 
         $data['_view'] = "admin/berita";
         $this->load->view('admin/layout', $data);
@@ -77,9 +79,11 @@ class Berita extends CI_Controller
 
     public function add()
     {
+
         $data['_view'] = "admin/berita_add";
         $this->load->view('admin/layout', $data);
-        $data['idberita'] = $this->generateidberita();
+        
+        $data['idberita'] = date("YmdHis");
     }
 
     public function edit($idberita)
@@ -88,7 +92,7 @@ class Berita extends CI_Controller
         $data['_view'] = "admin/berita_edit";
         $this->load->view('admin/layout', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Berita telah berhasil diubah. Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.</div>');
+        Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.</div>');
         echo json_encode(array('status' => TRUE));
     }
 
@@ -107,9 +111,9 @@ class Berita extends CI_Controller
 
         $this->M_berita->add_berita($params);
         $this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
         <div>
-          Berita telah berhasil ditambahkan. Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.
+          Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.
         </div>
       </div>');
         echo json_encode(array('status' => TRUE));
