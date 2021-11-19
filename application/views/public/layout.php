@@ -106,21 +106,72 @@
 
     .carousel-item img {
       height: 550px !important;
-      object-fit: cover;
+      /*object-fit: cover;*/
       /* object-position: center top -20px; */
     }
 
     img.default_slider {
-      height: 550px !important;
+      /*height: 600px !important;*/
+      height: 100% !important;
       /* object-fit: contain !important; */
       object-position: center !important;
       width: 100% !important;
-      background-color: #5166d8 !important;
+      background-color: #231757 !important;
     }
 
     i.mdi.mdi-youtube-play:hover {
       background-color: red;
     }
+
+    h6.text-bold {
+      font-weight: bold;
+      padding-left: 10px;
+      margin: 0;
+      line-height: 1.4;
+      font-size: 14px;
+      color: #231757;
+    }
+
+    .navbar li.active a.nav-link {
+      color: #231757 !important;
+    }
+
+.footer-widget-container {
+    border-top: 4px solid #fad701;
+}
+
+.page-footer {
+    background: #231757;
+}
+
+.footer-copyright {
+    line-height: 45px;
+    background: #f2cf04;
+    color: #999;
+}
+
+.footer-copyright p {
+    margin: 22px 0;
+    color: #231757;
+}
+
+.footer-contact-widget ul li a .mdi {
+    color: #231757;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    display: block;
+    background: #fad702;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 2px;
+    transtion: all 0.3s ease-in-out;
+}
+
+.page-footer .footer-title:before {
+      background: #f2cf04;
+}
+
   </style>
 </head>
 
@@ -141,6 +192,11 @@
           <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt=""></a> -->
         </div>
         <div class="collapse navbar-collapse" id="main-navbar">
+          <a href="<?php echo base_url('/'); ?>">
+          <img class="" width="70" src="<?php echo site_url('assets/frontend/assets/images/puprpb.png'); ?>">            
+          </a>
+            <a href="<?php echo base_url('/'); ?>">
+          <h6 class="text-bold">SELAMAT DATANG DI SISTEM INFORMASI INFRASTRUKTUR SDA PUPR PAPUA BARAT</h6> </a>
           <ul class="navbar-nav mr-auto w-100 justify-content-end">
             <li class="nav-item active">
               <a class="nav-link" href="<?php echo site_url(); ?>">
@@ -169,11 +225,11 @@
             </li>
           </ul>
           <!-- Search Box Start -->
-          <div class="search-icon">
+<!--           <div class="search-icon">
             <span class="open-search">
               <i class="mdi mdi-magnify btn btn-common"></i>
             </span>
-          </div>
+          </div> -->
           <form role="search" class="navbar-form">
             <div class="container">
               <div class="row">
@@ -253,7 +309,7 @@
         <!--Second column-->
         <div class="col-md-6 col-lg-4 col-xl-4 recent-widget">
           <h3 class="footer-title">Alamat</h3>
-          <p>Jl. Palapa Manokwari Barat - Manokwari - Papua Barat. Kode Pos 98312. Indonesia</p>
+          <p>Jalan Brigjen Marinir (Pern.) Abraham O. Atururi, Arfai - Manokwari.</p>
         </div>
         <!--/.Second column-->
 

@@ -50,6 +50,17 @@
     .toggle-btn.active>.inner-circle {
         margin-left: 19px
     }
+
+    table#newsTable td:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+}
+
+table#newsTable td a {
+    margin: 0 5px;
+}
 </style>
 
 <main id="main" class="main">

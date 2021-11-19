@@ -50,16 +50,17 @@
   }
 
   .row.judulsection .col-md-12 h1 {
-    color: #fff;
+    color: #fad701;
     margin: 0;
     padding: 25px 0;
+    font-weight: bold;
   }
 
   .row.judulsection .col-md-12 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #5166d8;
+    background-color: #231757;
   }
 
   .row.jenisinfra.mb-3 .row {
@@ -73,7 +74,7 @@
   #buktiLaporan button i {
     font-size: 28px;
     padding-bottom: 0 !important;
-    color: #5166d8;
+    color: #231757;
   }
 
   #buktiLaporan button {
@@ -84,7 +85,7 @@
   }
 
   .kirimLaporan {
-    background-color: #5166d8 !important;
+    background-color: #231757 !important;
     width: 100% !important;
     height: 45px !important;
   }
@@ -149,6 +150,10 @@
     margin: 0 auto;
   }
 
+  .dropzone {
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+  }
+
   /* loader */
   #loader {
     display: none;
@@ -158,10 +163,10 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.1) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
+    background: rgba(255, 255, 255, 0.8) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
     background-repeat: no-repeat !important;
     background-position: center center !important;
-    background-size: 15% !important;
+    background-size: 10% !important;
     z-index: 10000;
   }
 
@@ -350,15 +355,15 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="row">
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur[]" value="Irigasi">
+                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Irigasi">
                   <label for="Irigasi" class="hitam"> Irigasi</label>
                 </div>
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur[]" value="Sungai">
+                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Sungai">
                   <label for="Sungai" class="hitam"> Sungai</label>
                 </div>
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur[]" value="Pantai">
+                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Pantai">
                   <label for="Pantai" class="hitam"> Pantai</label>
                 </div>
 

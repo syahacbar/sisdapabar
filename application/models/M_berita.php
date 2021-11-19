@@ -95,4 +95,11 @@ class M_berita extends CI_Model
         $this->db->update('berita', $data);
         return TRUE;
     }
+
+
+    // public function get_id_galeriberita()
+    // {
+    //     $query = $this->db->query("SELECT * FROM berita AS b INNER JOIN galeriberita AS gb ON b.id = gb.idberita");
+    //     return $query;
+    // }
 }

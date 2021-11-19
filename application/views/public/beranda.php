@@ -62,6 +62,17 @@
       padding: 0;
     }
   }
+
+  .animated4.btn.btn-common {
+    background-color: #f2cf04;
+    padding: 15px 20px;
+    border-radius: 30px;
+    color: #231757 !important;
+  }
+
+  .subtitle {
+    color: #231757;
+}
 </style>
 <!-- Slider Section -->
 <section class="slider-section">
@@ -81,7 +92,7 @@
             <div class="carousel-item active">
               <img class="d-block w-100 default_slider" src="<?php echo base_url('assets/frontend/assets/images/default_slider.jpg')  ?>" alt="First slide">
               <div class="carousel-caption d-none d-md-block">
-                <h2>SELAMAT DATANG DI<br>SISTEM INFORMASI INFRASTRUKTUR SDA PAPUA BARAT</h2>
+                <!-- <h2>SELAMAT DATANG DI<br>SISTEM INFORMASI INFRASTRUKTUR SDA PAPUA BARAT</h2> -->
                 <a href="<?php echo site_url('lapor'); ?>" class="animated4 btn btn-common">Buat Laporan Sekarang</a>
                 <!-- <p>...</p> -->
               </div>
