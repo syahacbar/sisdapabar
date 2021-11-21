@@ -12,6 +12,7 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		// backButtonHandle();
 		$this->load->database();
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
@@ -113,6 +114,13 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->data['title'] = "Logout";
+
+		$this->session->unset_userdata('username');
+		// $this->load->driver('cache');
+		//   $this->session->sess_destroy();
+		//   $this->cache->clean();
+		//   ob_clean();
+		
 
 		// log the user out
 		$this->ion_auth->logout();

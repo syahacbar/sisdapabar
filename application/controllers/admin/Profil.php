@@ -6,6 +6,10 @@ class Profil extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ( ! $this->session->userdata('username'))
+        { 
+            redirect('Auth');
+        }
         $this->load->library(['ion_auth', 'form_validation']);
     }
 

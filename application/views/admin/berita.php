@@ -61,11 +61,16 @@
 table#newsTable td a {
     margin: 0 5px;
 }
+
+table#newsTable td:nth-child(2) {
+    width: 175px;
+}
+
 </style>
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Berita</h1>
+        <h1>Daftar Berita</h1>
     </div>
     <!-- End Page Title -->
 
@@ -74,9 +79,9 @@ table#newsTable td a {
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-3">
+                        <!-- <h5 class="card-title"></h5> -->
+                        <div class="row mt-2">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-1">
                                 <a href="<?php echo site_url('admin/berita/add'); ?>" class="btn btn-info text-white">Tambah Berita</a>
                             </div>
                         </div>

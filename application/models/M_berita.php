@@ -7,6 +7,7 @@ class M_berita extends CI_Model
     {
         $this->db->select("*");
         $this->db->from("berita");
+        $this->db->order_by("tanggal", "desc");
 
         if ($cat != NULL) {
             $this->db->where("kategori", $cat);
@@ -89,17 +90,17 @@ class M_berita extends CI_Model
         return true;
     }
 
-    public function edit($data, $id)
+    public function edit($data)
     {
-        $this->db->where('id', $id);
-        $this->db->update('berita', $data);
-        return TRUE;
+        // $this->db->where('id', $id);
+        // $this->db->update('berita', $data);
+        // return TRUE;
+
+        $sql = "UPDATE berita SET judul='" .$data['judul'] ."', isi='" .$data['isi'] ."', tanggal='" .$data['tanggal'] ."', kategori='" .$data['kategori'] ."',slug='" .$data['slug'] ."' WHERE id='" .$data['id'] ."'";
+
+        $this->db->query($sql);
+
+        return $this->db->affected_rows();
     }
 
-
-    // public function get_id_galeriberita()
-    // {
-    //     $query = $this->db->query("SELECT * FROM berita AS b INNER JOIN galeriberita AS gb ON b.id = gb.idberita");
-    //     return $query;
-    // }
 }

@@ -34,8 +34,8 @@
         }
 
         table#tablePengguna td:last-child {
-    display: flex;
-}
+            display: flex;
+        }
     </style>
 </head>
 
@@ -283,19 +283,6 @@
                 });
             });
 
-            // $("#tablePengguna").on("click", ".btnEdit", function(){
-            //     var iduser = $(this).attr("data-iduser");
-            //     $.ajax({
-            //         url: '<?php // echo site_url(); 
-                                ?>admin/akunpengguna/edit',
-            //         method: 'post',
-            //         data: {iduser:iduser},
-            //         success:function(data){
-            //             $('#modalEdit').modal("show");
-            //             $('#tampil_modal').html(data);
-            //         }
-            //     });
-            // });
         });
     </script>
 

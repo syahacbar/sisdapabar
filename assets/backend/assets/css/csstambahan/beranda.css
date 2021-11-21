@@ -1,0 +1,74 @@
+  @media (max-width: 767px) {
+    #beritalatest .col-md-6.col-lg-6.col-xl-6 {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .row.listberita .col-sm-8,
+    .row.listberita .col-md-4 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      min-width: 100%;
+    }
+
+    section#beritalatest .col-md-4 img {
+      object-fit: cover;
+      margin: 6px 5% 0 5% !important;
+      width: 90%;
+    }
+
+    .single-blog-post .post-meta {
+      padding: 0 20px 10px 20px;
+    }
+
+    .carousel-item img {
+      height: 250px !important;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-size: 20px;
+      position: initial;
+      margin-bottom: 0;
+      margin-top: 30px;
+    }
+
+    .single-blog-post {
+      margin-top: 16px;
+      margin-bottom: 0;
+    }
+
+    .section-title::before {
+      background-color: #5166d8;
+      display: none;
+    }
+
+    .section-title {
+      font-size: 24px;
+      position: initial;
+      margin-bottom: 0;
+      margin-top: 30 px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0 !important;
+    }
+
+    .col-md-12.col-lg-12.col-xs-12 {
+      padding: 0;
+    }
+  }
+
+  .animated4.btn.btn-common {
+    background-color: #f2cf04;
+    padding: 15px 20px;
+    border-radius: 30px;
+    color: #231757 !important;
+  }
+
+  .subtitle {
+    color: #231757;
+}

@@ -1,32 +1,24 @@
-<link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
-<style>
-    textarea#isiberita {
-        width: 100%;
-        padding: 10px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit Berita</title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
 
-/* loader */
-  #loader {
-    display: none;
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.8) url("<?php echo base_url(); ?>/assets/frontend/assets/images/loading.gif");
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    background-size: 10% !important;
-    z-index: 10000;
-  }
+    <!-- ==== Textarea editor Summernote === -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-  textarea#isiberita {
-    height: 500px;
-  }
-</style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
+    <!-- === Tambahan CSS Halaman Admin Edit Berita === -->
+    <link href="<?php echo base_url('assets/backend/assets/css/csstambahan/edit-berita.css'); ?>" rel="stylesheet">
+
+  </head>
+  <body>
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>Edit Berita</h1>
@@ -37,7 +29,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <?php echo $this->session->flashdata('message'); ?>
-                <?php echo form_open_multipart('admin/berita/saveberita', array('id' => 'formInputberita')); ?>
+                <?php echo form_open_multipart('admin/berita/updateberita', array('id' => 'formInputberita')); ?>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                         <div class="row">
@@ -57,13 +49,15 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                         <div class="form-group mt-0">
+                            <button type="button" class="btn btn-primary d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#gambarBerita">
+                            <i class="bi bi-info-square-fill"></i>
+                            </button>
                             <div id="gambar_berita" class="dropzone gambar_berita border-1" requireda>
-                                <div class="dz-message">Klik atau drop foto KTP ke sini</div>
+                                <div class="dz-message">Klik atau drop gambar berita ke sini</div>
                             </div>
                         </div>
                     </div>
@@ -73,12 +67,12 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <!-- disini bisa disi dngan value nanti klo dipake di form edit -->
-                        <textarea class="tinymce-editor" id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
+                        <!-- di sini bisa diisi dengan value nanti klo dipake di form edit -->
+                        <textarea id="isiberita" name="isiberita"><?php echo $berita->isi; ?></textarea>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <input type="hidden" name="idberita" id="idberita" value="<?php echo date('YmdHi'); ?>">
+                        <input type="hidden" name="idberita" id="idberita" value="<?php echo $berita->id; ?>">
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
@@ -96,12 +90,33 @@
     </section>
 </main>
 
-<!-- JS Upload Berita Baru Halaman Admin Panel -->
-<script>
+<!-- Modal Bantuan 3 -->
+<div class="modal fade" id="gambarBerita" tabindex="-1" role="dialog" aria-labelledby="modalDocLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDocLabel">Petunjuk!</h5>
+        <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning alert-dismissible fade show peringatan mb-3" role="alert">
+          Foto/gambar yang diunggah akan dijadikan thumbnail berita. Silakan unggah foto/gambar berformat .jpg, .png, dan .jpeg. Ukuran maksimal gambar 2MB dan jumlah gambar hanya 1 buah.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Akhir Modal Bantuan -->
+
+
+  <script>
     Dropzone.autoDiscover = false;
     var spinner = $('#loader');
     $(document).ready(function() {
-
 
         //untuk slide ON/OFF
         $('.toggle-btn').click(function() {
@@ -143,16 +158,16 @@
             e.preventDefault();
             spinner.show();
 
-            var isiberita = $("textarea[name='isiberita']").val();
+            var isiberita = document.getElementById("isiberita").value
             var judulberita = $("input[name='judulberita']").val();
             var slugberita = $("input[name='slugberita']").val();
             var kategoriberita = $("select[name='kategoriberita']").val();
             var slider = $("input[name='slider']").val();
             var idberita = $("input[name='idberita']").val();
 
-
+            console.log(isiberita);
             $.ajax({
-                url: "<?php echo site_url('admin/berita/saveberita') ?>",
+                url: "<?php echo site_url('admin/berita/updateberita') ?>",
                 type: "POST",
                 data: {
                     judulberita: judulberita,
@@ -170,8 +185,6 @@
                     var objData = jQuery.parseJSON(data);
 
                     if (objData.status) {
-                        // console.log('Simpan berhasil');
-                        // location.reload();
                           alert("Berita Berhasil Diubah");
                           spinner.hide();
                           location.reload();
@@ -186,7 +199,7 @@
         var unggah_gbrberita = new Dropzone(".gambar_berita", {
             autoProcessQueue: true,
             url: "<?php echo site_url('admin/berita/uploadgbrberita') ?>",
-            maxFilesize: 50,
+            maxFilesize: 2,
             maxFiles: 1,
             method: "post",
             acceptedFiles: "image/*",
@@ -227,3 +240,12 @@
 
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+      $('#isiberita').summernote();
+    });
+</script>
+
+  </body>
+</html>

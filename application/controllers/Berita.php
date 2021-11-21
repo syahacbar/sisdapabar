@@ -51,37 +51,37 @@ class Berita extends CI_Controller
 
 
 
-    public function ref_berita()
-    {
-        $this->load->model('M_berita');
+    // public function ref_berita()
+    // {
+    //     $this->load->model('M_berita');
 
-        if ($this->uri->segment(3) == "") {
-            // $data['linkform'] = "berita/berita/add";
-            $data['berita'] = $this->M_berita->get_all();
-        } else if ($this->uri->segment(3) == "add") {
-            $data = array(
-                'status'  => $this->input->post('berita'),
-            );
+    //     if ($this->uri->segment(3) == "") {
+    //         // $data['linkform'] = "berita/berita/add";
+    //         $data['berita'] = $this->M_berita->get_all();
+    //     } else if ($this->uri->segment(3) == "add") {
+    //         $data = array(
+    //             'status'  => $this->input->post('berita'),
+    //         );
 
-            $this->M_berita->add($data);
+    //         $this->M_berita->add($data);
 
-            $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('berita/berita');
-        } else if ($this->uri->segment(3) == "edit") {
-            $id = $this->input->post('id');
-            $data = array(
-                'status'  => $this->input->post('berita')
-            );
-            $this->M_berita->edit($data, $id);
-            $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('berita/berita');
-        } else if ($this->uri->segment(3) == "delete") {
-            $id = $this->input->post('id');
-            $this->M_berita->delete($id);
-            redirect('berita/berita');
-        }
+    //         $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    //         redirect('berita/berita');
+    //     } else if ($this->uri->segment(3) == "edit") {
+    //         $id = $this->input->post('id');
+    //         $data = array(
+    //             'status'  => $this->input->post('berita')
+    //         );
+    //         $this->M_berita->edit($data, $id);
+    //         $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    //         redirect('berita/berita');
+    //     } else if ($this->uri->segment(3) == "delete") {
+    //         $id = $this->input->post('id');
+    //         $this->M_berita->delete($id);
+    //         redirect('berita/berita');
+    //     }
 
-        $data['_view'] = 'admin/berita';
-        $this->load->view('admin/layout', $data);
-    }
+    //     $data['_view'] = 'admin/berita';
+    //     $this->load->view('admin/layout', $data);
+    // }
 }
