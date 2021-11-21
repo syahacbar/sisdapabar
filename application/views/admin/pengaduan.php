@@ -84,6 +84,15 @@
     #identitasPelapor tr {
         border: 0 !important;
     }
+
+div#detailLap .table>tbody>tr>td,
+div#detailLap .table>tbody>tr>th,
+div#detailLap .table>tfoot>tr>td,
+div#detailLap .table>tfoot>tr>th,
+div#detailLap .table>thead>tr>td,
+div#detailLap .table>thead>tr>th {
+    border: 0 !important;
+}
 </style>
 
 <main id="main" class="main">
@@ -101,7 +110,7 @@
                     <div class="card-body">
                         <!-- <h5 class="card-title"></h5> -->
                         <div class="row">
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+<!--                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Infrastruktur</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihinfrastruktur" name="pilihinfrastruktur" aria-controls="pilihinfrastruktur" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -113,7 +122,7 @@
                                 </div>
                             </div> -->
 
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+<!--                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Kab/Kota</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihlokasi_kabkota" name="pilihlokasi_kabkota" aria-controls="pilihlokasi_kabkota" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -126,8 +135,8 @@
                                     </select>
                                 </div>
                             </div> -->
-
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
+<!-- 
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-3">
                                 <label>Filter By Status</label>
                                 <div class="panel-heading mt-2">
                                     <select id="pilihstatus" name="pilihstatus" aria-controls="pilihstatus" class="custom-select custom-select-sm form-control form-control-sm form-select">
@@ -174,6 +183,8 @@
                                     $gbdok1 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi1');
                                     $gbdok2 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi2');
                                     $gbdok3 = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumentasi3');
+                                    $dokadd = $CI->M_pengaduan->get_allimage($p->kodelaporan, 'dokumen_tambahan');
+
                                     ?>
                                     <tr>
                                         <td width="130px">
@@ -181,7 +192,8 @@
                                                 data-gambarktp="<?php echo $gbktp->nama_file; ?>"
                                                 data-dokumentasi1="<?php echo $gbdok1->nama_file; ?>"
                                                 data-dokumentasi2="<?php echo $gbdok2->nama_file; ?>"
-                                                data-dokumentasi3="<?php echo $gbdok3->nama_file; ?>">
+                                                data-dokumentasi3="<?php echo $gbdok3->nama_file; ?>"
+                                                data-dokumen_tambahan="<?php echo $dokadd->nama_file; ?>">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                             <?php if ($p->status == 'Diterima') { ?>
@@ -237,6 +249,10 @@
                         <li role="presentation">
                             <a href="#browseTab" aria-controls="browseTab" role="tab" data-toggle="tab">Detail Laporan</a>
                         </li>
+
+<!--                         <li role="presentation">
+                            <a href="#dokTambahan" aria-controls="browseTab" role="tab" data-toggle="tab">Dokumen Tambahan</a>
+                        </li> -->
                     </ul>
 
                     <div class="tab-content mt-3">
@@ -370,6 +386,16 @@
                                 <p>
                             </div>
                         </div>
+
+<!--                         <div role="tabpanel" class="tab-pane" id="dokTambahan">
+                            <div id="foto-ktp" class="col-sm-12 m-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a href="" class="btn btn-info btn-sm" type="application/pdf" id="dokumentambahan">Unduh Fe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -500,6 +526,11 @@
             img2.src = "<?php echo base_url('upload/dokumentasi/');?>"+dokumentasi2;
             img3.src = "<?php echo base_url('upload/dokumentasi/');?>"+dokumentasi3;
 
+
+            var dokumen_tambahan = $(this).data('dokumen_tambahan');
+             const imgdok = document.getElementById("dokumentambahan");
+            imgdok.src = "<?php echo base_url('upload/dokumen-tambahan/');?>"+dokumen_tambahan;
+
         })
     })
 </script>
@@ -519,3 +550,4 @@
         });
     });
 </script> -->
+

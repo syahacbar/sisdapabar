@@ -8,6 +8,7 @@
 
   <title><?php echo $title; ?> | SISDA-PABAR</title>
 
+
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-57x57.png'); ?>">
   <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url('assets/backend/assets/favicon/apple-icon-60x60.png'); ?>">
@@ -59,120 +60,9 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+  <!-- === Tambahan CSS Halaman Admin Edit Berita === -->
+<link href="<?php echo base_url('assets/backend/assets/css/csstambahan/layout-tambahan.css'); ?>" rel="stylesheet">
 
-  <style>
-    #beritalatest .col-md-6.col-lg-6.col-xl-6 {
-      width: 48%;
-      max-width: 48%;
-      margin: 1% !important;
-    }
-
-    .small-text {
-      font-size: 11px;
-    }
-
-    section#beritalatest .col-md-4 img {
-      object-fit: cover;
-      margin: 0 10% !important;
-    }
-
-    .row.listberita .col-sm-8,
-    .row.listberita .col-md-4 {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-
-    .row.laporanterkini .col-sm-8,
-    .row.laporanterkini .col-md-4 {
-      padding-right: 0 !important;
-    }
-
-    #beritalatest .container {
-      padding: 0 !important;
-      max-width: 90% !important;
-      margin: 5% !important;
-    }
-
-    #laporanmasuk img {
-      width: 60%;
-      margin: 0 10%;
-      object-fit: cover;
-      height: 150px !important;
-    }
-
-    .section-padding {
-      padding: 0;
-    }
-
-    .carousel-item img {
-      height: 550px !important;
-      /*object-fit: cover;*/
-      /* object-position: center top -20px; */
-    }
-
-    img.default_slider {
-      /*height: 600px !important;*/
-      height: 100% !important;
-      /* object-fit: contain !important; */
-      object-position: center !important;
-      width: 100% !important;
-      background-color: #231757 !important;
-    }
-
-    i.mdi.mdi-youtube-play:hover {
-      background-color: red;
-    }
-
-    h6.text-bold {
-      font-weight: bold;
-      padding-left: 10px;
-      margin: 0;
-      line-height: 1.4;
-      font-size: 14px;
-      color: #231757;
-    }
-
-    .navbar li.active a.nav-link {
-      color: #231757 !important;
-    }
-
-.footer-widget-container {
-    border-top: 4px solid #fad701;
-}
-
-.page-footer {
-    background: #231757;
-}
-
-.footer-copyright {
-    line-height: 45px;
-    background: #f2cf04;
-    color: #999;
-}
-
-.footer-copyright p {
-    margin: 22px 0;
-    color: #231757;
-}
-
-.footer-contact-widget ul li a .mdi {
-    color: #231757;
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
-    display: block;
-    background: #fad702;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 2px;
-    transtion: all 0.3s ease-in-out;
-}
-
-.page-footer .footer-title:before {
-      background: #f2cf04;
-}
-
-  </style>
 </head>
 
 <body>
@@ -313,21 +203,6 @@
         </div>
         <!--/.Second column-->
 
-
-        <!--Fourth column-->
-        <!--           <div class="col-md-6 col-lg-3 col-xl-3 footer-contact">
-              <h3 class="footer-title">Our Gallery</h3>
-              <div class="widget widget-gallery">
-                <ul class="magnific-gallery">
-                  <li><a href="#"><img src="assets/images/gallery/thum1.jpg" alt="instagram image"></a></li>
-                  <li><a href="#"><img src="assets/images/gallery/thum2.jpg" alt="instagram image"></a></li>
-                  <li><a href="#"><img src="assets/images/gallery/thum3.jpg" alt="instagram image"></a></li>
-                  <li><a href="#"><img src="assets/images/gallery/thum4.jpg" alt="instagram image"></a></li>
-                  <li><a href="#"><img src="assets/images/gallery/thum5.jpg" alt="instagram image"></a></li>
-                  <li><a href="#"><img src="assets/images/gallery/thum6.jpg" alt="instagram image"></a></li>
-                </ul>
-              </div>
-          </div> -->
         <div class="col-md-6 col-lg-4 col-xl-4 recent-widget">
           <h3 class="footer-title">Instansi Terkait</h3>
           <p><a class="dark-grey-text" href="https://www.dpupapuabarat.com/" target="_blank">Dinas PU Papua Barat</a></p>

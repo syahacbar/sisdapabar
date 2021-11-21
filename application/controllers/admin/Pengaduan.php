@@ -5,6 +5,12 @@ class Pengaduan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        
+        // is_logged_in();
+         if ( ! $this->session->userdata('username'))
+        { 
+            redirect('Auth');
+        }
         $this->load->model('M_pengaduan');
         $this->load->model('M_berita');
         $this->load->model(['M_pengaduan', 'M_wilayah']);

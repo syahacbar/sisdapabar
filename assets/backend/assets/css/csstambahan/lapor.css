@@ -1,0 +1,172 @@
+    .row.jenisinfra.mb-3 .col-md-4 {
+    padding: 0 !important;
+  }
+
+  #contactForm .form-control {
+    font-weight: 500;
+    /*height: auto !important;*/
+    margin: 0;
+  }
+
+  #contactForm .form-group label.control-label,
+  .form-group.label-floating select {
+    font-size: 16px;
+    color: #000;
+  }
+
+  .form-group select {
+    width: 100%;
+  }
+
+  section#laporanpengaduan {
+    width: 60%;
+    margin: 7rem 20% 5rem 20%;
+    box-shadow: 0 10px 30px 0 rgb(0 0 0 / 20%);
+    padding-top: 0;
+  }
+
+  @media (max-width: 660px) {
+    section#laporanpengaduan {
+      width: 100%;
+      margin: 7rem 0 5rem 0 !important;
+    }
+
+    .row.judulsection .col-md-12 h1 {
+      font-size: 1.5rem;
+    }
+
+    .col-md-12.col-sm-12.col-xs-12.wow.animated.fadeInRight {
+      padding: 0;
+    }
+  }
+
+  section#laporanpengaduan .container {
+    background: #fff !important;
+  }
+
+  .row.judulsection .col-md-12 h1 {
+    color: #fad701;
+    margin: 0;
+    padding: 25px 0;
+    font-weight: bold;
+  }
+
+  .row.judulsection .col-md-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #231757;
+  }
+
+  .row.jenisinfra.mb-3 .row {
+    padding: 0 20px !important;
+  }
+
+  #buktiLaporan .form-group {
+    margin-top: 0 !important;
+  }
+
+  #buktiLaporan button i {
+    font-size: 28px;
+    padding-bottom: 0 !important;
+    color: #231757;
+  }
+
+  #buktiLaporan button {
+    margin: 0 auto;
+    padding: 0 !important;
+    margin-bottom: -20px;
+    background-color: #fff;
+  }
+
+  .kirimLaporan {
+    background-color: #231757 !important;
+    width: 100% !important;
+    height: 45px !important;
+  }
+
+  label.hitam {
+    color: black;
+  }
+
+  div#dokumen_tambahan .dz-message:before,
+  div#unggahfotoktp .dz-message:before,
+  div#dokumentasi .dz-message:before,
+  div#ktp .dz-message:before {
+    content: " ";
+    background-image: url(https://sisdapabar.com/assets/frontend/assets/images/upload-icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 45px !important;
+    display: block;
+  }
+
+  #modalBantuan img,
+  #modalBantuan1 img,
+  #modalSelfi img,
+  #modalKTP img {
+    width: 100%;
+    height: 250px;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  #modalDoc img {
+    width: 40% !important;
+    height: auto !important;
+    margin: 0 30% !important;
+  }
+
+  #modalSelfi img {
+    object-position: center right;
+  }
+
+  #modalBantuan1 .modal-dialog,
+  #modalBantuan .modal-dialog,
+  #modalDoc .modal-dialog,
+  #modalSelfi .modal-dialog {
+    margin-top: 4.5rem;
+  }
+
+  textarea#isi_laporan,
+  textarea#alamat_pelapor {
+    border: 1px solid #D2D2D2;
+    background: none !important;
+  }
+
+  .dropzone .dz-preview.dz-image-preview {
+    background: white;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .dropzone .dz-preview .dz-image {
+    margin: 0 auto;
+  }
+
+  .dropzone {
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+  }
+
+  /* loader */
+  #loader {
+    display: none;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8) url(https://sisdapabar.com/assets/frontend/assets/images/loading.gif);
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 10% !important;
+    z-index: 10000;
+  }
+
+  form#formulirLaporan .col-md-12 textarea {
+    height: auto !important;
+    padding: 5px;
+  }
+

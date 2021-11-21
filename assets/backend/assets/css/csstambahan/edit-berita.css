@@ -1,0 +1,130 @@
+    textarea#isiberita {
+        width: 100%;
+        padding: 10px;
+    }
+
+
+  #loader {
+    display: none;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8) url(https://sisdapabar.com/assets/frontend/assets/images/loading.gif);
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 10% !important;
+    z-index: 10000;
+  }
+
+  div#gambar_berita .dz-message:before {
+    content: "+";
+    background-color: #e1e1e1;
+    border-radius: 5px;
+    width: 50px;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 5px auto;
+    color: #0d6efd;
+    height: 50px !important;
+  }
+
+  div#gambar_berita .dz-message {
+    margin: 0;
+}
+
+div#gambar_berita {
+    border: 1px solid #ced4da !important;
+}
+
+.dropzone .dz-preview.dz-image-preview {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropzone .dz-preview {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 2% !important;
+    min-height: 100px;
+    width: 96%;
+    /*height: 100% !important;*/
+}
+
+.dropzone .dz-preview .dz-image {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100% !important;
+    height: 170px;
+    position: relative;
+    display: block;
+    z-index: 10;
+}
+
+.dropzone .dz-preview .dz-image img {
+    display: block;
+    width: 100%;
+    object-fit: contain !important;
+    object-position: center;
+    height: 100%;
+}
+
+.dropzone .dz-preview .dz-remove:after {
+    content: "Hapus Gambar";
+    font-size: 14px !important;
+}
+
+.dropzone .dz-preview .dz-remove {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    border: none;
+    background-color: #5166d9;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0;
+}
+
+.cke_editable {
+    font-size: 14px; 
+}
+
+button.btn.btn-primary.d-flex.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    margin: 0 45% -10px 45%;
+    z-index: 999;
+    position: relative;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #6c757d;
+    border-color: #ddd;
+}
+
+.panel-heading.note-toolbar .btn {
+    color: #fff;
+}
+
+.note-editor.note-airframe .note-editing-area .note-editable,
+.note-editor.note-frame .note-editing-area .note-editable {
+    height: 300px;
+}
+
+.note-modal.link-dialog.open .note-modal-content {
+    padding-bottom: 20px;
+}

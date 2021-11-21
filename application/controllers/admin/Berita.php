@@ -6,6 +6,11 @@ class Berita extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // is_logged_in();
+         if ( ! $this->session->userdata('username'))
+        { 
+            redirect('Auth');
+        }
         $this->load->library(['ion_auth', 'form_validation']);
         $this->load->model(['M_berita']);
     }
@@ -110,6 +115,7 @@ class Berita extends CI_Controller
 
 
         $this->M_berita->add_berita($params);
+
         $this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
         <div>
@@ -117,13 +123,50 @@ class Berita extends CI_Controller
         </div>
       </div>');
         echo json_encode(array('status' => TRUE));
-        redirect('admin/berita_add', 'refresh');
+        // redirect('admin/berita_add', 'refresh');
+        // redirect('admin/berita', 'refresh');
+
 
         // if ($this->db->affected_rows() > 0) {
         //     echo "<script>alert('Berita Berhasil Ditambahkan')</script>";
         // }
         // echo "<script>window.location='" . site_url('admin/berita') . "';</script>";
     }
+
+    public function updateberita()
+    {
+        $slug =  url_title($this->input->post('judulberita'), 'dash', true);
+        $id=$this->input->post('idberita');
+
+        $params = array(
+            'tanggal' => date("Y-m-d H:i:s"),
+            'judul' => $this->input->post('judulberita'),
+            'isi' => $this->input->post('isiberita'),
+            'slug' => $slug,
+            'kategori' => $this->input->post('kategoriberita'),
+            'id' => $this->input->post('idberita'),
+        );
+
+
+        $this->M_berita->edit($params);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+          Silakan kembali ke halaman berita dengan menekan menu Berita yang ada di bagian sibebar halaman ini.
+        </div>
+      </div>');
+        echo json_encode(array('status' => TRUE));
+        // redirect('admin/berita_add', 'refresh');
+        // redirect('admin/berita', 'refresh');
+
+
+        // if ($this->db->affected_rows() > 0) {
+        //     echo "<script>alert('Berita Berhasil Ditambahkan')</script>";
+        // }
+        // echo "<script>window.location='" . site_url('admin/berita') . "';</script>";
+    }
+
 
     public function uploadgbrberita()
     {

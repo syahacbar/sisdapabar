@@ -6,6 +6,10 @@ class Download extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+         if ( ! $this->session->userdata('username'))
+        { 
+            redirect('Auth');
+        }
         $this->load->model(['M_pengaduan', 'M_wilayah']);
     }
 

@@ -1,97 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 
-<style>
-  section.welcome-section.section-padding.section-dark .container {
-    margin-top: 7rem;
-  }
-
-  .Material-tab ul.nav.nav-tabs {
-    padding: 0px 25px;
-    background: #fff;
-    text-align: center;
-    border-bottom: 0;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 26%);
-    justify-content: start !important;
-    padding: 0;
-  }
-
-  .Material-tab ul.nav.nav-tabs .nav-item .nav-link {
-    font-size: 13px;
-    padding: 14px 5px;
-    padding: 15px 20px !important;
-  }
-
-  .Material-tab .nav-tabs .nav-item {
-    font-size: 15px;
-    color: #333;
-    background-color: #eee;
-    padding: 0;
-    margin: 5px;
-    display: block;
-    border-radius: 2px;
-    text-transform: capitalize;
-    cursor: pointer;
-  }
-
-  .Material-tab li.nav-item a {
-    padding: 0 20px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0 !important;
-    margin: 0 !important;
-  }
-
-  section#halprofil .container {
-    margin-top: 7rem;
-  }
-
-  #sliderContol img {
-    width: 100%;
-    object-fit: contain;
-    height: auto !important;
-  }
-
-  @media (max-width: 767px) {
-    .Material-tab ul.nav.nav-tabs .nav-item .nav-link {
-      font-size: 13px;
-      padding: 14px 5px;
-      padding: 10px 15px !important;
-    }
-
-    .Material-tab .tab-content {
-      padding: 10px;
-      background: #fff;
-      box-shadow: 0 1px 4px rgb(0 0 0 / 26%);
-    }
-
-    .Material-tab .tab-content ul {
-      padding-left: 15px;
-    }
-
-    .carousel-inner {
-      margin-top: 0;
-    }
-
-    .single-blog-post .post-meta {
-      padding: 10px 7px;
-    }
-
-    .single-blog-post {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-
-  .Material-tab ul.nav.nav-tabs li .active {
-    background-color: #231757 !important;
-    color: #fff;
-  }
-
-  .Material-tab li.nav-item a {
-    color: #231757;
-  }
-</style>
+<!-- === Tambahan CSS Halaman Admin Edit Berita === -->
+<link href="<?php echo base_url('assets/backend/assets/css/csstambahan/profil.css'); ?>" rel="stylesheet">
 
 <!-- Welcome Section Start -->
 <section id="halprofil" class="welcome-section section-padding section-dark">
@@ -176,6 +86,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
+              <span class="close">&times;</span>
             </div>
           </div>
         </div>
@@ -184,3 +95,13 @@
   </div>
 </section>
 <!-- Welcome Section End -->
+
+<script>
+  // Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>

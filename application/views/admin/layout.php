@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -41,6 +40,9 @@
     <link href="<?php echo base_url('assets/backend/assets/vendor/quill/quill.bubble.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/backend/assets/vendor/simple-datatables/style.css'); ?>" rel="stylesheet">
 
+    <!-- ===== Editor Text ===== -->
+    <!-- <script src="<?php // echo base_url('assets/backend/assets/vendor/tinymce/tinymce.min.js'); ?>"></script> -->
+
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url('assets/backend/assets/css/style.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/backend/assets/css/csstambahan/layout.css'); ?>" rel="stylesheet">
@@ -49,7 +51,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -402,7 +403,6 @@
     <script src="<?php echo base_url('assets/backend/assets/vendor/bootstrap/js/bootstrap.bundle.js'); ?>"></script>
     <script src="<?php echo base_url('assets/backend/assets/vendor/php-email-form/validate.js'); ?>"></script>
     <script src="<?php echo base_url('assets/backend/assets/vendor/quill/quill.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/backend/assets/vendor/tinymce/tinymce.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/backend/assets/vendor/simple-datatables/simple-datatables.js'); ?>"></script>
     <script src="<?php echo base_url('assets/backend/assets/vendor/chart.js/chart.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/backend/assets/vendor/apexcharts/apexcharts.min.js'); ?>"></script>
