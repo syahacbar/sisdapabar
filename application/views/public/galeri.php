@@ -1,164 +1,196 @@
 <!-- === Tambahan CSS Halaman Admin Edit Berita === -->
 <link href="<?php echo base_url('assets/backend/assets/css/csstambahan/galeri.css'); ?>" rel="stylesheet">
 
-  <!-- MAIN (Center website) -->
+
+<style>
+
+ .port-image
+{
+    width: 100%;
+}
+
+.col-md-3
+{
+    margin-bottom:20px;
+}
+
+.each-item
+{
+    position:relative;
+    overflow:hidden;
+}
+
+.each-item:hover .cap2, .each-item:hover .cap1
+{
+    left:0px;
+}
+
+.cap1
+{
+    position:absolute;
+    width:100%;
+    height:70%;
+    background: #fff;
+    top:0px;
+    left:-100%;
+    padding:10px;
+    
+    transition: all .5s;
+}
+
+.cap2 {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    background: #231757;
+    bottom: 0px;
+    left: 100%;
+    padding: 10px;
+    transition: all .5s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cap2 a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f2cf04;
+}
+
+section.Material-blog-section.section-padding.mt-5 button {
+    padding: 10px 15px !important;
+}
+
+.cap1 h5 {
+    font-weight: bold;
+}
+
+.material-icons {
+    font-size: 24px;
+    line-height: 1;
+    border-radius: 5px;
+    background-color: #f2cf04;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #231757;
+}
+</style>
+
   <section class="Material-blog-section section-padding mt-5">
     <div class="container">
-      <div class="row">
+    <div class="row">
         <div class="col-md-6 col-sm-4" data-wow-delay=".2s">
           <h1 class="section-title">Galeri</h1>
         </div>
-        <div class="col-md-6 col-sm-8" data-wow-delay=".2s">
-          <div id="filterGaleri">
-            <button class="btn active" onclick="filterSelection('semua')"> Semua</button>
-            <button class="btn" onclick="filterSelection('irigasi')"> Irigasi</button>
-            <button class="btn" onclick="filterSelection('sungai')"> Sungai</button>
-            <button class="btn" onclick="filterSelection('pantai')"> Pantai</button>
-          </div>
+        <div class="col-md-6 col-sm-8">
+            <button class="btn btn-primary filter-button" data-filter="all">Semua</button>
+            <button class="btn btn-default filter-button" data-filter="photo">Sungai</button>
+            <button class="btn btn-default filter-button" data-filter="graphic">Irigasi</button>
+            <button class="btn btn-default filter-button" data-filter="webdesign">Pantai</button>
         </div>
-      </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row d-flex">
-            <?php foreach ($galeri_irigasi as $gi) : ?>
-
-              <div class="column irigasi col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <figure class="single-portfolio">
-                  <?php
-                  $CI = &get_instance();
-                  $CI->load->model('M_berita');
-                  $gb = $CI->M_berita->get_image($gi->id);
-                  ?>
-
-                  <div class="featured-image">
+    <div class="row">
+        <?php foreach ($galeri_sungai as $gs) : ?>
+        <div class="col-md-3 filter photo">
+          <?php
+          $CI = &get_instance();
+          $CI->load->model('M_berita');
+          $gb = $CI->M_berita->get_image($gs->id);
+          ?>
+            <div class="each-item">
                     <?php if ($gb) { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
                     <?php } else { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
                     <?php } ?>
 
-                  </div>
-                  <figcaption class="hover-content">
-                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
-                      <div class="ripple-container"></div>
-                    </a>
-                    <a href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>">
-                      <h1 class="subtitle"><?php echo $gi->judul; ?></h1>
-                    </a>
-                  </figcaption>
-                </figure>
-              </div>
-            <?php endforeach; ?>
-          </div>
-
-          <div class="row">
-            <?php foreach ($galeri_sungai as $gs) : ?>
-              <div class="column sungai">
-                <figure class="single-portfolio">
-                  <?php
-                  $CI = &get_instance();
-                  $CI->load->model('M_berita');
-                  $gb = $CI->M_berita->get_image($gs->id);
-                  ?>
-                  <div class="featured-image">
-                    <?php if ($gb) { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
-                    <?php } else { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
-                    <?php } ?>
-
-                  </div>
-                  <figcaption class="hover-content">
-                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
-                      <div class="ripple-container"></div>
-                    </a>
+                <div class="cap1">
                     <a href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>">
-                      <h2 class="subtitle"><?php echo $gs->judul; ?></h2>
+                        <h5><?php echo $gs->judul; ?></h5>
                     </a>
-                  </figcaption>
-                </figure>
-              </div>
-            <?php endforeach; ?>
-          </div>
-
-          <div class="row">
-            <?php foreach ($galeri_sungai as $gp) : ?>
-              <div class="column pantai">
-                <figure class="single-portfolio">
-                  <?php
-                  $CI = &get_instance();
-                  $CI->load->model('M_berita');
-                  $gb = $CI->M_berita->get_image($gp->id);
-                  ?>
-                  <div class="featured-image">
-                    <?php if ($gb) { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
-                    <?php } else { ?>
-                      <img width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
-                    <?php } ?>
-
-                  </div>
-                  <figcaption class="hover-content">
-                    <a class="btn btn-round btn-fab btn-xs" href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>"><i class="material-icons mdi mdi-arrow-right"></i>
-                      <div class="ripple-container"></div>
-                    </a>
-                    <a href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>">
-                      <h2 class="subtitle"><?php echo $gp->judul; ?></h2>
-                    </a>
-                  </figcaption>
-                </figure>
-              </div>
-            <?php endforeach; ?>
-          </div>
+                    
+                </div>
+                <div class="cap2">
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gs->judul, 'dash', true); ?>" class="text-center">Detail</a><i class="material-icons mdi mdi-arrow-right"></i>
+                </div> 
+            </div>
         </div>
-  </section>
+        <?php endforeach; ?>
+        
+        <?php foreach ($galeri_irigasi as $gi) : ?>
+        <div class="col-md-3 filter graphic">
+          <?php
+          $CI = &get_instance();
+          $CI->load->model('M_berita');
+          $gb = $CI->M_berita->get_image($gi->id);
+          ?>
+            <div class="each-item">
+                   <?php if ($gb) { ?>
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php } else { ?>
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                    <?php } ?>
+                <div class="cap1">
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>">
+                        <h5><?php echo $gi->judul; ?></h5>
+                    </a>
+                </div>
+                <div class="cap2">
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gi->judul, 'dash', true); ?>" class="text-center">Detail</a><i class="material-icons mdi mdi-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+        
+        <?php foreach ($galeri_pantai as $gp) : ?>
+        <div class="col-md-3 filter webdesign">
+            <div class="each-item">
+                    <?php if ($gb) { ?>
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                    <?php } else { ?>
+                      <img class="port-image" width="100" height="150" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                    <?php } ?>
+                <div class="cap1">
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>">
+                        <h5><?php echo $gp->judul; ?></h5>
+                    </a>
+                </div>
+                <div class="cap2">
+                    <a href="<?php echo site_url('berita/detail/') . url_title($gp->judul, 'dash', true); ?>" class="text-center">Detail</a><i class="material-icons mdi mdi-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+</section>
 
-  <script>
-    filterSelection("semua")
 
-    function filterSelection(c) {
-      var x, i;
-      x = document.getElementsByClassName("column");
-      if (c == "semua") c = "";
-      for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-      }
-    }
+<script>
+$(document).ready(function(){
 
-    function w3AddClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {
-          element.className += " " + arr2[i];
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        
+        if(value == "all")
+        {
+            //$('.filter').removeClass('hidden');
+            $('.filter').show('1000');
         }
-      }
-    }
-
-    function w3RemoveClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        else
+        {
+//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+            
         }
-      }
-      element.className = arr1.join(" ");
-    }
+    });
 
-
-    // Add active class to the current button (highlight it)
-    // var btnContainer = document.getElementById("myBtnContainer");
-    // var btns = btnContainer.getElementsByClassName("btn");
-    // for (var i = 0; i < btns.length; i++) {
-    //   btns[i].addEventListener("click", function(){
-    //     var current = document.getElementsByClassName("active");
-    //     current[0].className = current[0].className.replace(" active", "");
-    //     this.className += " active";
-    //   });
-    // }
-  </script>
+});
+</script>

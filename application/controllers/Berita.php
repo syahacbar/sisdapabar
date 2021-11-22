@@ -49,8 +49,6 @@ class Berita extends CI_Controller
 
 
 
-
-
     // public function ref_berita()
     // {
     //     $this->load->model('M_berita');
