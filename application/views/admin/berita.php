@@ -3,70 +3,9 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
 
-<style>
-    /*    div#newsTable_filter, 
-    input.dataTable-input,
-    .dataTable-top .dataTable-dropdown,
-    .dataTable-top .dataTable-search {
-        display: none;
-    }*/
+<!-- === Tambahan CSS === -->
+<link href="<?php echo base_url('assets/backend/assets/css/csstambahan/admin-berita.css'); ?>" rel="stylesheet">
 
-    .panel-heading {
-        padding: 0;
-        margin: 0 !important;
-    }
-
-
-    /* Toggle CSS */
-
-    .toggle-btn {
-        width: 40px;
-        height: 21px;
-        background: grey;
-        border-radius: 50px;
-        padding: 3px;
-        cursor: pointer;
-        -webkit-transition: all 0.3s 0.1s ease-in-out;
-        -moz-transition: all 0.3s 0.1s ease-in-out;
-        -o-transition: all 0.3s 0.1s ease-in-out;
-        transition: all 0.3s 0.1s ease-in-out
-    }
-
-    .toggle-btn>.inner-circle {
-        width: 15px;
-        height: 15px;
-        background: #fff;
-        border-radius: 50%;
-        -webkit-transition: all 0.3s 0.1s ease-in-out;
-        -moz-transition: all 0.3s 0.1s ease-in-out;
-        -o-transition: all 0.3s 0.1s ease-in-out;
-        transition: all 0.3s 0.1s ease-in-out
-    }
-
-    .toggle-btn.active {
-        background: blue !important
-    }
-
-    .toggle-btn.active>.inner-circle {
-        margin-left: 19px
-    }
-
-    table#newsTable td:last-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-}
-
-table#newsTable td a {
-    margin: 0 5px;
-}
-
-table#newsTable td:nth-child(2) {
-    width: 175px;
-}
-
-</style>
 
 <main id="main" class="main">
     <div class="pagetitle">

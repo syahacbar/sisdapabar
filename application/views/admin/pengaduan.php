@@ -3,97 +3,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <!-- CSS Bootstrap 3 -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' />
-<style>
-    div#tabelLaporan_filter,
-    input.dataTable-input,
-    .dataTable-top .dataTable-dropdown,
-    .dataTable-top .dataTable-search {
-        display: none;
-    }
 
-    .panel-heading {
-        padding: 0;
-        margin: 0 !important;
-    }
-
-    div#identity {
-        padding: 0;
-    }
-
-    div#identity .card-body {
-        padding: 0;
-    }
-
-    #foto-ktp .card-body {
-        padding: 0;
-    }
-
-    #foto-ktp {
-        padding: 0;
-    }
-
-    div#report .card-body {
-        padding: 0;
-    }
-
-    div#report .card-body td {
-        padding: 5px 0px;
-    }
-
-    .table.table-borderless {
-        border: 0 !important;
-    }
-
-    #detailLap h3 {
-        font-size: 24px;
-        color: #17919e;
-        text-shadow: 1px 1px #ccc;
-        text-align: left;
-    }
-
-    .modal-header {
-        justify-content: start !important;
-    }
-
-    #IsiLaporan h4 {
-        font-weight: bold;
-    }
-
-    div#foto-ktp img,
-    div#dokIndikator img {
-        width: 100%;
-        height: 200px;
-        object-fit: contain;
-    }
-
-    .carousel-control-next-icon,
-    .carousel-control-prev-icon {
-        background-color: #17919e;
-        padding: 10px !important;
-        border-radius: 2px;
-        width: 100px;
-        height: 20px;
-        background-size: 35%;
-    }
-
-    div#detailLap .card {
-        box-shadow: none !important;
-    }
-
-    #DetailLaporan tr,
-    #identitasPelapor tr {
-        border: 0 !important;
-    }
-
-div#detailLap .table>tbody>tr>td,
-div#detailLap .table>tbody>tr>th,
-div#detailLap .table>tfoot>tr>td,
-div#detailLap .table>tfoot>tr>th,
-div#detailLap .table>thead>tr>td,
-div#detailLap .table>thead>tr>th {
-    border: 0 !important;
-}
-</style>
+<!-- === Tambahan CSS === -->
+<link href="<?php echo base_url('assets/backend/assets/css/csstambahan/admin-pengaduan.css'); ?>" rel="stylesheet">
 
 <main id="main" class="main">
 

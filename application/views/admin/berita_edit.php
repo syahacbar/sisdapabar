@@ -83,7 +83,7 @@
 
 
                 </form>
-                <div id="loader"></div>
+                <div id="loader-berita"></div>
 
             </div>
         </div>
@@ -115,7 +115,7 @@
 
   <script>
     Dropzone.autoDiscover = false;
-    var spinner = $('#loader');
+    var spinner = $('#loader-berita');
     $(document).ready(function() {
 
         //untuk slide ON/OFF

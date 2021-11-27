@@ -181,15 +181,15 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="row">
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Irigasi">
+                  <input type="radio" id="infrastruktur" name="infrastruktur" value="Irigasi">
                   <label for="Irigasi" class="hitam"> Irigasi</label>
                 </div>
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Sungai">
+                  <input type="radio" id="infrastruktur" name="infrastruktur" value="Sungai">
                   <label for="Sungai" class="hitam"> Sungai</label>
                 </div>
                 <div class="col-md-4">
-                  <input type="checkbox" id="infrastruktur" name="infrastruktur" value="Pantai">
+                  <input type="radio" id="infrastruktur" name="infrastruktur" value="Pantai">
                   <label for="Pantai" class="hitam"> Pantai</label>
                 </div>
 
