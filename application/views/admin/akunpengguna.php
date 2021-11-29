@@ -9,34 +9,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-
     </style>
-    <style>
-        .modal-dialog .modal-content {
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            background-color: rgba(255, 255, 255, 0.75);
-            border-radius: 12px;
-            border: 1px solid rgba(209, 213, 219, 0.3);
-        }
 
-        div#tablePengguna_filter {
-            display: none;
-        }
+    <!-- === Tambahan CSS === -->
+    <link href="<?php echo base_url('assets/backend/assets/css/csstambahan/akun-pengguna.css'); ?>" rel="stylesheet">
 
-        table#tablePengguna span {
-            display: flex;
-        }
-
-        table#tablePengguna span button,
-        table#tablePengguna span form {
-            margin: 0 3px;
-        }
-
-        table#tablePengguna td:last-child {
-            display: flex;
-        }
-    </style>
 </head>
 
 <body>

@@ -67,7 +67,6 @@
         <div class="row listberita">
           <div class="col-md-12">
             <?php foreach ($berita as $b) : ?>
-
               <div class="row">
                 <article class="single-blog-post">
                   <div class="row">
@@ -78,7 +77,6 @@
                       $gb = $CI->M_berita->get_image($b->id);
                       ?>
                       <a href="<?php echo site_url('berita/detail/') . url_title($b->judul, 'dash', true); ?>"><img src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" width="80%" height="80%"></a>
-
                     </div>
                     <div class="col-sm-8">
                       <div class="post-meta">
@@ -86,15 +84,13 @@
                         <a href="<?php echo site_url('berita/detail/') . url_title($b->judul, 'dash', true); ?>">
                           <h2 class="subtitle m-0"><?php echo $b->judul; ?></h2>
                         </a>
-                        <p><?php echo word_limiter($b->isi, 30); ?></p>
+                        <p><?php echo word_limiter($b->isi, 15); ?></p>
                         <p class="small-text d-flex justify-content-end"><i><?php echo $b->tanggal; ?></i></p>
                       </div>
                     </div>
                   </div>
-
                 </article>
               </div>
-
             <?php endforeach; ?>
           </div>
         </div>
@@ -113,7 +109,7 @@
                       <div class="post-meta">
                         <!-- Title -->
                         <h2 class="subtitle mt-0"><?php echo $p->nama_ruasjalan; ?></h2>
-                        <p><?php echo word_limiter($p->isi_laporan, 30); ?></p>
+                        <p><?php echo word_limiter($p->isi_laporan, 15); ?></p>
                         <p class="small-text d-flex justify-content-start"><i><?php echo $p->tgl_laporan; ?></i></p>
                       </div>
                     </div>
@@ -123,10 +119,10 @@
                       $CI->load->model('M_pengaduan');
                       $u = $CI->M_pengaduan->get_image($p->kodelaporan);
                       ?>
-                      <?php if ($gb) { ?>
-                        <img width="80%" height="80%" src="<?php echo base_url('upload/berita/') . $gb->nama_file; ?>" alt="">
+                      <?php if ($u) { ?>
+                        <img width="80%" height="80%" src="<?php echo base_url('upload/dokumentasi/') . $u->nama_file; ?>" alt="">
                       <?php } else { ?>
-                        <img width="80%" height="80%" src="<?php echo base_url('upload/berita/noimageavail.jpg'); ?>" alt="">
+                        <img width="80%" height="80%" src="<?php echo base_url('upload/dokumentasi/noimageavail.jpg'); ?>" alt="">
                       <?php } ?>
                     </div>
                   </div>
@@ -137,6 +133,7 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
 <!-- Our BLog Section End -->
 
